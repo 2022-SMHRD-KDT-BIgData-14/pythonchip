@@ -1,4 +1,4 @@
-package com.smhrd.db;
+package com.pythonchip.db;
 
 import java.io.IOException;
 import java.io.InputStream;
