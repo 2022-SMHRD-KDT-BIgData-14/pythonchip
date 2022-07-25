@@ -4,4 +4,14 @@
 
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
+  <servlet>
+  	<servlet-name>SqlSessionManager</servlet-name>
+  	<display-name>SqlSessionManager</display-name>
+  	<description></description>
+  	<servlet-class>com.smhrd.db.SqlSessionManager</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>SqlSessionManager</servlet-name>
+  	<url-pattern>/SqlSessionManager</url-pattern>
+  </servlet-mapping>
 </web-app>
