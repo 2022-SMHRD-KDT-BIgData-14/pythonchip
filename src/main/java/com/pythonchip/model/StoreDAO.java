@@ -16,12 +16,18 @@ public class StoreDAO {
 	
 	public ArrayList<StoreDTO> getStoreList() {
 		
-		SqlSession session = sqlSessionFactory.openSession(true);
+		SqlSession session = sqlSessionFactory.openSession();
 		ArrayList<StoreDTO> arr = (ArrayList)session.selectList("getStoreList");
 		session.close();
 		return arr;
 	}
 	
-	
+	public StoreDTO getStoreOne(String store_seq) {
+		
+		SqlSession session = sqlSessionFactory.openSession();
+		StoreDTO dto = session.selectOne("getStoreOne",store_seq);
+		session.close();
+		return dto;
+	}
 	
 }
