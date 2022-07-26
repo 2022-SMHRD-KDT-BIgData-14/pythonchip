@@ -10,8 +10,8 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <!-- CSS only -->
+<script type="text/javascript" src = "js/jquery-3.6.0.min.js"></script>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
-
 <style>
 #table{
 margin: 55px;
@@ -26,14 +26,16 @@ text-align: center;
 </style>
 </head>
 <body>
-
+<form onsubmit="return false;">
 <select name="job">
-    <option value="">선택</option>
-    <option value="학생">가게 이름</option>
-    <option value="회사원">위치</option>
-    <option value="기타">메뉴</option>
+    <option value="name">가게 이름</option>
+    <option value="location">위치</option>
+    <option value="menu">메뉴</option>
 </select>
-<input type="text" size="66em">
+
+<input type="text" size="66em" id="searchinput">
+<button id = "searchButton">검색</button>
+</form>
 <br><br>
 <button type="button" class="btn btn-outline-primary">흑임자</button>
 <button type="button" class="btn btn-outline-secondary">포도</button>
@@ -83,5 +85,7 @@ for(int i=0;i<arr.size();i++){%>
 <%} %>
 </div>
 
+
+<script type="text/javascript" src = "ajax/SearchStoreAjax.js"></script>
 </body>
 </html>

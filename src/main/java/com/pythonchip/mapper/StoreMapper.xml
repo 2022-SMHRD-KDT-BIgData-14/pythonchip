@@ -13,4 +13,9 @@ select * from Store
 select * from Store where store_seq=${value}
 </select>
 
+<select id="getStoreSearchList" resultType="StoreDTO" parameterType="String">
+select * from Store where store_name LIKE'%${value}%' 
+
+</select>
+
 </mapper>

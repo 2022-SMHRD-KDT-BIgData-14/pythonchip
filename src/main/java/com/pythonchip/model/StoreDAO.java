@@ -30,4 +30,14 @@ public class StoreDAO {
 		return dto;
 	}
 	
+	public ArrayList<StoreDTO> getStoreSearchList(String query) {
+		
+		SqlSession session = sqlSessionFactory.openSession();
+		query = "%"+query+"%";
+		ArrayList<StoreDTO> arr = (ArrayList)session.selectList("getStoreSearchList",query);
+		session.close();
+		return arr;
+	}
+	
+	
 }
