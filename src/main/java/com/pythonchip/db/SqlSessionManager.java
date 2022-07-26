@@ -16,7 +16,7 @@ public class SqlSessionManager {
 		static SqlSessionFactory sqlSessionFactory;
 		static {
 			try {
-				String resource = "com/smhrd/db/config.xml";
+				String resource = "com/pythonchip/db/config.xml";
 				InputStream inputStream = Resources.getResourceAsStream(resource);
 				sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
 			} catch (IOException e) {
