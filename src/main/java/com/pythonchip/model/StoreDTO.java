@@ -19,5 +19,5 @@ public class StoreDTO {
 	BigDecimal store_x;
 	BigDecimal store_y;
 	String menu_picture;
-
+	String keyword;
 }

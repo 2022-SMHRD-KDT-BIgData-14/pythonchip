@@ -4,7 +4,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.pythonchip.mapper.StoreMapper">
 
-
 <select id="getStoreList" resultType="StoreDTO">
 select * from Store
 </select>
@@ -13,9 +12,13 @@ select * from Store
 select * from Store where store_seq=${value}
 </select>
 
-<select id="getStoreSearchList" resultType="StoreDTO" parameterType="String">
+<select id="getStoreNameSearchList" resultType="StoreDTO" parameterType="String">
 select * from Store where store_name LIKE'%${value}%' 
+</select>
 
+
+<select id="getStoreLocationSearchList" resultType="StoreDTO" parameterType="String">
+select * from Store where location_gu||' '||location_dong LIKE'%${value}%' 
 </select>
 
 </mapper>

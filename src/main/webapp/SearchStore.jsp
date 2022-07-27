@@ -27,8 +27,8 @@ text-align: center;
 </head>
 <body>
 <form onsubmit="return false;">
-<select name="job">
-    <option value="name">가게 이름</option>
+<select name="job" id ="searchSelector">
+    <option value="name" selected>가게 이름</option>
     <option value="location">위치</option>
     <option value="menu">메뉴</option>
 </select>

@@ -6,21 +6,28 @@ $(document).ready(function(){
         console.log('클릭 합니다!')
     })
 })
- 
+
 function AjaxConGet(){
     var url = "http://localhost:8081/pythonchip/SearchStoreAjax";
 	key = $('#searchinput').val()
+	job = $("#searchSelector option:selected").val();
 	console.log(key)
+	console.log(job)
     $.ajax({
         type:"GET",
         url:url,
         dataType:"json",
         data:{
-            keyword : key
+            keyword : key,
+			job : job 
         },
         success : function(data){
             var str=""
             console.log(data)
+
+			$('.col').fadeOut("fast").fadeOut(300)
+			setTimeout(() => {
+                
             $('#table').empty()
             data.forEach(element => {
                 
@@ -39,6 +46,7 @@ function AjaxConGet(){
 				+ "  </div>"
             });
             $('#table').append(str)
+        }, 300);
             },
         error : function(request,status,error){
             alert('code:'+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error); //에러 상태에 대한 세부사항 출력

@@ -30,14 +30,21 @@ public class StoreDAO {
 		return dto;
 	}
 	
-	public ArrayList<StoreDTO> getStoreSearchList(String query) {
+	public ArrayList<StoreDTO> getStoreNameSearchList(String query) {
 		
 		SqlSession session = sqlSessionFactory.openSession();
-		query = "%"+query+"%";
-		ArrayList<StoreDTO> arr = (ArrayList)session.selectList("getStoreSearchList",query);
+		ArrayList<StoreDTO> arr = (ArrayList)session.selectList("getStoreNameSearchList",query);
 		session.close();
 		return arr;
 	}
 	
+	
+	public ArrayList<StoreDTO> getStoreLocationSearchList(String query) {
+		
+		SqlSession session = sqlSessionFactory.openSession();
+		ArrayList<StoreDTO> arr = (ArrayList)session.selectList("getStoreLocationSearchList",query);
+		session.close();
+		return arr;
+	}
 	
 }
