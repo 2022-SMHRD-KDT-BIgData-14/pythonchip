@@ -129,7 +129,7 @@
 			console.log(arr3)
 			
 			 for ( var i = 0; i < latlng.length; i++ ) {
-	    	latlng[i].setMap(null);
+	    		latlng[i].setMap(null);
 	  			  }   
 	   			 latlng = [];
 	   			 content = [];
