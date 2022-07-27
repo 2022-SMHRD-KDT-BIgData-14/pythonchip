@@ -128,7 +128,11 @@
 			console.log(arr3.length)
 			console.log(arr3)
 			
-
+			 for ( var i = 0; i < latlng.length; i++ ) {
+	    	latlng[i].setMap(null);
+	  			  }   
+	   			 latlng = [];
+	   			 content = [];
 			
 				for (var i =0 ; i < arr3.length; i++){
 			 	content.push('<div>'+arr3[i].store_name+'</div>')
@@ -141,7 +145,7 @@
 							position : latlng[i2]
 						// 마커의 위치
 						});
-
+						
 						// 마커에 표시할 인포윈도우를 생성합니다 
 						var infowindow = new kakao.maps.InfoWindow({
 							content : content[i2]
@@ -196,15 +200,6 @@
 	map.setBounds(bounds);
 	}
 					
-	function setMarkers(map) {
-	    for (var i = 0; i < latlng.length; i++) {
-	    	latlng[i].setMap(map);
-	    }            
-	}
-	
-	function hideMarkers() {
-	    setMarkers(null);    
-	}
 	</script>
 
 
