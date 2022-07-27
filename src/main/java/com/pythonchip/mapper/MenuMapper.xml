@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pythonchip.mapper.MenuMapper">
+
+<select id="getMenuList" resultType="MenuDTO">
+select * from Menu
+</select>
+
+<select id="getMenuForStore" resultType="MenuDTO" parameterType="String">
+select * from Menu where store_seq=(select store_seq from store where store_name=%${value}%) 
+</select>
+
+<select id="getMenForTagSearchList" resultType="MenuDTO" parameterType="String">
+select * from Menu where keyword LIKE'%${value}%' 
+</select>
+
+
+
+</mapper>

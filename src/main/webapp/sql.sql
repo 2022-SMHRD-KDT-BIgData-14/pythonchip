@@ -9,3 +9,5 @@ location_gu
 location_dong
 
 select * from Store where location_gu||' '||location_dong LIKE'%%' 
+
+select * from menu

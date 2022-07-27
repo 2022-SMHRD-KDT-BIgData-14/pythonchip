@@ -7,6 +7,7 @@
 
 	<typeAliases>
 			<typeAlias type="com.pythonchip.model.StoreDTO" alias="StoreDTO"/>
+			<typeAlias type="com.pythonchip.model.MenuDTO" alias="MenuDTO"/>
 			
 	</typeAliases>
 	<environments default="development">
@@ -23,6 +24,7 @@
 	<mappers>
 	
 			<mapper resource="com/pythonchip/mapper/StoreMapper.xml"></mapper>
+			<mapper resource="com/pythonchip/mapper/MenuMapper.xml"></mapper>
 			
 	</mappers>
 </configuration>
