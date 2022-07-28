@@ -1,5 +1,9 @@
 package com.pythonchip.command;
 
-public class Command {
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
+public interface Command {
+
+	public abstract String execute(HttpServletRequest request, HttpServletResponse response);
 }
