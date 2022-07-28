@@ -12,10 +12,11 @@ select * from Menu
 select * from Menu where store_seq=(select store_seq from store where store_name=%${value}%) 
 </select>
 
-<select id="getMenForTagSearchList" resultType="MenuDTO" parameterType="String">
-select * from Menu where keyword LIKE'%${value}%' 
-</select>
 
+<!-- <select id="getMenForTagSearchList" resultType="MenuDTO" parameterType="String">
+select * from Menu where menu_name LIKE'%${value}%'
+</select>
+ -->
 
 
 </mapper>

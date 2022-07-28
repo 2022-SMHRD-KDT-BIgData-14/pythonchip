@@ -47,4 +47,23 @@ public class StoreDAO {
 		return arr;
 	}
 	
+	
+	public ArrayList<StoreDTO> getStoreForMenuSearchList(String query) {
+		
+		SqlSession session = sqlSessionFactory.openSession();
+		ArrayList<StoreDTO> arr = (ArrayList)session.selectList("getStoreForMenuSearchList",query);
+		session.close();
+		return arr;
+	}
+	
+	public ArrayList<StoreDTO> getStoreForKeywordSearchList(String query) {
+		
+		SqlSession session = sqlSessionFactory.openSession();
+		ArrayList<StoreDTO> arr = (ArrayList)session.selectList("getStoreForKeywordSearchList",query);
+		session.close();
+		return arr;
+	}
+	
+	
+	
 }
