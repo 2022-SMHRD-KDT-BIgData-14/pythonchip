@@ -10,17 +10,13 @@
 		<title>Forty by HTML5 UP</title>
 		<meta charset="UTF-8" />
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
 		<link rel="stylesheet" href="assets/css/main.css" />
-		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
-		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
 		
 	</head>
 	<style>
 	
 	</style>
 	<body style="text-align: center;">
-		<!-- Wrapper -->
 			<div id="wrapper">
 				<!-- Menu -->
 					<nav id="Update">	
@@ -33,7 +29,6 @@
 								<td>나이</td>
 								<td>회원삭제</td>							
 							</tr>
-							<!-- Q10. 테이블에 저장된 모든 회원의 이메일(email),전화번호(tel),주소(address)를 출력하시오. -->
 							<% ArrayList<MemberDTO> mem_list = new MemberDAO().showMember(); %>
 							<% for(MemberDTO member : mem_list ){ %>
 							<tr>
