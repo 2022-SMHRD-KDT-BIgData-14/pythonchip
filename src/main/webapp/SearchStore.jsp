@@ -37,33 +37,17 @@ text-align: center;
 <button id = "searchButton">검색</button>
 </form>
 <br><br>
-<button type="button" class="btn btn-outline-primary">흑임자</button>
-<button type="button" class="btn btn-outline-secondary">포도</button>
-<button type="button" class="btn btn-outline-success">사과</button>
-<button type="button" class="btn btn-outline-danger">여우</button>
-<button type="button" class="btn btn-outline-warning">검은 콩</button>
-<button type="button" class="btn btn-outline-info">한방차</button>
-<button type="button" class="btn btn-outline-light">커피</button>
-
-<br>
-<button type="button" class="btn btn-outline-primary">흑임자</button>
-<button type="button" class="btn btn-outline-secondary">포도</button>
-<button type="button" class="btn btn-outline-success">사과</button>
-<button type="button" class="btn btn-outline-danger">여우</button>
-<button type="button" class="btn btn-outline-secondary">포도</button>
-<button type="button" class="btn btn-outline-success">사과</button>
-<button type="button" class="btn btn-outline-danger">여우</button>
-<button type="button" class="btn btn-outline-warning">검은 콩</button>
-<button type="button" class="btn btn-outline-info">한방차</button>
-<button type="button" class="btn btn-outline-light">커피</button>
-
-<br>
-<button type="button" class="btn btn-outline-success">사과</button>
-<button type="button" class="btn btn-outline-danger">잣</button>
-<button type="button" class="btn btn-outline-secondary">흑염소</button>
-<button type="button" class="btn btn-outline-success">검은 콩</button>
-<button type="button" class="btn btn-outline-danger">여우</button>
-<button type="button" class="btn btn-outline-warning">검은 콩</button>
+<% String[] keywordArr = {"식혜","흑염소","양갱","막걸리","인절미","말차","흑임자","쑥",
+		"흑염소","한방","미숫가루","떡","달고나","전통차","팥"};%>
+<% String[] btnClassArr = {"btn btn-outline-primary","btn btn-outline-secondary","btn btn-outline-success"
+		,"btn btn-outline-danger","btn btn-outline-warning","btn btn-outline-info","btn btn-outline-light"};%>
+<%
+int cnt=0;
+for(int i = 0; i<keywordArr.length; i++) {
+if(btnClassArr.length-1 <= cnt) {cnt = 0;
+%><br><%}%>
+<button type="button" class="<%="keywordBtn "+ btnClassArr[cnt++]%>"><%=keywordArr[i]%></button>
+<%}%>
 <div class="row row-cols-1 row-cols-md-3 g-4" id="table">
 
 <%

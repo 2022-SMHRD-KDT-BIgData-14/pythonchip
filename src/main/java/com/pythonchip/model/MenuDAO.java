@@ -29,14 +29,7 @@ public class MenuDAO {
 		return arr;
 		
 	}	
-	
-	public ArrayList<MenuDTO> getMenForTagSearchList() {
-		
-		SqlSession session = sqlSessionFactory.openSession();
-		ArrayList<MenuDTO> arr = (ArrayList)session.selectList("getMenForTagSearchList");
-		session.close();
-		return arr;
-	}
+
 	
 	
 }

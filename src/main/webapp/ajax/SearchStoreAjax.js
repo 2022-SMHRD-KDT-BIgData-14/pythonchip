@@ -7,6 +7,11 @@ $(document).ready(function(){
     })
 })
 
+$(document).on('click','.keywordBtn', function(){
+    console.log('클릭!!!!!!')
+	console.log($(this)[0].innerText)
+})
+
 function AjaxConGet(){
     var url = "http://localhost:8081/pythonchip/SearchStoreAjax";
 	key = $('#searchinput').val()
