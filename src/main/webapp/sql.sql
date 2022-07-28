@@ -37,7 +37,18 @@ select * from Store where store_seq in
 
 select keyword from store group by keyword
 
-select * from Store where keyword LIKE%${value}%
+select * from Store where keyword 
 
+select * from user_table
+drop table user_table cascade constraints;
+
+create table user_table(
+id varchar2(50),
+pw varchar2(50)not null,
+gender varchar2(50)not null,
+age varchar2(50)not null,                                                                                                                               user_tel varchar2(50)not null,
+constraint user_id_pk primary key(id),
+constraint user_tel_uk UNIQUE (user_tel)
+);
 
 

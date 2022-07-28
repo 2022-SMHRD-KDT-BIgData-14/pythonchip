@@ -16,7 +16,8 @@
 
 		<!-- Header -->
 		<header id="header" class="alt"> <a href="index.html"
-			class="logo"><strong>Forty</strong> <span>by HTML5 UP</span></a> <nav>
+			class="logo"><strong>Forty</strong> <span>by HTML5 UP</span></a> 
+		<nav>
 		<!-- Q6. 로그인을 한 상태에서는 로그인탭 대신 로그아웃탭과 개인정보수정탭을 출력 --> 
 		<% if(info != null) { %>
 		<%if(info.getId().equals("admin")){%>
@@ -47,37 +48,38 @@
 			</form>
 		</ul>
 
-		<h5>회원가입</h5>
-		<form action="JoinService.do" method="post">
-			<div>
-				<input type="text" placeholder="아이디" name="id" maxlength="20">
-			</div>
-			<div>
-				<input type="password" placeholder="비밀번호" name="pw" maxlength="20">
-			</div>
-			<div>
-				<label> <input type="radio" name="gender" autocomplete="off"
-					value="남자" checked>남자
-				</label> <label> <input type="radio" name="gender"
-					autocomplete="off" value="여자" checked>여자
-				</label>
-			</div>
-			<div>
-				<input type="text" placeholder="전화번호" name="user_tel">
-			</div>
-
-			<div>
-				<input type="text" placeholder="나이" name="age">
-			</div>
-
-			<div>
-				<input type="submit" value="완료" class="button fit">
-			</div>
-		</form>
+		<ul class ="actions vertical">
+			<h5>회원가입</h5>
+			<form action="JoinService.do" method="post">
+				<div>
+					<input type="text" placeholder="아이디" name="id" maxlength="20">
+				</div>
+				<div>
+					<input type="password" placeholder="비밀번호" name="pw" maxlength="20">
+				</div>
+				<div>
+					<label> <input type="radio" name="gender" autocomplete="off"
+						value="남자" checked>남자
+					</label> <label> <input type="radio" name="gender"
+						autocomplete="off" value="여자" checked>여자
+					</label>
+				</div>
+				<div>
+					<input type="text" placeholder="나이" name="age">
+				</div>
+	
+				<div>
+					<input type="text" placeholder="전화번호" name="user_tel">
+				</div>
+	
+			
+				<div>
+					<input type="submit" value="완료" class="button fit">
+				</div>
+			</form>
 		</ul>
 		</nav>
 	
-		</section>
 
 	<!-- Scripts -->
 	<script src="assets/js/jquery.min.js"></script>
