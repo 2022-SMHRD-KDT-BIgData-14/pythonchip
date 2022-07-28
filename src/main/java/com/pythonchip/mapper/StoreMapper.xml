@@ -28,7 +28,7 @@ select * from Store where store_seq in
 
 
 <select id = "getStoreForKeywordSearchList" resultType="StoreDTO" parameterType="String">
-select * from Store where keyword LIKE%${value}%
+select * from Store where keyword LIKE'%${value}%'
 </select>
 
 </mapper>

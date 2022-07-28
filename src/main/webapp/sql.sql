@@ -37,7 +37,7 @@ select * from Store where store_seq in
 
 select keyword from store group by keyword
 
-select * from Store where keyword LIKE%${value}%
+select * from Store where keyword 
 
 
 
