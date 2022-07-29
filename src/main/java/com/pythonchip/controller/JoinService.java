@@ -17,6 +17,9 @@ public class JoinService implements Command{
 		String age = request.getParameter("age");
 		String user_tel = request.getParameter("user_tel");
 		
+	
+		
+		
 		MemberDTO dto = new MemberDTO(id,pw,gender,age,user_tel);
 		int row = new MemberDAO().join(dto);
 		
