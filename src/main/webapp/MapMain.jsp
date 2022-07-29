@@ -14,7 +14,6 @@
 <title>Insert title here</title>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <style>
-/* 사용자컨트롤을 위한 함수들 */
 html, body {
 	width: 100%;
 	height: 100%;
@@ -265,7 +264,6 @@ html, body {
 				alt="축소"></span>
 		</div>
 	</div>
-
 	<%
 	ArrayList<StoreDTO> arr = new StoreDAO().getStoreList();
 	Gson gson = new Gson();
@@ -275,30 +273,22 @@ html, body {
 
 	<script>
 	var arr2 = <%=json%>; <!-- 자바의 배열을 자바스크립트에서 바로 쓸 수 있게 만든 객체배열입니다. -->
-	console.log(arr2);
 	
 	let keyword = []; <!-- 사용자가 선택한 키워드를 담을 배열입니다. -->
 	let arr3 = []; <!-- 사용자가 선택한 키워드를 바탕으로 분류된 가게들을 담을 배열입니다. -->
-	
-	<!-- 마커를 표시할 위치와 내용을 가지고 있는 배열입니다 -->
+
+	<!-- 마커를 표시할 위치와 내용을 가지고 있는 객체 배열입니다 -->
+	let overlays = [];
 	let markers=[];
-	let marker=null;
-	let positions = [];
 	
-	<!-- 커스텀 오버레이를 내용을 가지고 있는 배열입니다 -->
-	let overlays=[];
-	let overlay = null;
-	let content = [];
+	<!-- 위도, 경도 -->
+	let positions = [];
+	let latlng =[];
+	
+	let selectOverlay = null;
+	let selectMarker =null;
 	
 	</script>
-
-
-
-
-
-
-
-
 	<!--  kakao open api 연결 -->
 	<script type="text/javascript"
 		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=2f8c752aae632b4c611274927d3bbb6a"></script>
@@ -313,13 +303,6 @@ html, body {
 		};
 		let map = new kakao.maps.Map(mapContainer, mapOption);
 	</script>
-
-
-
-
-
-
-
 
 	<script>
 	$("input[type='checkbox']").change(function(){ // 체크박스에 변화가 생긴다면
@@ -340,6 +323,7 @@ html, body {
 	
 		arr3=[];
 		
+		// keyword가 있는 장소만 arr3에 저장
 		for(var i = 0; i< arr2.length; i++){
 			for(var j =0; j<keyword.length; j++){
 				if(arr2[i].keyword.includes(keyword[j])){
@@ -348,72 +332,124 @@ html, body {
 			}
 		}
 		
-			console.log(arr3.length)
-			console.log(arr3)
-			
-			// keyword : 사용자가 선택한 체크박스 키워드를 담아준 키워드 배열
-			// arr3 : 사용자가 선택한 체크박스 키워드를 기준으로 새로 분류된 가게 배열 객체
-			for(var i=0; i<arr3.length; i++){
-				positions.push(new kakao.maps.LatLng(arr3[i].store_x, arr3[i].store_y))				
-			
+		console.log(arr3.length)
+		console.log(arr3)
+		
+		var marker = null;
+		var contents = [];
+		var cnt = 0;
+		
+		<!-- 커스텀 오버레이 overlays 만들어주기 -->
+		for(var i =0; i<arr3.length; i++){
 			// 커스텀 오버레이에 표시할 컨텐츠 입니다
 			// 커스텀 오버레이는 아래와 같이 사용자가 자유롭게 컨텐츠를 구성하고 이벤트를 제어할 수 있기 때문에
 			// 별도의 이벤트 메소드를 제공하지 않습니다
 			content = '<div class="wrap">' +
-			            '    <div class="info">' +
-			            '        <div class="title">' +
-			            arr3[i].store_name +
-			            '            <div class="close" onclick="closeOverlay()" title="닫기"></div>' +
-			            '        </div>' +
-			            '        <div class="body">' +
-			            '            <div class="img">' +
-			            '                <img src="https://cfile181.uf.daum.net/image/250649365602043421936D" width="73" height="70">' +
-			            '           </div>' +
-			            '            <div class="desc">' +
-			            '                <div class="ellipsis">'+arr3[i].location_gu+'</div>' +
-			            '                <div class="jibun ellipsis">'+arr3[i].location_dong+'</div>' +
-			            '                <div><a href="https://www.kakaocorp.com/main" target="_blank" class="link">홈페이지</a></div>' +
-			            '            </div>' +
-			            '        </div>' +
-			            '    </div>' +
-			            '</div>';
+		            '    <div class="info">' +
+		            '        <div class="title">' +
+		            arr3[i].store_name +
+		            '            <div class="close"+ onclick="closeOverlay()" title="닫기"></div>' +
+		            '        </div>' +
+		            '        <div class="body">' +
+		            '            <div class="img">' +
+		            '                <img src="https://cfile181.uf.daum.net/image/250649365602043421936D" width="73" height="70">' +
+		            '           </div>' +
+		            '            <div class="desc">' +
+		            '                <div class="ellipsis">'+arr3[i].location_gu+'</div>' +
+		            '                <div class="jibun ellipsis">'+arr3[i].location_dong+'</div>' +
+		            '                <div><a href="https://www.kakaocorp.com/main" target="_blank" class="link">홈페이지</a></div>' +
+		            '            </div>' +
+		            '        </div>' +
+		            '    </div>' +
+		            '</div>';
+		     
+			 // 마커 위에 커스텀오버레이를 표시합니다
+		 	 // 마커를 중심으로 커스텀 오버레이를 표시하기위해 CSS를 이용해 위치를 설정했습니다
+		 	 overlay = new kakao.maps.CustomOverlay({
+		     title : arr3[i].store_name,
+		     content: content,
+			 map: map,
+			 position: new kakao.maps.LatLng(arr3[i].store_x, arr3[i].store_y)
+			 });
+		            
+		 	 overlays.push(overlay)
+		 	 closeOverlay()
+		}
+
+		
+		<!-- 마커 지도에 그려주기 -->
+		for(var i =0; i<arr3.length; i++){
 			
-			// 마커 위에 커스텀오버레이를 표시합니다
-			// 마커를 중심으로 커스텀 오버레이를 표시하기위해 CSS를 이용해 위치를 설정했습니다
-			overlay = new kakao.maps.CustomOverlay({
-		    content: content,
-			map: map,
-			position: new kakao.maps.LatLng(arr3[i].store_x, arr3[i].store_y)      
+			marker = new kakao.maps.Marker({
+    		title : arr3[i].store_name,
+			map : map, // 마커를 표시할 지도
+    		position: new kakao.maps.LatLng(arr3[i].store_x, arr3[i].store_y)
 			});
 			
-			overlays.push(overlay)
-			
-			closeOverlay();
-			
+			// 마커가 지도 위에 표시되도록 설정합니다
+			markers.push(marker);
 			}
+		
 			
-	});
+		
+			// 마커에 click 이벤트를 등록합니다
+			    kakao.maps.event.addListener(marker, 'click', function() {
+					console.log("markers : ",Object.values(markers)[14])			
+			    	var markerStr = Object.values(marker)[14]
+			    	
+			        // 클릭된 마커가 없고, click 마커가 클릭된 마커가 아니면
+			        // 마커의 이미지를 클릭 이미지로 변경합니다
+			        for(var i=0; i<overlays.length;i++){
+			        	var str = Object.values(overlays[i])[9]
+			        	var Char = str.indexOf('            <',66)
+			        	var overlayStr = str.substring(67,Char)
+			        	
+			        	if(overlayStr == markerStr){
+			    			console.log(markerStr)
+			    			console.log(overlayStr)
+			        		selectOverlay = overlays[i]
+			        	}
+			        }
+					
+			        console.log(selectOverlay)
+			        selectOverlay.setMap(map)
+			    });
+	
+			
+	
+		
+		
+		
+		
+		<%--
+		console.log("markers : ",Object.values(markers[2])[14])
+		var str = Object.values(overlays[2])[9]
+		
+		console.log("str : ",str)
+		var Char = str.indexOf('            <',66)
+		console.log("최종 : ",str.substring(67,Char))
+		
+		
+		for(var i=0; i<markers.length;i++){
+		    kakao.maps.event.addListener(markers[j], 'click', function() {
+			console.log("markers : ",Object.values(markers[i])[14])	
+			}
+		}
+		--%>	
+		
+		
+		});
+	
 	</script>
 
 	<script>
-	<!-- 필요한 함수들을 모아놓은 스크립트 -->
-	function setMarkers(map) {
-	    for (var i = 0; i < markers.length; i++) {
-	        markers[i].setMap(map);
-	    }
+	<!-- 필요한 함수들을 모아놓은 스크립트입니다. -->
+	<!-- 커스텀 오버레이 닫아주기 -->
+	// 커스텀 오버레이를 닫기 위해 호출되는 함수입니다
+	function closeOverlay() {
+	    overlay.setMap(null);
 	}
 	
-	//"마커 보이기" 버튼을 클릭하면 호출되어 배열에 추가된 마커를 지도에 표시하는 함수입니다
-	function showMarkers() {
-    setMarkers(map)
-	}
-	
-	// "마커 감추기" 버튼을 클릭하면 호출되어 배열에 추가된 마커를 지도에서 삭제하는 함수입니다
-	function hideMarkers() {
-    setMarkers(null);
-	}
-	
-	<!-- 사용자 컨트롤 분류함수들 -->
 	//지도타입 컨트롤의 지도 또는 스카이뷰 버튼을 클릭하면 호출되어 지도타입을 바꾸는 함수입니다
 	function setMapType(maptype) {
 	 var roadmapControl = document.getElementById('btnRoadmap');
@@ -436,14 +472,36 @@ html, body {
 	function zoomOut() {
 	 map.setLevel(map.getLevel() + 1);
 	}
-	
-	<!-- 커스텀 오버레이 닫아주기 -->
-	// 커스텀 오버레이를 닫기 위해 호출되는 함수입니다 
-	function closeOverlay() {
-	    overlay.setMap(null);     
+	function setMarkers(map) {
+	    for (var i = 0; i < markers.length; i++) {
+	        markers[i].setMap(map);
+	    }
+	}
+	//"마커 보이기" 버튼을 클릭하면 호출되어 배열에 추가된 마커를 지도에 표시하는 함수입니다
+	function showMarkers() {
+	    setMarkers(map)
+	}
+	// "마커 감추기" 버튼을 클릭하면 호출되어 배열에 추가된 마커를 지도에서 삭제하는 함수입니다
+	function hideMarkers() {
+	    setMarkers(null);
 	}
 	</script>
-
-
+	<!-- 모든 가게 한눈에 보기 -->
+	<p>
+		<button onclick="setBounds()">모든 가게 한눈에 보기</button>
+	</p>
+	<script>
+	//지도를 재설정할 범위정보를 가지고 있을 LatLngBounds 객체를 생성합니다
+	let bounds = new kakao.maps.LatLngBounds();
+	function setBounds() {
+	for (var i = 0; i < arr3.length; i++) {
+	    // LatLngBounds 객체에 좌표를 추가합니다
+	    bounds.extend(new kakao.maps.LatLng(arr3[i].store_x, arr3[i].store_y));
+	}
+	    // LatLngBounds 객체에 추가된 좌표들을 기준으로 지도의 범위를 재설정합니다
+	    // 이때 지도의 중심좌표와 레벨이 변경될 수 있습니다
+	    map.setBounds(bounds);
+	}
+</script>
 </body>
 </html>
