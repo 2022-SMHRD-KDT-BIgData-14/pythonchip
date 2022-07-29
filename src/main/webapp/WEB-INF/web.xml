@@ -42,10 +42,7 @@
   	<servlet-name>MapService</servlet-name>
   	<url-pattern>/MapService</url-pattern>
   </servlet-mapping>
-  <servlet-mapping>
-  	<servlet-name>FrontController</servlet-name>
-  	<url-pattern>/FrontController</url-pattern>
-  </servlet-mapping>
+ 
   <servlet-mapping>
   	<servlet-name>SearchStoreAjax</servlet-name>
   	<url-pattern>/SearchStoreAjax</url-pattern>
