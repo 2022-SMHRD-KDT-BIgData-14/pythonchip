@@ -44,4 +44,8 @@
   	<servlet-name>SearchStoreAjax</servlet-name>
   	<url-pattern>/SearchStoreAjax</url-pattern>
   </servlet-mapping>
+  <servlet-mapping>
+		<servlet-name>FrontController</servlet-name>
+		<url-pattern>*.do</url-pattern>
+	</servlet-mapping>
 </web-app>
