@@ -19,14 +19,12 @@ public class updateService implements Command{
 		MemberDTO dto = new MemberDTO(id,pw,gender,age,user_tel); 
 		int row = new MemberDAO().update(dto);
 		
-		if(row == -1) {
-			System.out.println("회원정보가 없습니다");
-		} else if(row==0) {
-			System.out.println("비밀번호 오류입니다.");
-		}else {
+		if(row == 1) {
 			System.out.println("회원정보 수정 완료");
 			HttpSession session = request.getSession();
 			session.setAttribute("info", dto);
+		} else {
+			System.out.println("회원정보수정 실패");
 		}
 		
 		return "./Main.jsp";
