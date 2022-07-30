@@ -54,7 +54,6 @@
                             <img src="images/logo.png" alt="IMG-LOGO" data-logofixed="images/logo.png"></a>
                         </a>
                     </div>
-
                     <!-- 상단 메뉴창-->
                     <div class="wrap_menu p-l-45 p-l-0-xl">
                         <nav class="menu">
