@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.pythonchip.mapper.BoardMapper">
+
+	<insert id="insertBoard" parameterType="BoardDTO">
+		insert into board values(board_seq.nextval, #{writer},#{title},#{content},sysdate,#{filename})
+	</insert>
+	
+	<select id="showBoard" parameterType="BoardDTO" resultType="BoardDTO">
+		select * from board
+	</select>
+	
+	<select id="detailBoard" parameterType="int" resultType="BoardDTO">
+		select * from board where board_seq = #{num}
+	</select>
+</mapper>

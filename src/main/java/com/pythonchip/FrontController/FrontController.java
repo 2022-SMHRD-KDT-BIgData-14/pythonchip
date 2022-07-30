@@ -7,10 +7,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import com.pythonchip.command.Command;
+import com.pythonchip.controller.BoardService;
 import com.pythonchip.controller.DeleteService;
 import com.pythonchip.controller.JoinService;
 import com.pythonchip.controller.LoginService;
 import com.pythonchip.controller.LogoutService;
+import com.pythonchip.controller.MenuService;
+import com.pythonchip.controller.ReviewService;
+import com.pythonchip.controller.StoreService;
 import com.pythonchip.controller.updateService;
 
 public class FrontController extends HttpServlet {
@@ -39,13 +43,13 @@ public class FrontController extends HttpServlet {
 		} else if (result.equals("DeleteService.do")) {
 			service = new DeleteService();
 		} else if (result.equals("StoreService.do")) {
-			service = new JoinService();
+			service = new StoreService();
 		} else if (result.equals("BoardService.do")) {
-			service = new JoinService();
+			service = new BoardService();
 		} else if (result.equals("ReviewService.do")) {
-			service = new JoinService();
+			service = new ReviewService();
 		} else if (result.equals("MenuService.do")) {
-			service = new JoinService();
+			service = new MenuService();
 		}
 
 		moveURL = service.execute(request, response);
