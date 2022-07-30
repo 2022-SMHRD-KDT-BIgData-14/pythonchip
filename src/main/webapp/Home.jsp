@@ -61,7 +61,7 @@
                 <div class="wrap_header trans-0-3">
                     <!-- 로고 -->
                     <div class="logo">
-                        <a href="home.html">
+                        <a href="Home.jsp">
                             <img src="images/logo.png" alt="IMG-LOGO" data-logofixed="images/logo.png"></a>
                         </a>
                     </div>
@@ -71,23 +71,23 @@
                         <nav class="menu">
                             <ul class="main_menu">
                                 <li>
-                                    <a href="home.html">Home</a>
+                                    <a href="Home.jsp">Home</a>
                                 </li>
 
                                 <li>
-                                    <a href="mapsearch.html">map search</a>
+                                    <a href="Mapsearch.jsp">map search</a>
                                 </li>
 
                                 <li>
-                                    <a href="store.html">store</a>
+                                    <a href="Store.jsp">store</a>
                                 </li>
 
                                 <li>
-                                    <a href="blog.html">comunity</a>
+                                    <a href=" Coummunity.jsp">comunity</a>
                                 </li>
 
                                 <li>
-                                    <a href="storejoin.html">store join</a>
+                                    <a href="StoreJoin.jsp">store join</a>
                                 </li>
 
 
@@ -98,12 +98,12 @@
                     <!-- 상단 로그인, 회원가입 -->
                     <div class="social flex-w flex-l-m p-r-20">
                         <li>
-                            <a href="login.html" style="padding-right: 20px;">
+                            <a href="Login.jsp" style="padding-right: 20px;">
                                 login
                             </a>
                         </li>
                         <li>
-                            <a href="join.html" style="padding-left: 20px;">
+                            <a href="Join.jsp" style="padding-left: 20px;">
                                 join
                             </a>
                         </li>
@@ -127,37 +127,37 @@
 
             <ul class="menu-sidebar p-t-95 p-b-70">
                 <li class="t-center m-b-13">
-                    <a href="home.html" class="txt19">로고</a>
+                    <a href="Home.jsp" class="txt19">로고</a>
                 </li>
                 <ul class="menu-sidebar p-t-95 p-b-70">
 
 
                     <li class="t-center m-b-13">
-                        <a href="mapsearch.html" class="txt19">map search</a>
+                        <a href="Mapsearch.jsp" class="txt19">map search</a>
                     </li>
 
 
 
                     <li class="t-center m-b-13">
-                        <a href="store.html" class="txt19">store</a>
+                        <a href="Store.jsp" class="txt19">store</a>
                     </li>
 
                     <li class="t-center m-b-13">
-                        <a href="blog.html" class="txt19">comunity</a>
+                        <a href=" Coummunity.jsp" class="txt19">comunity</a>
                     </li>
 
                     <li class="t-center m-b-13">
-                        <a href="mypage.html" class="txt19">my page</a>
+                        <a href="Mypage.jsp" class="txt19">my page</a>
                     </li>
 
 
                     <li class="t-center m-b-13">
-                        <a href="storejoin.html" class="txt19">storejoin</a>
+                        <a href="StoreJoin.jsp" class="txt19">storejoin</a>
                     </li>
 
                     <li class="t-center">
                         <!-- 슬라이드바 로그인 -->
-                        <a href="login.html" class="btn3 flex-c-m size13 txt11 trans-0-4 m-l-r-auto">
+                        <a href="Login.jsp" class="btn3 flex-c-m size13 txt11 trans-0-4 m-l-r-auto">
 					login
 				</a>
                     </li>
@@ -206,7 +206,7 @@
 
                         <div class="wrap-btn-slide1 animated visible-false" data-appear="slideInUp">
                             <!-- Button1 -->
-                            <a href="mapsearch.html" class="btn1 flex-c-m size1 txt3 trans-0-4">
+                            <a href="MapSearch.jsp" class="btn1 flex-c-m size1 txt3 trans-0-4">
 								맛나는거 찾아보기!
 							</a>
                         </div>
@@ -229,7 +229,7 @@
 
                         <div class="wrap-btn-slide1 animated visible-false" data-appear="slideInUp">
                             <!-- Button1 -->
-                            <a href="mapsearch.html" class="btn1 flex-c-m size1 txt3 trans-0-4">
+                            <a href="MapSearch.jsp" class="btn1 flex-c-m size1 txt3 trans-0-4">
 								맛나는거 찾아보기!
 							</a>
                         </div>
@@ -251,7 +251,7 @@
 
                         <div class="wrap-btn-slide1 animated visible-false" data-appear="rotateIn">
                             <!-- Button1 -->
-                            <a href="mapsearch.html" class="btn1 flex-c-m size1 txt3 trans-0-4">
+                            <a href="Mapsearch.jsp" class="btn1 flex-c-m size1 txt3 trans-0-4">
 								Look Menu
 							</a>
                         </div>
