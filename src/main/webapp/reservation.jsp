@@ -1,13 +1,15 @@
+
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.pythonchip.model.StoreDTO"%>
 <%@page import="com.pythonchip.model.StoreDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<!--예약페이지-->
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <title>Gallery</title>
+    <title>Reservation</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--===============================================================================================-->
@@ -38,45 +40,37 @@
     <link rel="stylesheet" type="text/css" href="css/util.css">
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <!--===============================================================================================-->
-<style>
-
-#store_table{
-margin-top: 40px;
-text-align: center;
-}
-</style>
-
 </head>
 
 <body class="animsition">
 
-    <!-- Header -->
-    <header>
+     <!-- Header -->
+     <header>
         <!-- Header desktop -->
         <div class="wrap-menu-header gradient1 trans-0-4">
             <div class="container h-full">
                 <div class="wrap_header trans-0-3">
-                    <!-- Logo -->
+                    <!-- 로고 -->
                     <div class="logo">
-                        <a href="index.html">
-                            <img src="images/icons/logo.png" alt="IMG-LOGO" data-logofixed="images/icons/logo2.png">
+                        <a href="home.html">
+                            <img src="images/logo.png" alt="IMG-LOGO" data-logofixed="images/logo.png"></a>
                         </a>
                     </div>
 
-                    <!-- Menu -->
+                    <!-- 상단 메뉴창-->
                     <div class="wrap_menu p-l-45 p-l-0-xl">
                         <nav class="menu">
                             <ul class="main_menu">
                                 <li>
-                                    <a href="index.html">Home</a>
+                                    <a href="home.html">Home</a>
                                 </li>
 
                                 <li>
-                                    <a href="menu.html">map search</a>
+                                    <a href="mapsearch.html">map search</a>
                                 </li>
 
                                 <li>
-                                    <a href="gallery.html">store</a>
+                                    <a href="store.html">store</a>
                                 </li>
 
                                 <li>
@@ -84,23 +78,27 @@ text-align: center;
                                 </li>
 
                                 <li>
-                                    <a href="storejoin.html">가게등록</a>
+                                    <a href="storejoin.html">store join</a>
                                 </li>
+
 
                             </ul>
                         </nav>
                     </div>
-                    <!-- Social -->
+
+                    <!-- 상단 로그인, 회원가입 -->
                     <div class="social flex-w flex-l-m p-r-20">
                         <li>
-                            <a href="contact.html">-login-</a>
+                            <a href="login.html" style="padding-right: 20px;">
+                                login
+                            </a>
                         </li>
                         <li>
-                            <a href="join.html">-Join-</a>
+                            <a href="join.html" style="padding-left: 20px;">
+                                join
+                            </a>
                         </li>
-                        <li>
-                            <a href="storejoin.html">-가게등록-</a>
-                        </li>
+
 
                         <button class="btn-show-sidebar m-l-33 trans-0-4"></button>
                     </div>
@@ -108,140 +106,225 @@ text-align: center;
             </div>
         </div>
     </header>
-    <!-- Sidebar -->
+
+    <!-- 슬라이드 바 -->
     <aside class="sidebar trans-0-4">
         <!-- Button Hide sidebar -->
         <button class="btn-hide-sidebar ti-close color0-hov trans-0-4"></button>
 
 
         <div class="gallery-sidebar t-center p-l-60 p-r-60 p-b-40">
-            <!-- - -->
-            <h4 class="txt20 m-b-33">
-                my page
-            </h4>
+            <!-- 슬라이드바 구성  -->
+
             <ul class="menu-sidebar p-t-95 p-b-70">
                 <li class="t-center m-b-13">
-                    <a href="index.html" class="txt19">Home</a>
+                    <a href="home.html" class="txt19">로고</a>
                 </li>
-
-                <li class="t-center m-b-13">
-                    <a href="회원가입수정.html" class="txt19">회원가입 수정</a>
-                </li>
+                <ul class="menu-sidebar p-t-95 p-b-70">
 
 
+                    <li class="t-center m-b-13">
+                        <a href="mapsearch.html" class="txt19">map search</a>
+                    </li>
 
-                <li class="t-center m-b-13">
-                    <a href="about.html" class="txt19">즐겨찾기</a>
-                </li>
 
-                <li class="t-center m-b-13">
-                    <a href="reservation.html" class="txt19">예약</a>
-                </li>
 
-                <li class="t-center m-b-33">
-                    <a href="contact.html" class="txt19">review</a>
-                </li>
+                    <li class="t-center m-b-13">
+                        <a href="store.html" class="txt19">store</a>
+                    </li>
 
-                <li class="t-center">
-                    <!-- Button3 -->
-                    <a href="contact.html" class="btn3 flex-c-m size13 txt11 trans-0-4 m-l-r-auto">
+                    <li class="t-center m-b-13">
+                        <a href="blog.html" class="txt19">comunity</a>
+                    </li>
+
+                    <li class="t-center m-b-13">
+                        <a href="mypage.html" class="txt19">my page</a>
+                    </li>
+
+
+                    <li class="t-center m-b-13">
+                        <a href="storejoin.html" class="txt19">storejoin</a>
+                    </li>
+
+                    <li class="t-center">
+                        <!-- 슬라이드바 로그인 -->
+                        <a href="login.html" class="btn3 flex-c-m size13 txt11 trans-0-4 m-l-r-auto">
 					login
 				</a>
-                </li>
-            </ul>
+                    </li>
+                </ul>
 
     </aside>
 
-
     <!-- Title Page -->
-    <section class="bg-title-page flex-c-m p-t-160 p-b-80 p-l-15 p-r-15" style="background-image: url(images/마들렌.png);">
+    <section class="bg-title-page flex-c-m p-t-160 p-b-80 p-l-15 p-r-15" style="background-image: url(images/bg-title-page-02.jpg);">
         <h2 class="tit6 t-center">
-            Gallery
+            store
         </h2>
     </section>
 
 
+    <!-- Reservation -->
+    <section class="section-reservation bg1-pattern p-t-100 p-b-113">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 p-b-30">
+                    <div class="t-center">
+                        <span class="tit2 t-center">
+							Reservation
+						</span>
 
-    <!-- Gallery -->
-    
-    <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    <%@page import="java.util.ArrayList"%>
-<%@page import="com.pythonchip.model.StoreDTO"%>
-<%@page import="com.pythonchip.model.StoreDAO"%>
-    <div id = "store_table">
-    <div>
-        <form onsubmit="return false;">
-            <select name="job" id ="searchSelector">
-                <option value="name" selected>가게 이름</option>
-                <option value="location">위치</option>
-                <option value="menu">메뉴</option>
-            </select>
-            
-            <input type="text" size="66em" id="searchinput">
-            <button id = "searchButton">검색</button>
-            </form>
-            <br><br>
-            <% String[] keywordArr = {"식혜","흑염소","양갱","막걸리","인절미","말차","흑임자","쑥"
-                    ,"한방","미숫가루","떡","달고나","전통차","팥"};%>
-            <% String[] btnClassArr = {"btn btn-outline-primary","btn btn-outline-secondary","btn btn-outline-success"
-                    ,"btn btn-outline-danger","btn btn-outline-warning","btn btn-outline-info","btn btn-outline-light"};%>
-            <%
-            int cnt=0;
-            for(int i = 0; i<keywordArr.length; i++) {
-            if(btnClassArr.length-1 <= cnt) {cnt = 0;
-            %><br><%}%>
-            <button type="button" class="<%="keywordBtn "+ btnClassArr[cnt++]%>"><%=keywordArr[i]%></button>
-            <%}%>
-            
-            </div>
-            <div class="wrap-gallery isotope-grid flex-w p-l-25 p-r-25" id="insideStoreTable">
-            
-            <%
-            ArrayList<StoreDTO> arr =  new StoreDAO().getStoreList();
-            
-            for(int i=0;i<arr.size();i++){%>
-            
-              <div class="item-gallery isotope-item bo-red-10 hov-img-zoom">
+                        <h3 class="tit3 t-center m-b-35 m-t-2">
+                            Book table
+                        </h3>
+                    </div>
 
-                  <!-- <img src="https://www.coffeebeankorea.com/data/menu/%EC%BD%9C%EB%93%9C%EB%B8%8C%EB%A3%A815_1.jpg" class="card-img-top" alt="...">
-                   -->
-                   <img src="images/photo-gallery-14.jpg" class="card-img-top" alt="...">
-                  
-                  <div class="overlay-item-gallery trans-0-10 flex-c-m">
-                <a class="btn-show-gallery flex-c-m fa fa-search" href="https://www.coffeebeankorea.com/data/menu/%EC%BD%9C%EB%93%9C%EB%B8%8C%EB%A3%A815_1.jpg" data-lightbox="gallery"></a>
+                    <form class="wrap-form-reservation size22 m-l-r-auto">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <!-- Date -->
+                                <span class="txt9">
+									Date
+								</span>
+
+                                <div class="wrap-inputdate pos-relative txt10 size12 bo2 bo-rad-10 m-t-3 m-b-23">
+                                    <input class="my-calendar bo-rad-10 sizefull txt10 p-l-20" type="text" name="date">
+                                    <i class="btn-calendar fa fa-calendar ab-r-m hov-pointer m-r-18" aria-hidden="true"></i>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <!-- Time -->
+                                <span class="txt9">
+									Time
+								</span>
+
+                                <div class="wrap-inputtime size12 bo2 bo-rad-10 m-t-3 m-b-23">
+                                    <!-- Select2 -->
+                                    <select class="selection-1" name="time">
+										<option>9:00</option>
+										<option>9:30</option>
+										<option>10:00</option>
+										<option>10:30</option>
+										<option>11:00</option>
+										<option>11:30</option>
+										<option>12:00</option>
+										<option>12:30</option>
+										<option>13:00</option>
+										<option>13:30</option>
+										<option>14:00</option>
+										<option>14:30</option>
+										<option>15:00</option>
+										<option>15:30</option>
+										<option>16:00</option>
+										<option>16:30</option>
+										<option>17:00</option>
+										<option>17:30</option>
+										<option>18:00</option>
+									</select>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <!-- People -->
+                                <span class="txt9">
+									People
+								</span>
+
+                                <div class="wrap-inputpeople size12 bo2 bo-rad-10 m-t-3 m-b-23">
+                                    <!-- Select2 -->
+                                    <select class="selection-1" name="people">
+										<option>1 person</option>
+										<option>2 people</option>
+										<option>3 people</option>
+										<option>4 people</option>
+										<option>5 people</option>
+										<option>6 people</option>
+										<option>7 people</option>
+										<option>8 people</option>
+										<option>9 people</option>
+										<option>10 people</option>
+										<option>11 people</option>
+										<option>12 people</option>
+									</select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-4">
+                                <!-- Name -->
+                                <span class="txt9">
+									Name
+								</span>
+
+                                <div class="wrap-inputname size12 bo2 bo-rad-10 m-t-3 m-b-23">
+                                    <input class="bo-rad-10 sizefull txt10 p-l-20" type="text" name="name" placeholder="Name">
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <!-- Phone -->
+                                <span class="txt9">
+									Phone
+								</span>
+
+                                <div class="wrap-inputphone size12 bo2 bo-rad-10 m-t-3 m-b-23">
+                                    <input class="bo-rad-10 sizefull txt10 p-l-20" type="text" name="phone" placeholder="Phone">
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <!-- Email -->
+                                <span class="txt9">
+									Email
+								</span>
+
+                                <div class="wrap-inputemail size12 bo2 bo-rad-10 m-t-3 m-b-23">
+                                    <input class="bo-rad-10 sizefull txt10 p-l-20" type="text" name="email" placeholder="Email">
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="wrap-btn-booking flex-c-m m-t-6">
+                            <!-- Button3 -->
+                            <button type="submit" class="btn3 flex-c-m size13 txt11 trans-0-4">
+								Book Table
+							</button>
+                        </div>
+                    </form>
                 </div>
-                
-                    <h5 class=""><%=arr.get(i).getStore_name() %></h5><br>
-                    <p class=""> 주소 : <%=arr.get(i).getLocation_dong() %><%=arr.get(i).getLocation_gu() %></p>
-                    <br><p class=""> tel : <%=arr.get(i).getStore_tel()%></p><br>
-              </div>
-            
-            <%} %>
-            </div>
-            
-            
-            
-    </div>
-
-    <!-- Sign up -->
-    <div class="section-signup bg1-pattern p-t-85 p-b-85">
-        <form class="flex-c-m flex-w flex-col-c-m-lg p-l-5 p-r-5">
-            <span class="txt5 m-10">
-				Specials Sign up
-			</span>
-
-            <div class="wrap-input-signup size17 bo2 bo-rad-10 bgwhite pos-relative txt10 m-10">
-                <input class="bo-rad-10 sizefull txt10 p-l-20" type="text" name="email-address" placeholder="Email Adrress">
-                <i class="fa fa-envelope ab-r-m m-r-18" aria-hidden="true"></i>
             </div>
 
-            <!-- Button3 -->
-            <button type="submit" class="btn3 flex-c-m size18 txt11 trans-0-4 m-10">
-				Sign-up
-			</button>
-        </form>
-    </div>
+            <div class="info-reservation flex-w p-t-80">
+                <div class="size23 w-full-md p-t-40 p-r-30 p-r-0-md">
+                    <h4 class="txt5 m-b-18">
+                        Reserve by Phone
+                    </h4>
+
+                    <p class="size25">
+                        Donec quis euismod purus. Donec feugiat ligula rhoncus, varius nisl sed, tincidunt lectus.
+                        <span class="txt25">Nulla vulputate</span> , lectus vel volutpat efficitur, orci
+                        <span class="txt25">lacus sodales</span> sem, sit amet quam:
+                        <span class="txt24">(001) 345 6889</span>
+                    </p>
+                </div>
+
+                <div class="size24 w-full-md p-t-40">
+                    <h4 class="txt5 m-b-18">
+                        For Event Booking
+                    </h4>
+
+                    <p class="size26">
+                        Donec feugiat ligula rhoncus:
+                        <span class="txt24">(001) 345 6889</span> , varius nisl sed, tinci-dunt lectus sodales sem.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
 
 
     <!-- Footer -->
@@ -417,6 +500,9 @@ text-align: center;
 		</span>
     </div>
 
+    <!-- Container Selection1 -->
+    <div id="dropDownSelect1"></div>
+
 
 
     <!--===============================================================================================-->
@@ -444,12 +530,7 @@ text-align: center;
     <!--===============================================================================================-->
     <script type="text/javascript" src="vendor/lightbox2/js/lightbox.min.js"></script>
     <!--===============================================================================================-->
-    <script type="text/javascript" src="vendor/isotope/isotope.pkgd.min.js"></script>
-    <!--===============================================================================================-->
     <script src="js/main.js"></script>
-    
-    <script type="text/javascript" src = "ajax/SearchStoreAjax.js"></script>
-    
 
 </body>
 

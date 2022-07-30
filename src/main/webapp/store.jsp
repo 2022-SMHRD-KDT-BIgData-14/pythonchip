@@ -1,8 +1,10 @@
+
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.pythonchip.model.StoreDTO"%>
 <%@page import="com.pythonchip.model.StoreDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<!--store-->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -38,191 +40,244 @@
     <link rel="stylesheet" type="text/css" href="css/util.css">
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <!--===============================================================================================-->
-<style>
-
-#store_table{
-margin-top: 40px;
-text-align: center;
-}
-</style>
-
 </head>
 
 <body class="animsition">
 
-    <!-- Header -->
-    <header>
-        <!-- Header desktop -->
-        <div class="wrap-menu-header gradient1 trans-0-4">
-            <div class="container h-full">
-                <div class="wrap_header trans-0-3">
-                    <!-- Logo -->
-                    <div class="logo">
-                        <a href="index.html">
-                            <img src="images/icons/logo.png" alt="IMG-LOGO" data-logofixed="images/icons/logo2.png">
-                        </a>
-                    </div>
-
-                    <!-- Menu -->
-                    <div class="wrap_menu p-l-45 p-l-0-xl">
-                        <nav class="menu">
-                            <ul class="main_menu">
-                                <li>
-                                    <a href="index.html">Home</a>
-                                </li>
-
-                                <li>
-                                    <a href="menu.html">map search</a>
-                                </li>
-
-                                <li>
-                                    <a href="gallery.html">store</a>
-                                </li>
-
-                                <li>
-                                    <a href="blog.html">comunity</a>
-                                </li>
-
-                                <li>
-                                    <a href="storejoin.html">가게등록</a>
-                                </li>
-
-                            </ul>
-                        </nav>
-                    </div>
-                    <!-- Social -->
-                    <div class="social flex-w flex-l-m p-r-20">
-                        <li>
-                            <a href="contact.html">-login-</a>
-                        </li>
-                        <li>
-                            <a href="join.html">-Join-</a>
-                        </li>
-                        <li>
-                            <a href="storejoin.html">-가게등록-</a>
-                        </li>
-
-                        <button class="btn-show-sidebar m-l-33 trans-0-4"></button>
+        <!-- Header -->
+        <header>
+            <!-- Header desktop -->
+            <div class="wrap-menu-header gradient1 trans-0-4">
+                <div class="container h-full">
+                    <div class="wrap_header trans-0-3">
+                        <!-- 로고 -->
+                        <div class="logo">
+                            <a href="home.html">
+                                <img src="images/logo.png" alt="IMG-LOGO" data-logofixed="images/logo.png"></a>
+                            </a>
+                        </div>
+    
+                        <!-- 상단 메뉴창-->
+                        <div class="wrap_menu p-l-45 p-l-0-xl">
+                            <nav class="menu">
+                                <ul class="main_menu">
+                                    <li>
+                                        <a href="home.html">Home</a>
+                                    </li>
+    
+                                    <li>
+                                        <a href="mapsearch.html">map search</a>
+                                    </li>
+    
+                                    <li>
+                                        <a href="store.html">store</a>
+                                    </li>
+    
+                                    <li>
+                                        <a href="blog.html">comunity</a>
+                                    </li>
+    
+                                    <li>
+                                        <a href="storejoin.html">store join</a>
+                                    </li>
+    
+    
+                                </ul>
+                            </nav>
+                        </div>
+    
+                        <!-- 상단 로그인, 회원가입 -->
+                        <div class="social flex-w flex-l-m p-r-20">
+                            <li>
+                                <a href="login.html" style="padding-right: 20px;">
+                                    login
+                                </a>
+                            </li>
+                            <li>
+                                <a href="join.html" style="padding-left: 20px;">
+                                    join
+                                </a>
+                            </li>
+    
+    
+                            <button class="btn-show-sidebar m-l-33 trans-0-4"></button>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </header>
-    <!-- Sidebar -->
-    <aside class="sidebar trans-0-4">
-        <!-- Button Hide sidebar -->
-        <button class="btn-hide-sidebar ti-close color0-hov trans-0-4"></button>
-
-
-        <div class="gallery-sidebar t-center p-l-60 p-r-60 p-b-40">
-            <!-- - -->
-            <h4 class="txt20 m-b-33">
-                my page
-            </h4>
-            <ul class="menu-sidebar p-t-95 p-b-70">
-                <li class="t-center m-b-13">
-                    <a href="index.html" class="txt19">Home</a>
-                </li>
-
-                <li class="t-center m-b-13">
-                    <a href="회원가입수정.html" class="txt19">회원가입 수정</a>
-                </li>
-
-
-
-                <li class="t-center m-b-13">
-                    <a href="about.html" class="txt19">즐겨찾기</a>
-                </li>
-
-                <li class="t-center m-b-13">
-                    <a href="reservation.html" class="txt19">예약</a>
-                </li>
-
-                <li class="t-center m-b-33">
-                    <a href="contact.html" class="txt19">review</a>
-                </li>
-
-                <li class="t-center">
-                    <!-- Button3 -->
-                    <a href="contact.html" class="btn3 flex-c-m size13 txt11 trans-0-4 m-l-r-auto">
-					login
-				</a>
-                </li>
-            </ul>
-
-    </aside>
-
-
+        </header>
+    
+        <!-- 슬라이드 바 -->
+        <aside class="sidebar trans-0-4">
+            <!-- Button Hide sidebar -->
+            <button class="btn-hide-sidebar ti-close color0-hov trans-0-4"></button>
+    
+    
+            <div class="gallery-sidebar t-center p-l-60 p-r-60 p-b-40">
+                <!-- 슬라이드바 구성  -->
+    
+                <ul class="menu-sidebar p-t-95 p-b-70">
+                    <li class="t-center m-b-13">
+                        <a href="home.html" class="txt19">로고</a>
+                    </li>
+                    <ul class="menu-sidebar p-t-95 p-b-70">
+    
+    
+                        <li class="t-center m-b-13">
+                            <a href="mapsearch.html" class="txt19">map search</a>
+                        </li>
+    
+    
+    
+                        <li class="t-center m-b-13">
+                            <a href="store.html" class="txt19">store</a>
+                        </li>
+    
+                        <li class="t-center m-b-13">
+                            <a href="blog.html" class="txt19">comunity</a>
+                        </li>
+    
+                        <li class="t-center m-b-13">
+                            <a href="mypage.html" class="txt19">my page</a>
+                        </li>
+    
+    
+                        <li class="t-center m-b-13">
+                            <a href="storejoin.html" class="txt19">storejoin</a>
+                        </li>
+    
+                        <li class="t-center">
+                            <!-- 슬라이드바 로그인 -->
+                            <a href="login.html" class="btn3 flex-c-m size13 txt11 trans-0-4 m-l-r-auto">
+                        login
+                    </a>
+                        </li>
+                    </ul>
+    
+        </aside>
     <!-- Title Page -->
     <section class="bg-title-page flex-c-m p-t-160 p-b-80 p-l-15 p-r-15" style="background-image: url(images/마들렌.png);">
         <h2 class="tit6 t-center">
-            Gallery
+            store
         </h2>
     </section>
 
 
 
     <!-- Gallery -->
-    
-    <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    <%@page import="java.util.ArrayList"%>
-<%@page import="com.pythonchip.model.StoreDTO"%>
-<%@page import="com.pythonchip.model.StoreDAO"%>
-    <div id = "store_table">
-    <div>
-        <form onsubmit="return false;">
-            <select name="job" id ="searchSelector">
-                <option value="name" selected>가게 이름</option>
-                <option value="location">위치</option>
-                <option value="menu">메뉴</option>
-            </select>
-            
-            <input type="text" size="66em" id="searchinput">
-            <button id = "searchButton">검색</button>
-            </form>
-            <br><br>
-            <% String[] keywordArr = {"식혜","흑염소","양갱","막걸리","인절미","말차","흑임자","쑥"
-                    ,"한방","미숫가루","떡","달고나","전통차","팥"};%>
-            <% String[] btnClassArr = {"btn btn-outline-primary","btn btn-outline-secondary","btn btn-outline-success"
-                    ,"btn btn-outline-danger","btn btn-outline-warning","btn btn-outline-info","btn btn-outline-light"};%>
-            <%
-            int cnt=0;
-            for(int i = 0; i<keywordArr.length; i++) {
-            if(btnClassArr.length-1 <= cnt) {cnt = 0;
-            %><br><%}%>
-            <button type="button" class="<%="keywordBtn "+ btnClassArr[cnt++]%>"><%=keywordArr[i]%></button>
-            <%}%>
-            
-            </div>
-            <div class="wrap-gallery isotope-grid flex-w p-l-25 p-r-25" id="insideStoreTable">
-            
-            <%
-            ArrayList<StoreDTO> arr =  new StoreDAO().getStoreList();
-            
-            for(int i=0;i<arr.size();i++){%>
-            
-              <div class="item-gallery isotope-item bo-red-10 hov-img-zoom">
+    <div class="section-gallery p-t-118 p-b-100">
+        <div class="wrap-label-gallery filter-tope-group size27 flex-w flex-sb-m m-l-r-auto flex-col-c-sm p-l-15 p-r-15 m-b-60">
+            <button class="label-gallery txt26 trans-0-4 is-actived" data-filter="*">
+				All Photo
+			</button>
 
-                  <!-- <img src="https://www.coffeebeankorea.com/data/menu/%EC%BD%9C%EB%93%9C%EB%B8%8C%EB%A3%A815_1.jpg" class="card-img-top" alt="...">
-                   -->
-                   <img src="images/photo-gallery-14.jpg" class="card-img-top" alt="...">
-                  
-                  <div class="overlay-item-gallery trans-0-10 flex-c-m">
-                <a class="btn-show-gallery flex-c-m fa fa-search" href="https://www.coffeebeankorea.com/data/menu/%EC%BD%9C%EB%93%9C%EB%B8%8C%EB%A3%A815_1.jpg" data-lightbox="gallery"></a>
+            <button class="label-gallery txt26 trans-0-4" data-filter=".interior">
+				Interior
+			</button>
+
+            <button class="label-gallery txt26 trans-0-4" data-filter=".food">
+				Food
+			</button>
+
+            <button class="label-gallery txt26 trans-0-4" data-filter=".events">
+				Events
+			</button>
+
+            <button class="label-gallery txt26 trans-0-4" data-filter=".guests">
+				Vip guests
+			</button>
+        </div>
+
+        <div class="wrap-gallery isotope-grid flex-w p-l-25 p-r-25">
+            <!-- - -->
+            <div class="item-gallery isotope-item bo-rad-10 hov-img-zoom events guests">
+                <img src="images/photo-gallery-13.jpg" alt="IMG-GALLERY">
+
+                <div class="overlay-item-gallery trans-0-4 flex-c-m">
+                    <a class="btn-show-gallery flex-c-m fa fa-search" href="images/photo-gallery-13.jpg" data-lightbox="gallery"></a>
                 </div>
-                
-                    <h5 class=""><%=arr.get(i).getStore_name() %></h5><br>
-                    <p class=""> 주소 : <%=arr.get(i).getLocation_dong() %><%=arr.get(i).getLocation_gu() %></p>
-                    <br><p class=""> tel : <%=arr.get(i).getStore_tel()%></p><br>
-              </div>
-            
-            <%} %>
             </div>
-            
-            
-            
+
+            <!-- - -->
+            <div class="item-gallery isotope-item bo-rad-10 hov-img-zoom food">
+                <img src="images/photo-gallery-14.jpg" alt="IMG-GALLERY">
+
+                <div class="overlay-item-gallery trans-0-4 flex-c-m">
+                    <a class="btn-show-gallery flex-c-m fa fa-search" href="images/photo-gallery-14.jpg" data-lightbox="gallery"></a>
+                </div>
+            </div>
+
+            <!-- - -->
+            <div class="item-gallery isotope-item bo-rad-10 hov-img-zoom events">
+                <img src="images/photo-gallery-15.jpg" alt="IMG-GALLERY">
+
+                <div class="overlay-item-gallery trans-0-4 flex-c-m">
+                    <a class="btn-show-gallery flex-c-m fa fa-search" href="images/photo-gallery-15.jpg" data-lightbox="gallery"></a>
+                </div>
+            </div>
+
+            <!-- - -->
+            <div class="item-gallery isotope-item bo-rad-10 hov-img-zoom food">
+                <img src="images/photo-gallery-16.jpg" alt="IMG-GALLERY">
+
+                <div class="overlay-item-gallery trans-0-4 flex-c-m">
+                    <a class="btn-show-gallery flex-c-m fa fa-search" href="images/photo-gallery-16.jpg" data-lightbox="gallery"></a>
+                </div>
+            </div>
+
+            <!-- - -->
+            <div class="item-gallery isotope-item bo-rad-10 hov-img-zoom food">
+                <img src="images/photo-gallery-17.jpg" alt="IMG-GALLERY">
+
+                <div class="overlay-item-gallery trans-0-4 flex-c-m">
+                    <a class="btn-show-gallery flex-c-m fa fa-search" href="images/photo-gallery-17.jpg" data-lightbox="gallery"></a>
+                </div>
+            </div>
+
+            <!-- - -->
+            <div class="item-gallery isotope-item bo-rad-10 hov-img-zoom interior guests">
+                <img src="images/photo-gallery-18.jpg" alt="IMG-GALLERY">
+
+                <div class="overlay-item-gallery trans-0-4 flex-c-m">
+                    <a class="btn-show-gallery flex-c-m fa fa-search" href="images/photo-gallery-18.jpg" data-lightbox="gallery"></a>
+                </div>
+            </div>
+
+            <!-- - -->
+            <div class="item-gallery isotope-item bo-rad-10 hov-img-zoom interior">
+                <img src="images/photo-gallery-19.jpg" alt="IMG-GALLERY">
+
+                <div class="overlay-item-gallery trans-0-4 flex-c-m">
+                    <a class="btn-show-gallery flex-c-m fa fa-search" href="images/photo-gallery-19.jpg" data-lightbox="gallery"></a>
+                </div>
+            </div>
+
+            <!-- - -->
+            <div class="item-gallery isotope-item bo-rad-10 hov-img-zoom interior">
+                <img src="images/photo-gallery-20.jpg" alt="IMG-GALLERY">
+
+                <div class="overlay-item-gallery trans-0-4 flex-c-m">
+                    <a class="btn-show-gallery flex-c-m fa fa-search" href="images/photo-gallery-20.jpg" data-lightbox="gallery"></a>
+                </div>
+            </div>
+
+            <!-- - -->
+            <div class="item-gallery isotope-item bo-rad-10 hov-img-zoom events">
+                <img src="images/photo-gallery-21.jpg" alt="IMG-GALLERY">
+
+                <div class="overlay-item-gallery trans-0-4 flex-c-m">
+                    <a class="btn-show-gallery flex-c-m fa fa-search" href="images/photo-gallery-21.jpg" data-lightbox="gallery"></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="pagination flex-c-m flex-w p-l-15 p-r-15 m-t-24 m-b-50">
+            <a href="#" class="item-pagination flex-c-m trans-0-4 active-pagination">1</a>
+            <a href="#" class="item-pagination flex-c-m trans-0-4">2</a>
+            <a href="#" class="item-pagination flex-c-m trans-0-4">3</a>
+        </div>
     </div>
+
 
     <!-- Sign up -->
     <div class="section-signup bg1-pattern p-t-85 p-b-85">
@@ -447,9 +502,6 @@ text-align: center;
     <script type="text/javascript" src="vendor/isotope/isotope.pkgd.min.js"></script>
     <!--===============================================================================================-->
     <script src="js/main.js"></script>
-    
-    <script type="text/javascript" src = "ajax/SearchStoreAjax.js"></script>
-    
 
 </body>
 

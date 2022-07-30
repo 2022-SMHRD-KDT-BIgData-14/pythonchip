@@ -1,3 +1,4 @@
+
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.pythonchip.model.StoreDTO"%>
 <%@page import="com.pythonchip.model.StoreDAO"%>
