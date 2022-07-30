@@ -312,17 +312,18 @@ html, body {
 			alert($(this).val())
 			keyword.push($(this).val()) // 변한 체크박스의 value를 keyword에 넣어 준다
 			console.log(keyword)
-			showMarkers()
+            hideMarkers()
 		}else {
 			alert("체크가 해제되었습니다.")
 			alert($(this).val())
+            hideMarkers()
 			var index = keyword.indexOf($(this).val()) // 변한 value값이 들어 있는 keyword 인덱스를 찾는다.
-			keyword.splice(index,1) // 해당 인덱스의 값을 빼준다.
-			hideMarkers()
+            keyword.splice(index,1) // 해당 인덱스의 값을 빼준다.
 		}
 	
 		arr3=[];
-		
+        markers=[]
+		console.log(keyword)
 		// keyword가 있는 장소만 arr3에 저장
 		for(var i = 0; i< arr2.length; i++){
 			for(var j =0; j<keyword.length; j++){
@@ -339,6 +340,21 @@ html, body {
 		var contents = [];
 		var cnt = 0;
 		
+		
+		<!-- 마커 지도에 그려주기 -->
+		for(var i =0; i<arr3.length; i++){
+			
+			marker = new kakao.maps.Marker({
+    		title : arr3[i].store_name,
+			map : map, // 마커를 표시할 지도
+    		position: new kakao.maps.LatLng(arr3[i].store_x, arr3[i].store_y)
+			});
+			
+			// 마커가 지도 위에 표시되도록 설정합니다
+			markers.push(marker);
+			}
+		
+
 		<!-- 커스텀 오버레이 overlays 만들어주기 -->
 		for(var i =0; i<arr3.length; i++){
 			// 커스텀 오버레이에 표시할 컨텐츠 입니다
@@ -371,56 +387,31 @@ html, body {
 			 map: map,
 			 position: new kakao.maps.LatLng(arr3[i].store_x, arr3[i].store_y)
 			 });
-		            
-		 	 overlays.push(overlay)
-		 	 closeOverlay()
+			 
+			console.log('overlay')
+            overlays.push(overlay)
+            position = overlay.getPosition()  
+            
+			kakao.maps.event.addListener(markers[i], 'click', (function(position,_marker, _overlay)
+            {
+                return function(){
+				console.log('listener')
+                console.log(position)
+
+                markers.forEach(el => {
+                    if(_marker.getPosition().equals(position)){
+
+                    _overlay.setMap(map)
+                }
+                });
+            }
+			})(position, markers[i], overlay));
+
+
 		}
 
-		
-		<!-- 마커 지도에 그려주기 -->
-		for(var i =0; i<arr3.length; i++){
-			
-			marker = new kakao.maps.Marker({
-    		title : arr3[i].store_name,
-			map : map, // 마커를 표시할 지도
-    		position: new kakao.maps.LatLng(arr3[i].store_x, arr3[i].store_y)
-			});
-			
-			// 마커가 지도 위에 표시되도록 설정합니다
-			markers.push(marker);
-			}
-		
-			
-		
 			// 마커에 click 이벤트를 등록합니다
-			    kakao.maps.event.addListener(marker, 'click', function() {
-					console.log("markers : ",Object.values(markers)[14])			
-			    	var markerStr = Object.values(marker)[14]
-			    	
-			        // 클릭된 마커가 없고, click 마커가 클릭된 마커가 아니면
-			        // 마커의 이미지를 클릭 이미지로 변경합니다
-			        for(var i=0; i<overlays.length;i++){
-			        	var str = Object.values(overlays[i])[9]
-			        	var Char = str.indexOf('            <',66)
-			        	var overlayStr = str.substring(67,Char)
-			        	
-			        	if(overlayStr == markerStr){
-			    			console.log(markerStr)
-			    			console.log(overlayStr)
-			        		selectOverlay = overlays[i]
-			        	}
-			        }
-					
-			        console.log(selectOverlay)
-			        selectOverlay.setMap(map)
-			    });
-	
-			
-	
-		
-		
-		
-		
+
 		<%--
 		console.log("markers : ",Object.values(markers[2])[14])
 		var str = Object.values(overlays[2])[9]
@@ -437,17 +428,16 @@ html, body {
 		}
 		--%>	
 		
-		
+		showMarkers()
 		});
 	
-	</script>
-
-	<script>
 	<!-- 필요한 함수들을 모아놓은 스크립트입니다. -->
 	<!-- 커스텀 오버레이 닫아주기 -->
 	// 커스텀 오버레이를 닫기 위해 호출되는 함수입니다
 	function closeOverlay() {
-	    overlay.setMap(null);
+        overlays.forEach(el => {
+            el.setMap(null);
+        });
 	}
 	
 	//지도타입 컨트롤의 지도 또는 스카이뷰 버튼을 클릭하면 호출되어 지도타입을 바꾸는 함수입니다
