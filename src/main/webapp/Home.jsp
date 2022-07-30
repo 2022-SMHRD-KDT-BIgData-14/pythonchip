@@ -75,7 +75,7 @@
                                 </li>
 
                                 <li>
-                                    <a href="Mapsearch.jsp">map search</a>
+                                    <a href="MapSearch.jsp">map search</a>
                                 </li>
 
                                 <li>
@@ -83,11 +83,11 @@
                                 </li>
 
                                 <li>
-                                    <a href=" Coummunity.jsp">comunity</a>
+                                    <a href=" Community.jsp">Community</a>
                                 </li>
 
                                 <li>
-                                    <a href="StoreJoin.jsp">store join</a>
+                                    <a href="JoinStore.jsp">store join</a>
                                 </li>
 
 
@@ -133,7 +133,7 @@
 
 
                     <li class="t-center m-b-13">
-                        <a href="Mapsearch.jsp" class="txt19">map search</a>
+                        <a href="MapSearch.jsp" class="txt19">map search</a>
                     </li>
 
 
@@ -143,7 +143,7 @@
                     </li>
 
                     <li class="t-center m-b-13">
-                        <a href=" Coummunity.jsp" class="txt19">comunity</a>
+                        <a href=" Community.jsp" class="txt19">Community</a>
                     </li>
 
                     <li class="t-center m-b-13">
@@ -152,7 +152,7 @@
 
 
                     <li class="t-center m-b-13">
-                        <a href="StoreJoin.jsp" class="txt19">storejoin</a>
+                        <a href="JoinStore.jsp" class="txt19">StoreJoin</a>
                     </li>
 
                     <li class="t-center">
@@ -251,7 +251,7 @@
 
                         <div class="wrap-btn-slide1 animated visible-false" data-appear="rotateIn">
                             <!-- Button1 -->
-                            <a href="Mapsearch.jsp" class="btn1 flex-c-m size1 txt3 trans-0-4">
+                            <a href="MapSearch.jsp" class="btn1 flex-c-m size1 txt3 trans-0-4">
 								Look Menu
 							</a>
                         </div>

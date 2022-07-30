@@ -68,7 +68,7 @@
                                 </li>
 
                                 <li>
-                                    <a href="Mapsearch.jsp">map search</a>
+                                    <a href="MapSearch.jsp">map search</a>
                                 </li>
 
                                 <li>
@@ -76,11 +76,11 @@
                                 </li>
 
                                 <li>
-                                    <a href=" Coummunity.jsp">comunity</a>
+                                    <a href=" Community.jsp">Community</a>
                                 </li>
 
                                 <li>
-                                    <a href="StoreJoin.jsp">store join</a>
+                                    <a href="JoinStore.jsp">store join</a>
                                 </li>
 
 
@@ -126,7 +126,7 @@
 
 
                     <li class="t-center m-b-13">
-                        <a href="Mapsearch.jsp" class="txt19">map search</a>
+                        <a href="MapSearch.jsp" class="txt19">map search</a>
                     </li>
 
 
@@ -136,7 +136,7 @@
                     </li>
 
                     <li class="t-center m-b-13">
-                        <a href=" Coummunity.jsp" class="txt19">comunity</a>
+                        <a href=" Community.jsp" class="txt19">Community</a>
                     </li>
 
                     <li class="t-center m-b-13">
@@ -145,7 +145,7 @@
 
 
                     <li class="t-center m-b-13">
-                        <a href="StoreJoin.jsp" class="txt19">storejoin</a>
+                        <a href="JoinStore.jsp" class="txt19">StoreJoin</a>
                     </li>
 
                     <li class="t-center">
@@ -157,6 +157,7 @@
                 </ul>
 
     </aside>
+
 
     <!-- 상단 이미지 -->
     <section class="bg-title-page flex-c-m p-t-160 p-b-80 p-l-15 p-r-15" style="background-image: url(images/avatar-01.jpg);">
