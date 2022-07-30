@@ -172,45 +172,50 @@
         <div id="storejoin">
             <div id="storejoin_form">
                 <!--가게등록 폼-->
-                <form style="width: 550px;">
+                <form  action="StoreService.do" style="width: 550px;" method="post">
                     <h3 class="login" style="letter-spacing:-1px;">가게등록</h3>
 
                     <hr>
 
                     <!-- 업체명 -->
                     <p style="text-align: center; font-size:12px; color:#666">업체명</p>
-                    <input type="text" placeholder="업체명" class="size">
+                    <input type="text" placeholder="업체명" class="size" name="store_name">
                     <p></p>
                     </label>
 
 
                     <label>
+			<!-- 전화번호 -->
+			<p style="text-align: center; font-size:12px; color:#666">전화번호 </p>
+			<input type="text" placeholder="전화번호" class="size" name="store_tel">
+			</label>
+                    <label>
 			<!-- 주소입력 창 -->
 			<p style="text-align: center; font-size:12px; color:#666">주소 </p>
-			<input type="password" placeholder="주소" class="size">
+			<input type="text" placeholder="주소" class="size" name="address">
 			</label>
 
 
                     <label>
 				<!-- 상세주소(시,군,구) -->
 				<p style="text-align: center; font-size:12px; color:#666"> </p>
-				<input type="password" placeholder="상세주소(시군구)" class="size">
+				<input type="text" placeholder="상세주소(시군구)" class="size" name="location_gu">
 			</label>
                     <label>
 				<!-- 시군구(읍,면,동) -->
 				<p style="text-align: center; font-size:12px; color:#666"> </p>
-				<input type="password" placeholder="상세주소(읍면동)" class="size">
+				<input type="text" placeholder="상세주소(읍면동)" class="size" name="location_dong">
 			</label>
 
                     <label>
 					<!-- 키워드-->
 				<p style="text-align: center font-size:12px; color:#666">키워드</p>
-					<input type="text" placeholder="keyword" class="size">
+					<input type="text" placeholder="keyword" class="size" name="keyword">>
 			</label>
                     <label>
 				<!-- <대표메뉴> -->
 				<p style="text-align: center; font-size:12px; color:#666"> 대표매뉴 </p>
-				<input type="password" placeholder="대표메뉴" class="size">
+				<input type="text" placeholder="대표메뉴" class="size" name="main_menu">
 			</label>
                     <label>
 				<!-- <사업자등록증> -->
