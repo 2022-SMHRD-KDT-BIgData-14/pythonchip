@@ -13,10 +13,17 @@ select * from Menu where store_seq=(select store_seq from store where store_name
 </select>
 
 
-<!-- <select id="getMenForTagSearchList" resultType="MenuDTO" parameterType="String">
+<select id="getMenForTagSearchList" resultType="MenuDTO" parameterType="String">
 select * from Menu where menu_name LIKE'%${value}%'
 </select>
- -->
+
+<!-- 메뉴추가 -->
+<insert id="insertMenu" parameterType="MenuDTO">
+	insert into Menu values(#{menu_name},#{price},(select store_seq from store where store_name='test'),menu_seq.nextval)
+</insert>
+
+
+
 
 
 </mapper>

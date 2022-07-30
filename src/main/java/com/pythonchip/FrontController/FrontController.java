@@ -1,4 +1,5 @@
 package com.pythonchip.FrontController;
+
 import java.io.IOException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,8 +12,10 @@ import com.pythonchip.controller.JoinService;
 import com.pythonchip.controller.LoginService;
 import com.pythonchip.controller.LogoutService;
 import com.pythonchip.controller.updateService;
+
 public class FrontController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		System.out.println("[FrontController]");
@@ -27,20 +30,26 @@ public class FrontController extends HttpServlet {
 		System.out.println("요청 서블릿: " + result);
 		String moveURL = null;
 		Command service = null;
-				if (result.equals("LoginService.do")) {
-					service = new LoginService();
-				} else if (result.equals("LogoutService.do")) {
-					service = new LogoutService();
-				} else if (result.equals("updateService.do")) {
-					service = new updateService();
-				} else if (result.equals("DeleteService.do")) {
-					service = new DeleteService();
-				} else if (result.equals("JoinService.do")) {
-					service = new JoinService();
-				}
-		
+		if (result.equals("LoginService.do")) {
+			service = new LoginService();
+		} else if (result.equals("LogoutService.do")) {
+			service = new LogoutService();
+		} else if (result.equals("updateService.do")) {
+			service = new updateService();
+		} else if (result.equals("DeleteService.do")) {
+			service = new DeleteService();
+		} else if (result.equals("StoreService.do")) {
+			service = new JoinService();
+		} else if (result.equals("BoardService.do")) {
+			service = new JoinService();
+		} else if (result.equals("ReviewService.do")) {
+			service = new JoinService();
+		} else if (result.equals("MenuService.do")) {
+			service = new JoinService();
+		}
+
 		moveURL = service.execute(request, response);
 		RequestDispatcher rd = request.getRequestDispatcher(moveURL);
 		rd.forward(request, response);
-}
+	}
 }

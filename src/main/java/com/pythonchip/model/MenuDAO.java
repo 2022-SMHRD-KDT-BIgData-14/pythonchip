@@ -29,6 +29,16 @@ public class MenuDAO {
 		return arr;
 		
 	}	
+	
+	// 메뉴 등록
+	public int insertMenu(MenuDTO dto) {
+		SqlSession session = sqlSessionFactory.openSession(true);
+		int row = session.insert("insertMenu", dto);
+		session.close();
+
+		return row;
+	}
+
 
 	
 	

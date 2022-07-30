@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import oracle.sql.TIMESTAMP;
 @Getter
@@ -20,3 +21,4 @@ public class ReviewDTO {
 	BigDecimal grade;
 	
 }
+

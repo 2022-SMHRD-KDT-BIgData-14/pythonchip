@@ -64,6 +64,14 @@ public class StoreDAO {
 		return arr;
 	}
 	
+	// 가게 등록
+	public int insertStore(StoreDTO dto) {
+		SqlSession session = sqlSessionFactory.openSession(true);
+		int row = session.insert("insertStore",dto);
+		session.close();
+		
+		return row;
+	}
 	
 	
 }

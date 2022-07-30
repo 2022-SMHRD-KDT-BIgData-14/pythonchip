@@ -16,6 +16,8 @@
 			alias="ReviewDTO" />
 			<typeAlias type="com.pythonchip.model.MemberDTO"
 			alias="MemberDTO" />
+			<typeAlias type="com.pythonchip.model.BoardDTO"
+			alias="BoardDTO" />
 
 	</typeAliases>
 	<environments default="development">
@@ -35,6 +37,7 @@
 		<mapper resource="com/pythonchip/mapper/ReservationMapper.xml"></mapper>
 		<mapper resource="com/pythonchip/mapper/ReviewMapper.xml"></mapper>
 		<mapper resource="com/pythonchip/mapper/MemberMapper.xml"></mapper>
+		<mapper resource="com/pythonchip/mapper/BoardMapper.xml"></mapper>
 
 	</mappers>
 </configuration>
