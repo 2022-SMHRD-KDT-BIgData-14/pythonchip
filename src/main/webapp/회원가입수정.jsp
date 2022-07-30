@@ -138,7 +138,7 @@
                     </li>
 
                     <li class="t-center m-b-13">
-                        <a href="mypage.html" class="txt19">my page</a>
+                        <a href="mypage.html" class="txt19">my page2</a>
                     </li>
 
 
