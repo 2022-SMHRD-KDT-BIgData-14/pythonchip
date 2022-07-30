@@ -14,22 +14,8 @@
 	<!-- Wrapper -->
 	<div id="wrapper">
 
-		<!-- Header -->
-		<header id="header" class="alt"> <a href="index.html"
-			class="logo"><strong>Forty</strong> <span>by HTML5 UP</span></a> 
-		<nav>
-		<!-- Q6. 로그인을 한 상태에서는 로그인탭 대신 로그아웃탭과 개인정보수정탭을 출력 --> 
-		<% if(info != null) { %>
-		<%if(info.getId().equals("admin")){%>
-		<a href="./ShowMember.jsp">회원정보관리</a>
-		<%} %> 
-		<a href="./UpdateMember.jsp">개인정보수정</a> 
-		<a href="LogoutService.do">로그아웃</a> 
-		<%} else {%> 
-		<a href="#menu">로그인</a> 
-		<%} %>
-		</nav> </header>
-
+	
+		
 		<!-- Menu -->
 		<nav id="menu">
 		<ul class="actions vertical">

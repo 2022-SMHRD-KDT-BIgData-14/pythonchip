@@ -39,5 +39,5 @@ select keyword from store group by keyword
 
 select * from Store where keyword 
 
-
+select * from user_table
 

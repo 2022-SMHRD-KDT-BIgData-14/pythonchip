@@ -10,9 +10,12 @@ import com.pythonchip.model.MemberDTO;
 public class DeleteService implements Command{
 	
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
+		System.out.println("DeleteService");
+		
 		String id = request.getParameter("id");
 		String pw = request.getParameter("pw");
-		
+	
+		System.out.println(id);
 		
 		MemberDTO dto = new MemberDTO(id,pw); 
 		int row = new MemberDAO().delete(dto);

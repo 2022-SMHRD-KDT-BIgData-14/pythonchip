@@ -10,11 +10,16 @@ import com.pythonchip.model.MemberDTO;
 
 public class updateService implements Command{
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
+		
+		System.out.println("updateService");
+
 		String id = request.getParameter("id");
 		String pw = request.getParameter("pw");
 		String gender = request.getParameter("gender");
 		String age = request.getParameter("age");
 		String user_tel = request.getParameter("user_tel");
+		
+		System.out.println(id);
 		
 		MemberDTO dto = new MemberDTO(id,pw,gender,age,user_tel); 
 		int row = new MemberDAO().update(dto);
@@ -23,6 +28,7 @@ public class updateService implements Command{
 			System.out.println("회원정보 수정 완료");
 			HttpSession session = request.getSession();
 			session.setAttribute("info", dto);
+			return "./Delete.jsp";
 		} else {
 			System.out.println("회원정보수정 실패");
 		}
