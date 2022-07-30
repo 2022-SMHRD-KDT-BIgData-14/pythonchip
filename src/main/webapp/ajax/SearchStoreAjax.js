@@ -56,10 +56,13 @@ function AjaxKeyword(Keyword){
 				$('#insideStoreTable').isotope().append(str).isotope('appended',str).isotope('layout');
 				console.log('isotope')
             });
-		
+		setTimeout(() => {
 		$('.wrap-gallery').isotope('layout')
+		},300)
         }, 300);
-            },
+            
+
+},
         error : function(request,status,error){
             alert('code:'+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error); //에러 상태에 대한 세부사항 출력
             alert(e);
@@ -113,8 +116,9 @@ function AjaxConGet(){
 				$('#insideStoreTable').isotope().append(str).isotope('appended',str).isotope('layout');
 				console.log('isotope')
             });
-		
+		setTimeout(() => {
 		$('.wrap-gallery').isotope('layout')
+		},500)
         }, 300);
             },
         error : function(request,status,error){

@@ -33,8 +33,16 @@
     <link rel="stylesheet" type="text/css" href="css/util.css">
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <!--===============================================================================================-->
+
 <style>
 
+.keywordBtn{
+    font-size: 2em;
+    width: auto;
+    height: 2em;
+    background-color: black;
+    margin-top: 0.25em;
+}
 #store_table{
 margin-top: 40px;
 text-align: center;
@@ -149,8 +157,7 @@ text-align: center;
 
 
     <!-- Title Page -->
-    <section class="bg-title-page flex-c-m p-t-160 p-b-80 p-l-15 p-r-15" style="background-image: url(images/마들렌.png);">
-        <h2 class="tit6 t-center">
+<section class="bg-title-page flex-c-m p-t-160 p-b-80 p-l-15 p-r-15" style="background-image: url(images/마들렌.png);min-height: 17em;">
             Gallery
         </h2>
     </section>
@@ -164,29 +171,50 @@ text-align: center;
     <%@page import="java.util.ArrayList"%>
 <%@page import="com.pythonchip.model.StoreDTO"%>
 <%@page import="com.pythonchip.model.StoreDAO"%>
-    <div id = "store_table">
-    <div>
+<div id="store_table" style="
+    margin: 3.6em 10em;
+">
+	<div id="seachDIV" >
         <form onsubmit="return false;">
-            <select name="job" id ="searchSelector">
+            <select class="selector" name="job" id="searchSelector" style="
+            width: 100px;height: 2.5em;border-radius: 0.8em;
+            " height="2.5em">
                 <option value="name" selected>가게 이름</option>
                 <option value="location">위치</option>
                 <option value="menu">메뉴</option>
             </select>
-            
-            <input type="text" size="66em" id="searchinput">
-            <button id = "searchButton">검색</button>
+          
+            <input type="text" size="66em" id="searchinput" style="
+                height: 2.5em;
+    border: solid !important;
+    margin-left: 0.1em;
+    margin-right: 0.3em;
+    border-radius: 0.7em;
+    padding-left: 1em;
+            ">
+            <button id = "searchButton"
+            style="    
+    border: solid brown;
+    width: 4.3em;
+    height: 2.5em;
+    border-style: groove;
+    border-radius: 0.7em;"
+            >검색</button>
             </form>
-            <br><br>
+            
+            </div>  
+<div style="
+    margin-left: 9em;
+    margin-right: 9em;">
             <% String[] keywordArr = {"식혜","흑염소","양갱","막걸리","인절미","말차","흑임자","쑥"
                     ,"한방","미숫가루","떡","달고나","전통차","팥"};%>
-            <% String[] btnClassArr = {"btn btn-outline-primary","btn btn-outline-secondary","btn btn-outline-success"
-                    ,"btn btn-outline-danger","btn btn-outline-warning","btn btn-outline-info","btn btn-outline-light"};%>
+            <% String[] btnClassArr = {"red","aqua","goldenrod","orangered","violet","purple","green","goldenrod","orangered"};%>
             <%
             int cnt=0;
             for(int i = 0; i<keywordArr.length; i++) {
             if(btnClassArr.length-1 <= cnt) {cnt = 0;
-            %><br><%}%>
-            <button type="button" class="<%="keywordBtn "+ btnClassArr[cnt++]%>"><%=keywordArr[i]%></button>
+            %><!-- <br> --><%}%>
+            <button type="button" style="background-color:<%=btnClassArr[cnt++]%>;" class="keywordBtn btn btn-outline-danger"><%=keywordArr[i]%></button>
             <%}%>
             
             </div>
