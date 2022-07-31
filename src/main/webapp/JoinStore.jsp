@@ -1,10 +1,8 @@
-<!-- 회원가입 수정 -->
-
+<%@page import="com.pythonchip.model.MemberDTO"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="com.pythonchip.model.StoreDTO"%>
-<%@page import="com.pythonchip.model.StoreDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<!--가게등록-->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -44,8 +42,8 @@
 
 <body class="animsition">
 
-    <!-- Header -->
-    <header>
+       <!-- Header -->
+       <header>
         <!-- Header desktop -->
         <div class="wrap-menu-header gradient1 trans-0-4">
             <div class="container h-full">
@@ -56,7 +54,6 @@
                             <img src="images/logo.png" alt="IMG-LOGO" data-logofixed="images/logo.png"></a>
                         </a>
                     </div>
-
                     <!-- 상단 메뉴창-->
                     <div class="wrap_menu p-l-45 p-l-0-xl">
                         <nav class="menu">
@@ -74,7 +71,7 @@
                                 </li>
 
                                 <li>
-                                    <a href=" Community.jsp">Community</a>
+                                    <a href="Community.jsp">comunity</a>
                                 </li>
 
                                 <li>
@@ -134,7 +131,7 @@
                     </li>
 
                     <li class="t-center m-b-13">
-                        <a href=" Community.jsp" class="txt19">Community</a>
+                        <a href="Community.jsp" class="txt19">community</a>
                     </li>
 
                     <li class="t-center m-b-13">
@@ -143,7 +140,7 @@
 
 
                     <li class="t-center m-b-13">
-                        <a href="JoinStore.jsp" class="txt19">StoreJoin</a>
+                        <a href="JoinStore.jsp" class="txt19">storejoin</a>
                     </li>
 
                     <li class="t-center">
@@ -156,111 +153,135 @@
 
     </aside>
 
+    
 
-    <!-- 상단 -->
-    <section class="bg-title-page flex-c-m p-t-160 p-b-80 p-l-15 p-r-15" style="background-image: url(images/기장떡.png);">
+
+    <!-- 상단 이미지 -->
+    <section class="bg-title-page flex-c-m p-t-160 p-b-80 p-l-15 p-r-15" style="background-image: url(images/bg-title-page-02.jpg);">
         <h2 class="tit6 t-center">
-            회원가입수정
+            Store Join
         </h2>
     </section>
-    <!-- 회원정보 수정 창 -->
+
+
+
+
 
     <div id="con">
-        <div id="login">
-            <div id="join_form">
-                <!--회원가입 수정 폼-->
-                <form>
-                    <h3 class="login" style="letter-spacing:-1px;">뭘 바꾸고 싶으신가~?</h3>
+        <div id="storejoin">
+            <div id="storejoin_form">
+                <!--가게등록 폼-->
+                <form  action="StoreService.do" style="width: 550px;" method="post">
+                    <h3 class="login" style="letter-spacing:-1px;">가게등록</h3>
 
                     <hr>
 
-                    <label>
-						<!--현재 비밀번호-->
-					  <p style="text-align: center; font-size:12px; color:#666">현재 비밀번호 </p>
-					  <input type="password" placeholder="현재 비밀번호" class="size" style="width:400px">
-					  </label>
-
-
-                    <label>
-		  <!--비밀번호-->
-		<p style="text-align: center; font-size:12px; color:#666">새 비밀번호 </p>
-		<input type="password" placeholder="새 비밀번호" class="size" style="width:400px">
-		</label>
-
-
-                    <label>
-			<!-- 비밀번호 확인 -->
-			<p style="text-align: left; font-size:12px; color:#666"> </p>
-			<input type="password" placeholder="새 비밀번호 확인" class="size" style="width:400px">
-		</label>
+                    <!-- 업체명 -->
+                    <p style="text-align: center; font-size:12px; color:#666">업체명</p>
+                    <input type="text" placeholder="업체명" class="size" name="store_name">
+                    <p></p>
+                    </label>
 
 
                     <label>
 			<!-- 전화번호 -->
-		<p style="text-align: center; font-size:12px; color:#666">Mobile Phone</p>
-		  
-			<input placeholder="-빼고 숫자만 입력"  class="size num2"  style="width:400px">
-		 </label>
-
-
-
+			<p style="text-align: center; font-size:12px; color:#666">전화번호 </p>
+			<input type="text" placeholder="전화번호" class="size" name="store_tel">
+			</label>
                     <label>
-				<!-- 나이입력-->
-			<p style="text-align: center; font-size:12px; color:#666">age</p>
-				<input type="text" placeholder="(숫자만 입력)" class="size" style="width:400px">
-		</label>
-
-
-
-                    <!--회원정보 수정 버튼-->
-                    <p>
-                        <a href="Mypage.jsp" type="submit" class="btn">회원정보수정</a>
-                    </p>
-                </form>
-                <p class="find">
-                    <span><a href="Mypage.jsp" >취소</a></span>
-                    <!-- 취소 -->
-
-
-                    <!-- 회원탈퇴 -->
-                    <label>
-						<p>
-							<a href="MemberDelete.jsp" type="submit" class="btn1">회원탈퇴</a>
-						</p>
+			<!-- 주소입력 창 -->
+			<p style="text-align: center; font-size:12px; color:#666">주소 </p>
+			<input type="text" placeholder="주소" class="size" name="address">
 			</label>
 
-                    </label>
+
+                    <label>
+				<!-- 상세주소(시,군,구) -->
+				<p style="text-align: center; font-size:12px; color:#666"> </p>
+				<input type="text" placeholder="상세주소(시군구)" class="size" name="location_gu">
+			</label>
+                    <label>
+				<!-- 시군구(읍,면,동) -->
+				<p style="text-align: center; font-size:12px; color:#666"> </p>
+				<input type="text" placeholder="상세주소(읍면동)" class="size" name="location_dong">
+			</label>
+
+                    <label>
+					<!-- 키워드-->
+				<p style="text-align: center font-size:12px; color:#666">키워드</p>
+					<input type="text" placeholder="keyword" class="size" name="keyword">>
+			</label>
+                    <label>
+				<!-- <대표메뉴> -->
+				<p style="text-align: center; font-size:12px; color:#666"> 대표매뉴 </p>
+				<input type="text" placeholder="대표메뉴" class="size" name="main_menu">
+			</label>
+                    <label>
+				<!-- <사업자등록증> -->
+				<p style="text-align: center; font-size:12px; color:#666"> 사업자등록증 <input type="submit" value="파일선택" class="join" style="height: 30px; width: 70px;></p>
+			
+			</label>
+                    <label>
+				<!-- <업체이미지> -->
+				<p style="text-align: center; font-size:12px; color:#666"> 업체이미지 <input type="submit" value="파일선택" class="join" style="height: 30px; width: 70px; "> </p>
+				
+			</label>
+                    <!--버튼-->
+                    <br>
+                    <p>
+                        <input type="submit" value="신청하기" class="btn">
+
+                    </p>
+                    <p>
+                        <input type="submit" value="내용초기화" class="btn">
+
+                    </p>
+                </form>
+
+                <hr>
+
             </div>
             <div>
             </div>
+            </section>
+        </div>
+    </div>
+    </div>
+    </footer>
+    <!-- Container Selection1 -->
+    <div id="dropDownSelect1"></div>
 
 
-            <!--===============================================================================================-->
-            <script type="text/javascript " src="vendor/jquery/jquery-3.2.1.min.js "></script>
-            <!--===============================================================================================-->
-            <script type="text/javascript " src="vendor/animsition/js/animsition.min.js "></script>
-            <!--===============================================================================================-->
-            <script type="text/javascript " src="vendor/bootstrap/js/popper.js "></script>
-            <script type="text/javascript " src="vendor/bootstrap/js/bootstrap.min.js "></script>
-            <!--===============================================================================================-->
-            <script type="text/javascript " src="vendor/select2/select2.min.js "></script>
-            <!--===============================================================================================-->
-            <script type="text/javascript " src="vendor/daterangepicker/moment.min.js "></script>
-            <script type="text/javascript " src="vendor/daterangepicker/daterangepicker.js "></script>
-            <!--===============================================================================================-->
-            <script type="text/javascript " src="vendor/slick/slick.min.js "></script>
-            <script type="text/javascript " src="js/slick-custom.js "></script>
-            <!--===============================================================================================-->
-            <script type="text/javascript " src="vendor/parallax100/parallax100.js "></script>
-            <script type="text/javascript ">
-                $('.parallax100').parallax100();
-            </script>
-            <!--===============================================================================================-->
-            <script type="text/javascript " src="vendor/countdowntime/countdowntime.js "></script>
-            <!--===============================================================================================-->
-            <script type="text/javascript " src="vendor/lightbox2/js/lightbox.min.js "></script>
-            <!--===============================================================================================-->
-            <script src="js/main.js "></script>
+
+    <!--===============================================================================================-->
+    <script type="text/javascript" src="vendor/jquery/jquery-3.2.1.min.js"></script>
+    <!--===============================================================================================-->
+    <script type="text/javascript" src="vendor/animsition/js/animsition.min.js"></script>
+    <!--===============================================================================================-->
+    <script type="text/javascript" src="vendor/bootstrap/js/popper.js"></script>
+    <script type="text/javascript" src="vendor/bootstrap/js/bootstrap.min.js"></script>
+    <!--===============================================================================================-->
+    <script type="text/javascript" src="vendor/select2/select2.min.js"></script>
+    <!--===============================================================================================-->
+    <script type="text/javascript" src="vendor/daterangepicker/moment.min.js"></script>
+    <script type="text/javascript" src="vendor/daterangepicker/daterangepicker.js"></script>
+    <!--===============================================================================================-->
+    <script type="text/javascript" src="vendor/slick/slick.min.js"></script>
+    <script type="text/javascript" src="js/slick-custom.js"></script>
+    <!--===============================================================================================-->
+    <script type="text/javascript" src="vendor/parallax100/parallax100.js"></script>
+    <script type="text/javascript">
+        $('.parallax100').parallax100();
+    </script>
+    <!--===============================================================================================-->
+    <script type="text/javascript" src="vendor/countdowntime/countdowntime.js"></script>
+    <!--===============================================================================================-->
+    <script type="text/javascript" src="vendor/lightbox2/js/lightbox.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAKFWBqlKAGCeS1rMVoaNlwyayu0e0YRes"></script>
+    <script src="js/map-custom.js"></script>
+    <!--===============================================================================================-->
+    <script src="js/main.js"></script>
 
 </body>
 
