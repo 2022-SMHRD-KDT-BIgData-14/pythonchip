@@ -185,15 +185,20 @@
 						maxlength="20" style="width: 420px;"> -->
 					</label>
 					<li><input type="hidden" name = "writer" value=<%=info.getId() %>></li>
-					내용
+					
 					<label>
 						<p style="text-align: left; font-size: 12px; color: #666">내용</p> 
 						<textarea rows="10" name="content" type="text" class="size" style="width: 420px; height: 266px;"></textarea>
 					</label>
-						<input type="reset" value="초기화"> 
-						<input type="submit" value="작성하기">
+						
 			
+					
+					<p>
+						<input type="reset" value="초기화" >
+						<input type="submit" value="작성하기" >
+					</p>
 					</form>
+					
 			</div>
 		</div>
 	</div>

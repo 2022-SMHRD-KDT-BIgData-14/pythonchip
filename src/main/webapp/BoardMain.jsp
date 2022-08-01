@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<%@page import="com.pythonchip.model.MemberDTO"%>
 <%@page import="org.apache.ibatis.reflection.SystemMetaObject"%>
 <%@page import="com.pythonchip.model.BoardDAO"%>
 <%@page import="com.pythonchip.model.BoardDTO"%>
@@ -50,6 +51,7 @@
 <!--===============================================================================================-->
 </head>
 <body class="animsition">
+<% MemberDTO info = (MemberDTO)session.getAttribute("info"); %>
 	<<<<<<< HEAD
 	<!-- Header -->
 	<header>
@@ -207,13 +209,13 @@
 				<div class="pic-blo4 hov-img-zoom bo-rad-10 pos-relative">
 					<a href="blog-detail.html"> <!-- <img src="images/blog-10.jpg" alt="IMG-BLOG"> -->
 						<img src="file/<%=board_list.get(i).getFilename()%>"
-						alt="IMG-BLOG">
+						alt="IMG-BLOG" style="width:800px; height:400px;">
 					</a>
 
-					<div class="date-blo4 flex-col-c-m">
+<!-- 					<div class="date-blo4 flex-col-c-m">
 						<span class="txt30 m-b-4"> 12 </span> <span class="txt31">
 							Dec, 2018 </span>
-					</div>
+					</div> -->
 				</div>
 
 				<div class="text-blo4 p-t-33">
@@ -244,7 +246,15 @@
 			}
 			%>
 			<!-- <a href="Main.jsp"><button id="writer">홈으로가기</button></a>  -->
+
+			<%if (info != null) {%>
 			<a href="BoardWrite.jsp"><button id="writer">작성하러가기</button></a>
+			<%}else {%>
+			<a href="Login.jsp"><button id="writer">작성하러가기</button></a>
+			<%
+			}
+			%>
+
 
 			<!-- 경계 --><!-- 경계 --><!-- 경계 --><!-- 경계 --><!-- 경계 --><!-- 경계 --><!-- 경계 --><!-- 경계 --><!-- 경계 --><!-- 경계 --><!-- 경계 --><!-- 경계 -->
 
@@ -297,7 +307,7 @@
 					<ul>
 						<li class="flex-w m-b-25">
 							<div class="size16 bo-rad-10 wrap-pic-w of-hidden m-r-18">
-								<a href="#"> <img src="images/blog-11.jpg" alt="IMG-BLOG">
+								<a href="#"> <img src="images/blog-11.jpg" alt="IMG-BLOG" style="width:800px; height:400px;">
 								</a>
 							</div>
 
@@ -309,7 +319,7 @@
 
 						<li class="flex-w m-b-25">
 							<div class="size16 bo-rad-10 wrap-pic-w of-hidden m-r-18">
-								<a href="#"> <img src="images/blog-12.jpg" alt="IMG-BLOG">
+								<a href="#"> <img src="images/blog-12.jpg" alt="IMG-BLOG" style="width:800px; height:400px;">
 								</a>
 							</div>
 
@@ -321,7 +331,7 @@
 
 						<li class="flex-w m-b-25">
 							<div class="size16 bo-rad-10 wrap-pic-w of-hidden m-r-18">
-								<a href="#"> <img src="images/blog-13.jpg" alt="IMG-BLOG">
+								<a href="#"> <img src="images/blog-13.jpg" alt="IMG-BLOG" style="width:800px; height:400px;">
 								</a>
 							</div>
 
@@ -333,7 +343,7 @@
 
 						<li class="flex-w m-b-25">
 							<div class="size16 bo-rad-10 wrap-pic-w of-hidden m-r-18">
-								<a href="#"> <img src="images/blog-14.jpg" alt="IMG-BLOG">
+								<a href="#"> <img src="images/blog-14.jpg" alt="IMG-BLOG" style="width:800px; height:400px;">
 								</a>
 							</div>
 
@@ -345,7 +355,7 @@
 
 						<li class="flex-w m-b-25">
 							<div class="size16 bo-rad-10 wrap-pic-w of-hidden m-r-18">
-								<a href="#"> <img src="images/blog-15.jpg" alt="IMG-BLOG">
+								<a href="#"> <img src="images/blog-15.jpg" alt="IMG-BLOG" style="width:800px; height:400px;">
 								</a>
 							</div>
 
