@@ -18,7 +18,7 @@ public class ReviewDTO {
 	String id;
 	TIMESTAMP write_date;
 	String rev_content;
-	BigDecimal grade;
+	String grade;
 	
 }
 

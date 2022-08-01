@@ -37,6 +37,5 @@ public class updateService implements Command{
 			System.out.println("회원정보수정 실패");
 			return "./Fail.jsp";
 		}
-		
 	}
 }

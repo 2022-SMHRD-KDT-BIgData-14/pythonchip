@@ -207,7 +207,7 @@
 				<div class="pic-blo4 hov-img-zoom bo-rad-10 pos-relative">
 					<a href="blog-detail.html"> <!-- <img src="images/blog-10.jpg" alt="IMG-BLOG"> -->
 						<img src="file/<%=board_list.get(i).getFilename()%>"
-						alt="IMG-BLOG">
+						alt="IMG-BLOG" style="width:800px; height:400px;">
 					</a>
 
 					<div class="date-blo4 flex-col-c-m">
@@ -297,7 +297,7 @@
 					<ul>
 						<li class="flex-w m-b-25">
 							<div class="size16 bo-rad-10 wrap-pic-w of-hidden m-r-18">
-								<a href="#"> <img src="images/blog-11.jpg" alt="IMG-BLOG">
+								<a href="#"> <img src="images/blog-11.jpg" alt="IMG-BLOG" style="width:800px; height:400px;">
 								</a>
 							</div>
 
@@ -309,7 +309,7 @@
 
 						<li class="flex-w m-b-25">
 							<div class="size16 bo-rad-10 wrap-pic-w of-hidden m-r-18">
-								<a href="#"> <img src="images/blog-12.jpg" alt="IMG-BLOG">
+								<a href="#"> <img src="images/blog-12.jpg" alt="IMG-BLOG" style="width:800px; height:400px;">
 								</a>
 							</div>
 
@@ -321,7 +321,7 @@
 
 						<li class="flex-w m-b-25">
 							<div class="size16 bo-rad-10 wrap-pic-w of-hidden m-r-18">
-								<a href="#"> <img src="images/blog-13.jpg" alt="IMG-BLOG">
+								<a href="#"> <img src="images/blog-13.jpg" alt="IMG-BLOG" style="width:800px; height:400px;">
 								</a>
 							</div>
 
@@ -333,7 +333,7 @@
 
 						<li class="flex-w m-b-25">
 							<div class="size16 bo-rad-10 wrap-pic-w of-hidden m-r-18">
-								<a href="#"> <img src="images/blog-14.jpg" alt="IMG-BLOG">
+								<a href="#"> <img src="images/blog-14.jpg" alt="IMG-BLOG" style="width:800px; height:400px;">
 								</a>
 							</div>
 
@@ -345,7 +345,7 @@
 
 						<li class="flex-w m-b-25">
 							<div class="size16 bo-rad-10 wrap-pic-w of-hidden m-r-18">
-								<a href="#"> <img src="images/blog-15.jpg" alt="IMG-BLOG">
+								<a href="#"> <img src="images/blog-15.jpg" alt="IMG-BLOG" style="width:800px; height:400px;">
 								</a>
 							</div>
 

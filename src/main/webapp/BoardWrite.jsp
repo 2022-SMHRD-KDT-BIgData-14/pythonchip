@@ -1,5 +1,6 @@
 <!--회원가입-->
 
+<<<<<<< HEAD
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.pythonchip.model.StoreDTO"%>
 <%@page import="com.pythonchip.model.StoreDAO"%>
@@ -198,6 +199,11 @@
 						<textarea rows="10" name = "content" type="text" class="size" style="width: 420px; height:266px;"></textarea> 
 					</label> 
 					
+=======
+<div id = "board">
+				<form action="BoardService.do" method="post" enctype="multipart/form-data">
+				<!-- enctype="multipart/form-data" -->
+>>>>>>> branch 'master' of https://github.com/2022-SMHRD-KDT-BIgData-14/pythonchip.git
 				
 					
 				
