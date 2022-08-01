@@ -24,15 +24,17 @@ public class updateService implements Command{
 		MemberDTO dto = new MemberDTO(id,pw,gender,age,user_tel); 
 		int row = new MemberDAO().update(dto);
 		
+		String moveURL = null;
 		if(row == 1) {
 			System.out.println("회원정보 수정 완료");
 			HttpSession session = request.getSession();
 			session.setAttribute("info", dto);
-			return "./Delete.jsp";
+			moveURL = "./Home.jsp";
 		} else {
 			System.out.println("회원정보수정 실패");
+			moveURL = "./MemberUpdate.jsp";
 		}
 		
-		return "./Main.jsp";
+		return moveURL;
 	}
 }
