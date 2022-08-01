@@ -47,12 +47,27 @@
 margin-top: 40px;
 text-align: center;
 }
+
+
+.overlay-item-gallery{
+	border-radius:2em;
+	background-color:rgba(255, 29, 37, 0.3);
+}    
+.card-img-top{
+	border-radius:4em;
+}
+.item-gallery{
+	border-radius:3em;
+}
 </style>
 
 </head>
 
 <body class="animsition">
 
+    <!-- $('.overlay-item-gallery').css('border-radius','1em')
+    $('.overlay-item-gallery').css('background-color','rgba(255, 29, 37, 0.3)') -->
+    
     <!-- Header -->
     <header>
         <!-- Header desktop -->
@@ -188,13 +203,13 @@ text-align: center;
                 height: 2.5em;
     border: solid !important;
     margin-left: 0.1em;
-    margin-right: 0.3em;
+    margin-right: 0.1em;
     border-radius: 0.7em;
     padding-left: 1em;
             ">
             <button id = "searchButton"
             style="    
-    border: solid brown;
+    border: solid black;
     width: 4.3em;
     height: 2.5em;
     border-style: groove;
@@ -234,10 +249,12 @@ text-align: center;
                   <div class="overlay-item-gallery trans-0-10 flex-c-m">
                 <a class="btn-show-gallery flex-c-m fa fa-search" href="https://www.coffeebeankorea.com/data/menu/%EC%BD%9C%EB%93%9C%EB%B8%8C%EB%A3%A815_1.jpg" data-lightbox="gallery"></a>
                 </div>
-                
+                <div>
+                <br>
                     <h5 class=""><%=arr.get(i).getStore_name() %></h5><br>
                     <p class=""> 주소 : <%=arr.get(i).getLocation_dong() %><%=arr.get(i).getLocation_gu() %></p>
                     <br><p class=""> tel : <%=arr.get(i).getStore_tel()%></p><br>
+              	</div>
               </div>
             
             <%} %>
@@ -472,7 +489,10 @@ text-align: center;
     <script src="js/main.js"></script>
     
     <script type="text/javascript" src = "ajax/SearchStoreAjax.js"></script>
+    <script>
     
+
+    </script>
 
 </body>
 
