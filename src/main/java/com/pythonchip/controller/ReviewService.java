@@ -11,25 +11,28 @@ import com.pythonchip.model.BoardDTO;
 import com.pythonchip.model.ReviewDAO;
 import com.pythonchip.model.ReviewDTO;
 
+import oracle.sql.TIMESTAMP;
+
 public class ReviewService implements Command {
 
-	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
 
 		System.out.println("[ReviewService]");
 		
-		String rev_content = request .getParameter("rev_content");
+		String store_seq = request.getParameter("store_seq");
+		String id = request.getParameter("id");
 		String grade = request.getParameter("grade");
+		String rev_content = request .getParameter("rev_content");
 
 		
-		System.out.println("rev_content : "+ rev_content);
-		System.out.println("grade : "+ grade);
-
-
+		System.out.println(store_seq);
+		System.out.println(id);
+		System.out.println(grade);
+		System.out.println(rev_content);
 
 
 		// DTO로 묶기 
-		ReviewDTO dto = new ReviewDTO(null, null, grade, null, rev_content, null);
+		ReviewDTO dto = new ReviewDTO(new BigDecimal("0"), new BigDecimal(store_seq), id, new TIMESTAMP(), rev_content, grade);
 		
 		// insertBoard 메소드 호출
 		int row = new ReviewDAO().insertReview(dto);
@@ -40,7 +43,7 @@ public class ReviewService implements Command {
 			System.out.println("리뷰 등록 실패");
 		}
 		
-		return "./ReviewWrite.jsp";
+		return "./DetailStore.jsp";
 	}
 		
 		
