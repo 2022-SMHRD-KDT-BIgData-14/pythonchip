@@ -92,17 +92,6 @@
 							</ul>
 						</nav>
 					</div>
-
-					<!-- 상단 로그인, 회원가입 -->
-					<div class="social flex-w flex-l-m p-r-20">
-						<li><a href="Login.jsp" style="padding-right: 20px;">
-								login </a></li>
-						<li><a href="Join.jsp" style="padding-left: 20px;"> join
-						</a></li>
-
-
-						<button class="btn-show-sidebar m-l-33 trans-0-4"></button>
-					</div>
 				</div>
 			</div>
 		</div>
@@ -125,6 +114,7 @@
 
 					<li class="t-center m-b-13"><a href="MapSearch.jsp"
 						class="txt19">map search</a></li>
+
 
 
 					<li class="t-center m-b-13"><a href="Store.jsp" class="txt19">store</a>
@@ -152,57 +142,40 @@
 	<!-- 상단 -->
 	<section class="bg-title-page flex-c-m p-t-160 p-b-80 p-l-15 p-r-15"
 		style="background-image: url(images/기장떡.png);">
-		<h2 class="tit6 t-center">회원정보수정</h2>
+		<h2 class="tit6 t-center">Fail</h2>
 	</section>
-	<!-- 회원정보 수정 창 -->
-
-	<div id="con">
-		<div id="login">
-			<div id="join_form">
-				<!--회원가입 수정 폼-->
-				<form action="updateService.do" method="post">
-					<h3 class="login" style="letter-spacing: -1px;">회원정보수정</h3>
-					<hr>
-					<input type="hidden" name="id"
-						value="<%=info.getId()%>"> <label>
-						<!--비밀번호-->
-						<p style="text-align: center; font-size: 12px; color: #666">새비밀번호</p>
-						<input type="password" placeholder="새 비밀번호" name="rpw"
-						maxlength="20" class="size" style="width: 400px">
-					</label> <br>
-					<!-- 나이입력-->
-					<p style="text-align: center; font-size: 12px; color: #666">age</p>
-					<input type="text" placeholder="(숫자만 입력)" name="age" class="size"
-						style="width: 400px"> </label> <br><label> <!-- 전화번호 -->
-						<p style="text-align: center; font-size: 12px; color: #666">MobilePhone</p>
-						<input placeholder="-빼고 숫자만 입력" name="user_tel" class="size num2"
-						style="width: 400px">
-					</label><br>
-					<br>
-					<!-- 성별 -->
-					<label> <input type="radio" name="gender"
-						autocomplete="off" value="남자" checked>
-						<p style="text-align: left; font-size: 12px; color: #666">남자</p>
-					</label> <label> <input type="radio" name="gender"
-						autocomplete="off" value="여자" checked>
-						<p style="text-align: left; font-size: 12px; color: #666">여자</p></label>
-				<p>
-					<input type="submit" value="회원정보수정" class="btn">
-				</p>
-				</form>
-				<!--회원정보 수정 버튼-->
-				<!-- 취소 -->
-				<p class="find">
-					<span><a href="Mypage.jsp">취소</a></span>
-
-					<!-- 회원탈퇴 -->
-					<label>
-						<p>
-							<a href="MemberDelete.jsp" type="submit" class="btn1">회원탈퇴</a>
-						</p>
-					</label> </label>
-			</div>
-			<div></div>
+	
+	<%
+	//어디서 요청이 들어왔는지 확인
+			String requstURI = request.getRequestURI();
+			System.out.println("요청 들어온 주소: " + requstURI);
+			String contextPath = request.getContextPath();
+			System.out.println("프록젝트 이름: " + contextPath);
+			String result = requstURI.substring(contextPath.length() + 1);
+			System.out.println("요청 서블릿: " + result);
+	
+	if(result.equals("JoinService.java")){%>
+	<table border=3><tr><td>존재하는 아이디입니다.</td></tr></table>
+	<li><a href="Join.jsp">회원가입 다시 하러 가기</a></li>
+	
+	<%}else if(result.equals("LoginService.java")){%>
+	
+	<table border=3><tr><td>존재하지않는 회원정보입니다.</td></tr></table>
+	<li><a href="Login.jsp">로그인 다시 하러 가기</a></li>
+		
+	<%}else if(result.equals("updateService.java")){%>
+	
+	<table border=3><tr><td>잘못된 정보입니다.</td></tr></table>
+	<li><a href="Update.jsp">회원정보수정 다시 하러 가기</a></li>
+		
+	<%}else if(result.equals("StoreService.java")){%>
+	
+	<table border=3><tr><td>잘못된 정보입니다.</td></tr></table>
+	<li><a href="JoinSuccess.jsp">가게등록 다시 하러 가기</a></li>
+		
+	<% 	} 	%>
+	
+	
 
 
 			<!--===============================================================================================-->

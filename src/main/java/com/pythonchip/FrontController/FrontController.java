@@ -52,6 +52,8 @@ public class FrontController extends HttpServlet {
 			service = new MenuService();
 		}else if (result.equals("JoinService.do")) {
 			service = new JoinService();
+		}else if (result.equals("LogoutService.do")) {
+			service = new LogoutService();
 		}
 
 		moveURL = service.execute(request, response);

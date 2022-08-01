@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<%@page import="com.pythonchip.model.MemberDTO"%>
 <html lang="en">
 
 <head>
@@ -64,6 +65,9 @@ text-align: center;
 </head>
 
 <body class="animsition">
+	<%
+	MemberDTO info = (MemberDTO) session.getAttribute("info");
+	%>
 
     <!-- $('.overlay-item-gallery').css('border-radius','1em')
     $('.overlay-item-gallery').css('background-color','rgba(255, 29, 37, 0.3)') -->
@@ -110,16 +114,24 @@ text-align: center;
                     </div>
                     <!-- Social -->
                     <div class="social flex-w flex-l-m p-r-20">
-                        <li>
-                            <a href="contact.html">-login-</a>
-                        </li>
-                        <li>
-                            <a href="join.html">-Join-</a>
-                        </li>
-                        <li>
-                            <a href="storejoin.html">-가게등록-</a>
-                        </li>
+                    <li>
+							<!--  로그인 이메일 출력! --> <%
+						 if (info != null) {
+						 %> <a href="./Mypage.jsp" style="padding-right: 20px;"> MyPage
+						</a>
+						<li><a href="LogoutService.do" style="padding-left: 20px;">
+								Logout </a></li>
 
+						<%
+						} else {
+						%>
+						<a href="Login.jsp" style="padding-right: 20px;"> login </a>
+						<li><a href="Join.jsp" style="padding-left: 20px;"> join
+						</a></li>
+						<%
+						}
+						%>
+						</li>
                         <button class="btn-show-sidebar m-l-33 trans-0-4"></button>
                     </div>
                 </div>
@@ -133,49 +145,51 @@ text-align: center;
 
 
         <div class="gallery-sidebar t-center p-l-60 p-r-60 p-b-40">
-            <!-- - -->
-            <h4 class="txt20 m-b-33">
-                my page
-            </h4>
-            <ul class="menu-sidebar p-t-95 p-b-70">
-                <li class="t-center m-b-13">
-                    <a href="index.html" class="txt19">Home</a>
-                </li>
+          <ul class="menu-sidebar p-t-95 p-b-70">
+				<li class="t-center m-b-13"><a href="Home.jsp" class="txt19">로고</a>
+				</li>
+				<ul class="menu-sidebar p-t-95 p-b-70">
 
-                <li class="t-center m-b-13">
-                    <a href="회원가입수정.html" class="txt19">회원가입 수정</a>
-                </li>
+
+					<li class="t-center m-b-13"><a href="MapSearch.jsp"
+						class="txt19">map search</a></li>
 
 
 
-                <li class="t-center m-b-13">
-                    <a href="about.html" class="txt19">즐겨찾기</a>
-                </li>
+					<li class="t-center m-b-13"><a href="Store.jsp" class="txt19">store</a>
+					</li>
 
-                <li class="t-center m-b-13">
-                    <a href="reservation.html" class="txt19">예약</a>
-                </li>
+					<li class="t-center m-b-13"><a href=" BoardMain.jsp"
+						class="txt19">Community</a></li>
 
-                <li class="t-center m-b-33">
-                    <a href="contact.html" class="txt19">review</a>
-                </li>
+					<li class="t-center m-b-13"><a href="JoinStore.jsp"
+						class="txt19">StoreJoin</a></li>
+					<!--  로그인했을때면 mypage 뜨게하기 -->
+					<%
+					if (info != null) {
+					%>
+					<li class="t-center m-b-13"><a href="Mypage.jsp" class="txt19">my
+							page</a></li>
+					<%
+					} else {
+					%>
+					<!-- 슬라이드바 로그인 -->
+					<a href="Login.jsp"
+						class="btn3 flex-c-m size13 txt11 trans-0-4 m-l-r-auto"> login
+					</a>
+					<%
+					}
+					%>
 
-                <li class="t-center">
-                    <!-- Button3 -->
-                    <a href="contact.html" class="btn3 flex-c-m size13 txt11 trans-0-4 m-l-r-auto">
-					login
-				</a>
-                </li>
-            </ul>
+					<li class="t-center"></li>
+				</ul>
+	</aside>
 
-    </aside>
-
-
-    <!-- Title Page -->
-<section class="bg-title-page flex-c-m p-t-160 p-b-80 p-l-15 p-r-15" style="background-image: url(images/마들렌.png);min-height: 17em;">
-            Gallery
-        </h2>
-    </section>
+	<!-- Title Page -->
+		<section class="bg-title-page flex-c-m p-t-160 p-b-80 p-l-15 p-r-15" style="background-image: url(images/마들렌.png);min-height: 17em;">
+		<h2 class="tit6 t-center">STORE</h2>
+	</section>
+	
 
 
 

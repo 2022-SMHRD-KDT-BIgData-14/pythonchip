@@ -98,7 +98,7 @@
 
 								<li><a href="Store.jsp">store</a></li>
 
-								<li><a href=" BoardMain.jsp">Community</a></li>
+								<li><a href="BoardMain.jsp">Community</a></li>
 
 								<li><a href="JoinStore.jsp">store join</a></li>
 
@@ -111,12 +111,16 @@
 					<div class="social flex-w flex-l-m p-r-20">
 						<li>
 							<!--  로그인 이메일 출력! --> <%
- if (info != null) {
- %>
-							<p id="loginid"><%=info.getId()%>님 환영합니다 !
-							</p> <%
- } else {
- %> <a href="Login.jsp" style="padding-right: 20px;"> login </a>
+						 if (info != null) {
+						 %> <a href="./Mypage.jsp" style="padding-right: 20px;"> MyPage
+						</a>
+						<li><a href="LogoutService.do" style="padding-left: 20px;">
+								Logout </a></li>
+
+						<%
+						} else {
+						%>
+						<a href="Login.jsp" style="padding-right: 20px;"> login </a>
 						<li><a href="Join.jsp" style="padding-left: 20px;"> join
 						</a></li>
 						<%
