@@ -41,3 +41,5 @@ select * from Store where keyword
 
 select * from user_table
 
+select * from review
+
