@@ -13,7 +13,8 @@
 	%>
 	<form action="DeleteService.do">
 		<input type="hidden" name="id" value="<%=info.getId()%>">
-		비밀번호 : <input type="password" name="pw"><br> <input
+		비밀번호 : <input type="password" name="pw"><br> 
+		<input
 			type="submit" value="삭제하기">
 	</form>
 </body>

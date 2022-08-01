@@ -21,8 +21,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from user_table
 	</select>
 	
-	<delete id="delete" parameterType="String">
-		delete from user_table where id=#{id}
+	<delete id="delete" parameterType="MemberDTO">
+		delete from user_table where id=#{id} and pw=#{pw}
 	</delete>
 
 

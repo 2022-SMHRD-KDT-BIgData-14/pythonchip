@@ -2,6 +2,7 @@ package com.pythonchip.controller;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.pythonchip.command.Command;
 import com.pythonchip.model.MemberDAO;
@@ -17,8 +18,7 @@ public class DeleteService implements Command{
 	
 		System.out.println(id);
 		System.out.println(pw);
-		
-		MemberDTO dto = new MemberDTO(id,pw); 
+		MemberDTO dto = new MemberDTO(id,pw);
 		int row = new MemberDAO().delete(dto);
 		
 		String moveURL = null;
