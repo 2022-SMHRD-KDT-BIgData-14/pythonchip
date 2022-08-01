@@ -179,22 +179,19 @@
 						<p style="text-align: left; font-size: 12px; color: #666">ID</p> <input
 						type="text" placeholder="아이디를 입력하세요" class="size" name="id"
 						maxlength="20" style="width: 420px;"> <!-- <input type="submit" value="확인"> -->
-					</label> 
+					</label><br>
 					
 					<label> <!-- PW -->
 						<p style="text-align: left; font-size: 12px; color: #666">Password</p>
 						<input type="password" placeholder="비밀번호를 입력하세요" name="pw"
 						class="size" maxlength="20" style="width: 420px;"> 
 						</label><br><label>
-						<input type="password" placeholder="비밀번호 확인" name="checkpw"
-						class="size" maxlength="20" style="width: 420px;"> 
-					</label> 
 					
 					<!-- 나이 -->
 					<label>
 						<p style="text-align: left; font-size: 12px; color: #666">Age</p>
 						<input type="text" placeholder="나이를 입력하세요" name="age" class="size" style="width: 420px;"> 
-					</label> 
+					</label> <br>
 					
 					<!-- 전화번호 -->
 					<label>
