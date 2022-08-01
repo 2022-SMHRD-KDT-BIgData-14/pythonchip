@@ -41,3 +41,17 @@ select * from Store where keyword
 
 select * from user_table
 
+select * from board
+
+--게시판 초기화
+truncate table board
+
+--게시판 시퀀스 삭제
+DROP SEQUENCE board_seq
+
+--게시판 시퀀스 생성
+create sequence board_seq
+start with 1
+increment by 1
+
+
