@@ -15,7 +15,6 @@ import oracle.sql.TIMESTAMP;
 
 public class ReviewService implements Command {
 
-	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
 
 		System.out.println("[ReviewService]");
