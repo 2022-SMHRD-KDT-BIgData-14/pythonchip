@@ -1,16 +1,13 @@
-<!--회원가입-->
-
-<<<<<<< HEAD
-<%@page import="java.util.ArrayList"%>
-<%@page import="com.pythonchip.model.StoreDTO"%>
-<%@page import="com.pythonchip.model.StoreDAO"%>
+<%@page import="com.pythonchip.model.MemberDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
-    <title>Contact</title>
+<meta charset="UTF-8">
+<title>Forty by HTML5 UP</title>
+<meta charset="utf-8" />
+<title>Contact</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--===============================================================================================-->
@@ -41,8 +38,8 @@
     <link rel="stylesheet" type="text/css" href="css/util.css">
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <!--===============================================================================================-->
-</head>
 
+</head>
 <body class="animsition">
 
   
@@ -164,97 +161,93 @@
             review
         </h2>
     </section>
-
-
-
-    <!-- 게시판 작성 폼 -->
-    <div id="con">
-        <div id="login">
-            <div id="join_form">
-                <!--게시판 작성 폼-->
-                <form action="JoinService.do" method="post">
+<!--==*==*==*==*==*==*==*==*==*==*==*==*==*==*==*==*==*==*==*==*==*==*==*==*==*==*==*==*==*==*==*==*==*==*==*==*==*==*==*==*==*==*==*==*==*==  -->
+<% MemberDTO info = (MemberDTO)session.getAttribute("info"); %>
+<!-- 게시판 작성 폼 -->
+	<div id="con">
+		<div id="login">
+			<div id="join_form">
+				게시판 작성 폼
+				<form action="BoardService.do" method="post" enctype="multipart/form-data">
 					<h3 class="login" style="letter-spacing: -1px;">글 작성</h3>
 
 					<hr>
-					<label> <!-- 사진 -->
-						<p style="text-align: left; font-size: 12px; color: #666">사진</p> 
-						<td><input type="file" name="filename" maxlength="20" style="width: 420px;" > </td>
-						 <!-- <input type="submit" value="확인"> -->
-					</label> 
-					
-					<label> <!-- 제목 -->
-						<p style="text-align: left; font-size: 12px; color: #666">제목</p>
-						<input type="text" placeholder="제목 작성" name="pw"
-						class="size" maxlength="20" style="width: 420px;"> 
-						</label><br>
-						<label><!-- 작성자 -->
-						<p style="text-align: left; font-size: 12px; color: #666">작성자</p>
-						<input type="text" placeholder="작성자" name="checkpw"
-						class="size" maxlength="20" style="width: 420px;"> 
-					</label> 
-					
-					<!-- 내용 -->
+					<label> 사진 <input type="file" name="filename">
+					</label> <label> 제목
+						<p style="text-align": left; font-size: 12px; color: #666></p> 
+						<input type="text" placeholder="제목 작성" name="title" class="size"
+						maxlength="20" style="width: 420px;">
+					</label><br> 
 					<label>
-						<p style="text-align: left; font-size: 12px; color: #666">내용</p>
-						<textarea rows="10" name = "content" type="text" class="size" style="width: 420px; height:266px;"></textarea> 
-					</label> 
-					
-=======
-<div id = "board">
+<!-- 						작성자
+						<p style="text-align: left; font-size: 12px; color: #666">작성자</p>
+						<input type="hidden" placeholder="작성자" name="writer" class="size"
+						maxlength="20" style="width: 420px;"> -->
+					</label>
+					<li><input type="hidden" name = "writer" value=<%=info.getId() %>></li>
+					내용
+					<label>
+						<p style="text-align: left; font-size: 12px; color: #666">내용</p> 
+						<textarea rows="10" name="content" type="text" class="size" style="width: 420px; height: 266px;"></textarea>
+					</label>
+						<input type="reset" value="초기화"> 
+						<input type="submit" value="작성하기">
+			
+					</form>
+			</div>
+		</div>
+	</div>
+
+
+
+
+	<!-- <div id = "board">
 				<form action="BoardService.do" method="post" enctype="multipart/form-data">
-				<!-- enctype="multipart/form-data" -->
->>>>>>> branch 'master' of https://github.com/2022-SMHRD-KDT-BIgData-14/pythonchip.git
+		
 				
-					
-				
-
-                <p class="find">
-                <input type="reset" value="초기화">
-                    <span><a href="Login.jsp" type="submit" >작성하기</a></span>
-                </p>
-            
-            </div>
-            <div>
-            </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+				<table id="list">
+					<tr>
+						<td>사진</td>
+						<td><input type="file" name="filename" > </td>
+					</tr>
+					<tr>
+						<td>제목</td>
+						<td><input type="text" name="title" > </td>
+					</tr>
+					<tr>
+						<td>작성자</td>
+						<td><input  type="text" name="writer"> </td>
+					</tr>
+					<tr>
+						<td colspan="2">내용</td>
+					</tr>
+					<tr>
+						<td colspan="2">
+							<textarea  rows="10" name = "content" style="resize: none;"></textarea>			
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2">
+							<input type="reset" value="초기화">
+							<input type="submit" value="작성하기">
+						</td>
+					</tr>
+				</table>
+				</form>
+			</div> -->
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+<!--==*==*==*==*==*==*==*==*==*==*==*==*==*==*==*==*==*==*==*==*==*==*==*==*==*==*==*==*==*==*==*==*==*==*==*==*==*==*==*==*==*==*==*==*==*==  -->			
+			
             <!-- Back to top -->
             <div class="btn-back-to-top bg0-hov" id="myBtn">
                 <span class="symbol-btn-back-to-top">
@@ -295,5 +288,4 @@
             <script src="js/main.js"></script>
 
 </body>
-
 </html>

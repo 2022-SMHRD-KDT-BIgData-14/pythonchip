@@ -41,8 +41,8 @@ public class BoardService implements Command {
 			String title = multi.getParameter("title");
 			String writer = multi.getParameter("writer");
 			// (파일을 불러올 때 한글은 인코딩)
-			String content = multi.getParameter("content");
 			String filename = URLEncoder.encode(multi.getFilesystemName("filename"),"UTF-8") ;
+			String content = multi.getParameter("content");
 			
 			System.out.println("title : " + title);
 			System.out.println("writer : " + writer);
