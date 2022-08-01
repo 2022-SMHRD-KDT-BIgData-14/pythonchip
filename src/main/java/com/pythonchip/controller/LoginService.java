@@ -11,7 +11,6 @@ import com.pythonchip.model.MemberDTO;
 public class LoginService implements Command{
 	
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
-		
 	System.out.println("loginservice");
 	
 	String id = request.getParameter("id");
@@ -28,10 +27,11 @@ public class LoginService implements Command{
 	if(info != null) {
 		HttpSession session = request.getSession();
 		session.setAttribute("info", info);
+		return "./Home.jsp";
 	}else {
 		System.out.println("로그인 실패");
+		return "./Fail.jsp";
 	}
-	return "./Home.jsp";
 	
 	
 	}
