@@ -42,9 +42,10 @@ public class StoreService implements Command {
 		if(row==1) {
 			System.out.println("가게등록 성공");
 			// Main.jsp
-			moveURL = "./Home.jsp";
+			return "./Home.jsp";
+		}else {
+			return "./Fail.jsp";
 		}
-		return moveURL;
 	}
 
 }

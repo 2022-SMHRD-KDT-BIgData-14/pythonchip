@@ -32,10 +32,11 @@ public class updateService implements Command{
 			System.out.println("회원정보 수정 완료");
 			HttpSession session = request.getSession();
 			session.setAttribute("info", dto);
+			return "./Home.jsp";
 		} else {
 			System.out.println("회원정보수정 실패");
+			return "./Fail.jsp";
 		}
 		
-		return "./Home.jsp";
 	}
 }
