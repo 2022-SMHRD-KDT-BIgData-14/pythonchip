@@ -13,15 +13,14 @@
 <head>
 <title>Home</title>
 <style>
- #loginid{
-            color :white;
-            font-family: Montserrat;
-            letter-spacing : 2px;
-            font-size: 14px;
-            
-            /* 글꼴 변경 = font-family */
-        }
+#loginid {
+	color: white;
+	font-family: Montserrat;
+	letter-spacing: 2px;
+	font-size: 14px;
 
+	/* 글꼴 변경 = font-family */
+}
 </style>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -73,7 +72,7 @@
 </head>
 
 <body class="animsition">
-<%
+	<%
 	MemberDTO info = (MemberDTO) session.getAttribute("info");
 	%>
 
@@ -108,17 +107,18 @@
 						</nav>
 					</div>
 
-						<!-- 상단 로그인, 회원가입 -->
-						<div class="social flex-w flex-l-m p-r-20">
+					<!-- 상단 로그인, 회원가입 -->
+					<div class="social flex-w flex-l-m p-r-20">
 						<li>
-							<!--  로그인 이메일 출력! --> 
-							<% if (info != null) { %> 
-						<p id="loginid"><%=info.getId()%>님 환영합니다 !</p>
-							<%
-						 } else {
-						 %>
-						<a href="Login.jsp" style="padding-right: 20px;"> login </a>
-						<li><a href="Join.jsp" style="padding-left: 20px;"> join </a></li>
+							<!--  로그인 이메일 출력! --> <%
+ if (info != null) {
+ %>
+							<p id="loginid"><%=info.getId()%>님 환영합니다 !
+							</p> <%
+ } else {
+ %> <a href="Login.jsp" style="padding-right: 20px;"> login </a>
+						<li><a href="Join.jsp" style="padding-left: 20px;"> join
+						</a></li>
 						<%
 						}
 						%>
@@ -158,18 +158,26 @@
 					<li class="t-center m-b-13"><a href=" BoardMain.jsp"
 						class="txt19">Community</a></li>
 
-					<li class="t-center m-b-13"><a href="Mypage.jsp" class="txt19">my
-							page</a></li>
-
-
 					<li class="t-center m-b-13"><a href="JoinStore.jsp"
 						class="txt19">StoreJoin</a></li>
-
-					<li class="t-center">
-						<!-- 슬라이드바 로그인 --> <a href="Login.jsp"
+					<!--  로그인했을때면 mypage 뜨게하기 -->
+					<%
+					if (info != null) {
+					%>
+					<li class="t-center m-b-13"><a href="Mypage.jsp" class="txt19">my
+							page</a></li>
+					<%
+					} else {
+					%>
+					<!-- 슬라이드바 로그인 -->
+					<a href="Login.jsp"
 						class="btn3 flex-c-m size13 txt11 trans-0-4 m-l-r-auto"> login
 					</a>
-					</li>
+					<%
+					}
+					%>
+
+					<li class="t-center"></li>
 				</ul>
 	</aside>
 
