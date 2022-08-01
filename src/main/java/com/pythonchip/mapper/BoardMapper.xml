@@ -7,7 +7,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.pythonchip.mapper.BoardMapper">
 
 	<insert id="insertBoard" parameterType="BoardDTO">
-		insert into board values(board_seq.nextval, #{writer},#{title},#{content},sysdate,#{filename})
+		insert into board values(board_seq.nextval,#{writer},#{title},#{content},sysdate,#{filename})
 	</insert>
 	
 	<select id="showBoard" parameterType="BoardDTO" resultType="BoardDTO">

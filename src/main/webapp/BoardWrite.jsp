@@ -16,7 +16,7 @@
 <body>
 
 <div id = "board">
-				<form action="BoardService.do" method="post" >
+				<form action="BoardService.do" method="post" enctype="multipart/form-data">
 				<!-- enctype="multipart/form-data" -->
 				
 				<table id="list">
