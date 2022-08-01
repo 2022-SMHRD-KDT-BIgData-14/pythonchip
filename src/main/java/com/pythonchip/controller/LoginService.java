@@ -9,8 +9,11 @@ import com.pythonchip.model.MemberDAO;
 import com.pythonchip.model.MemberDTO;
 
 public class LoginService implements Command{
+	
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
-		System.out.println("loginservice");
+		
+	System.out.println("loginservice");
+	
 	String id = request.getParameter("id");
 	String pw = request.getParameter("pw");
 	System.out.println("id"+id);
@@ -25,11 +28,9 @@ public class LoginService implements Command{
 	if(info != null) {
 		HttpSession session = request.getSession();
 		session.setAttribute("info", info);
-		
-		return "./Update.jsp";
+		return "./Main.jsp";
 	}else {
 		System.out.println("로그인 실패");
-		return "./Main.jsp";
 	}
 	
 	

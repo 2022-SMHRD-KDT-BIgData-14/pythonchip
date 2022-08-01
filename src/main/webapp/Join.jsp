@@ -1,4 +1,10 @@
 <!--회원가입-->
+
+<%@page import="java.util.ArrayList"%>
+<%@page import="com.pythonchip.model.StoreDTO"%>
+<%@page import="com.pythonchip.model.StoreDAO"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -165,71 +171,51 @@
         <div id="login">
             <div id="join_form">
                 <!--회원가입 폼-->
-                <form>
-                    <h3 class="login" style="letter-spacing:-1px;">맛난거 먹고 싶으면 합류해~</h3>
+                <form action="JoinService.do" method="post">
+					<h3 class="login" style="letter-spacing: -1px;">회원가입</h3>
 
-
-
-                    <hr>
-
-                    <!-- <span>ID</span> -->
-                    <p style="text-align: center; font-size:12px; color:#666"> gender</p>
-                    <select class="size num1" style="width:400px">
-                        <option value="1" selected>남성</option>
-                        <option value="2" selected>여성</option>
-                        <option value="3" selected>성별을 골라주세요!</option>
-                    </select>
-
-
-                    </label>
-                    <!--아이디-->
-                    <p style="text-align: center; font-size:12px; color:#666">ID</p>
-
-                    <input type="text" placeholder="ID" class="size" style="width:400px">
-                    <p></p>
-
-
-                    <label>
-              <!--비밀번호-->
-            <p style="text-align: center; font-size:12px; color:#666">Password </p>
-            <input type="password" placeholder="비밀번호" class="size" style="width:400px">
-            </label>
-
-
-                    <label>
-                <!-- 비밀번호 확인 -->
-                <p style="text-align: left; font-size:12px; color:#666"> </p>
-                <input type="password" placeholder="비밀번호 확인" class="size" style="width:400px">
-            </label>
-
-
-                    <label>
-                <!-- 전화번호 -->
-            <p style="text-align: center; font-size:12px; color:#666">Mobile Phone</p>
-              
-                <input placeholder="-빼고 숫자만 입력"  class="size num2"  style="width:400px">
-             </label>
-
-
-
-                    <label>
-                    <!-- 나이입력-->
-                <p style="text-align: center; font-size:12px; color:#666">age</p>
-                    <input type="text" placeholder="몇살이세용?(숫자만 입력)" class="size" style="width:400px">
-            </label>
-
-
-
-                    <!--회원가입 버튼-->
-                    <p>
-                        <input type="submit" value="회원가입" class="btn">
-                    </p>
-                </form>
-
+					<hr>
+					<label> <!-- ID -->
+						<p style="text-align: left; font-size: 12px; color: #666">ID</p> <input
+						type="text" placeholder="아이디를 입력하세요" class="size" name="id"
+						maxlength="20" style="width: 420px;"> <!-- <input type="submit" value="확인"> -->
+					</label> 
+					
+					<label> <!-- PW -->
+						<p style="text-align: left; font-size: 12px; color: #666">Password</p>
+						<input type="password" placeholder="비밀번호를 입력하세요" name="pw"
+						class="size" maxlength="20" style="width: 420px;"> 
+						</label><br><label>
+						<input type="password" placeholder="비밀번호 확인" name="checkpw"
+						class="size" maxlength="20" style="width: 420px;"> 
+					</label> 
+					
+					<!-- 나이 -->
+					<label>
+						<p style="text-align: left; font-size: 12px; color: #666">Age</p>
+						<input type="text" placeholder="나이를 입력하세요" name="age" class="size" style="width: 420px;"> 
+					</label> 
+					
+					<!-- 전화번호 -->
+					<label>
+						<p style="text-align: left; font-size: 12px; color: #666">Mobile Phone</p>
+						<input type="text" placeholder="- 빼고 숫자만 입력" name="user_tel" class="size" style="width: 420px;"> 
+					</label> <br><br>
+					
+					<!-- 성별 -->
+					<label> <input type="radio" name="gender" autocomplete="off" value="남자"  checked>
+					<p style="text-align: left; font-size: 12px; color: #666"> 남자</p>
+					</label> 
+					<label> <input type="radio" name="gender"  autocomplete="off" value="여자" checked><p style="text-align: left; font-size: 12px; color: #666"> 여자</p></label> 
+					<p>
+						<input type="submit" value="회원가입" class="btn">
+					</p>
+				</form>
 
                 <p class="find">
                     <span><a href="Login.jsp" >로그인 페이지로 이동</a></span>
                 </p>
+            
             </div>
             <div>
             </div>
