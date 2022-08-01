@@ -99,7 +99,7 @@
 
 								<li><a href="Store.jsp">store</a></li>
 
-								<li><a href=" Community.jsp">Community</a></li>
+								<li><a href=" BoardMain.jsp">Community</a></li>
 
 								<li><a href="JoinStore.jsp">store join</a></li>
 
@@ -155,7 +155,7 @@
 					<li class="t-center m-b-13"><a href="Store.jsp" class="txt19">store</a>
 					</li>
 
-					<li class="t-center m-b-13"><a href=" Community.jsp"
+					<li class="t-center m-b-13"><a href=" BoardMain.jsp"
 						class="txt19">Community</a></li>
 
 					<li class="t-center m-b-13"><a href="Mypage.jsp" class="txt19">my
