@@ -153,12 +153,13 @@
 		<div id="login">
 			<div id="bye_form">
 				<%
-				MemberDTO info = (MemberDTO) session.getAttribute("info");
+				MemberDTO info = (MemberDTO) session.getAttribute("info"); 
+				System.out.println(info.getId());
 				%>
 				<form action="DeleteService.do" method="post">
 					<h3 class="login" style="letter-spacing: -1px;">회원탈퇴</h3>
 					<hr>
-					<input type="hidden" name="id" value=" <%=info.getId()%>">
+					<input type="hidden" name="id" value="<%=info.getId()%>">
 					<label> <!--현재 비밀번호-->
 						<p style="text-align: center; font-size: 12px; color: #666">탈퇴사유
 						</p> <input type="text" placeholder="탈퇴사유를 적어주세요" class="size"

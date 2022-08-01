@@ -41,9 +41,9 @@ public int update(MemberDTO dto) {
 	return row;
 }
 
-public int delete(MemberDTO dto) {
+public int deleteMember(MemberDTO dto) {
 	SqlSession session = sqlsessionFactory.openSession(true);
-	int row = session.delete("delete",dto);
+	int row = session.delete("deleteMember",dto);
 	session.close();
 	
 	return row;

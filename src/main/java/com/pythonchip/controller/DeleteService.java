@@ -15,11 +15,9 @@ public class DeleteService implements Command{
 		
 		String id = request.getParameter("id");
 		String pw = request.getParameter("pw");
-	
-		System.out.println(id);
-		System.out.println(pw);
+
 		MemberDTO dto = new MemberDTO(id,pw);
-		int row = new MemberDAO().delete(dto);
+		int row = new MemberDAO().deleteMember(dto);
 		
 		String moveURL = null;
 		if(row == 1) {
