@@ -102,7 +102,6 @@
 
 								<li><a href="JoinStore.jsp">store join</a></li>
 
-
 							</ul>
 						</nav>
 					</div>
