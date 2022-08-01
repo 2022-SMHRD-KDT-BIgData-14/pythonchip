@@ -66,7 +66,7 @@ public class BoardService implements Command {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return "./BoardMain.jsp";
+		return "./Community.jsp";
 		
 		
 		

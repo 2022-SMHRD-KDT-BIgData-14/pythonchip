@@ -8,6 +8,8 @@ import com.pythonchip.command.Command;
 import com.pythonchip.model.StoreDAO;
 import com.pythonchip.model.StoreDTO;
 
+
+
 public class StoreService implements Command {
 
 	@Override
@@ -30,7 +32,7 @@ public class StoreService implements Command {
 
 		 
 		// DTO로 묶기 
-		StoreDTO dto = new StoreDTO(null, store_name, location_gu, location_dong, null, main_menu, store_tel, null, null, store_tel, keyword);
+		StoreDTO dto = new StoreDTO(null, store_name, location_gu, location_dong, null, main_menu, store_tel, null, null, null, keyword);
 		
 		// insertBoard 메소드 호출
 		int row = new StoreDAO().insertStore(dto);
@@ -39,11 +41,8 @@ public class StoreService implements Command {
 		String moveURL = null;
 		if(row==1) {
 			System.out.println("가게등록 성공");
-			moveURL = "./StoreSuccess.jsp";
-			}else {
-			System.out.println("가게등록 실패");
 			// Main.jsp
-			moveURL = "./Main.jsp";
+			moveURL = "./Home.jsp";
 		}
 		return moveURL;
 	}

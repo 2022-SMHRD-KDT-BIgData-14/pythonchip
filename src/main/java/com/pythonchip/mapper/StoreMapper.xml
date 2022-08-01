@@ -31,4 +31,9 @@ select * from Store where store_seq in
 select * from Store where keyword LIKE'%${value}%'
 </select>
 
+<!-- 가게 등록 서비스 - 김재현  -->
+<insert id="insertStore"  parameterType="StoreDTO">
+	insert into Store values(menu_seq.nextval,#{store_name},#{location_gu},#{location_dong},0,#{main_menu},#{store_tel},0,0,#{keyword})
+</insert>
+
 </mapper>

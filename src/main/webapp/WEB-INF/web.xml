@@ -8,7 +8,7 @@
 		<servlet-name>SqlSessionManager</servlet-name>
 		<display-name>SqlSessionManager</display-name>
 		<description></description>
-		<servlet-class>com.pythonch.db.SqlSessionManager</servlet-class>
+		<servlet-class>com.pythonchip.db.SqlSessionManager</servlet-class>
 	</servlet>
 	<servlet>
 		<servlet-name>MapService</servlet-name>
