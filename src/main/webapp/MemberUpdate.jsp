@@ -59,6 +59,20 @@
 </head>
 
 <body class="animsition" id="body">
+<%
+	//어디서 요청이 들어왔는지 확인
+			String requstURI = request.getRequestURI();
+			String contextPath = request.getContextPath();
+			String result = requstURI.substring(contextPath.length() + 1);
+			System.out.println("요청 서블릿: " + result); 
+			
+			if(result.equals("./MemberUpdate.jsp")){%>
+			<script>
+			alert('잘못된 정보입니다. 다시 시도해주세요.')
+			</script>
+			<%	
+			}
+			%>
 	<%
 	MemberDTO info = (MemberDTO) session.getAttribute("info");
 	%>

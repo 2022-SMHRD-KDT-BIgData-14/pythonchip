@@ -10,6 +10,7 @@ import com.pythonchip.model.MemberDTO;
 public class JoinService implements Command{
 	
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
+		try {
 		System.out.println("Joinservice");
 		
 		
@@ -30,21 +31,17 @@ public class JoinService implements Command{
 		int row = new MemberDAO().join(dto);
 		
 		
-		
 		String moveURL = null;
 		if(row == 1) {
 			System.out.println("회원가입 성공");
 			request.setAttribute("id", id);
-			moveURL = "./Login.jsp";
+			return "./Login.jsp";
 		}else {
-			System.out.println("회원가입 실패");
-			moveURL = "./Fail.jsp";
+			return "./Join.jsp";			
 		}
-		
-		
-		
-		return moveURL;
-		
+		}catch(Exception e){
+			return "./Join.jsp";			
+		}
 		
 		
 	}

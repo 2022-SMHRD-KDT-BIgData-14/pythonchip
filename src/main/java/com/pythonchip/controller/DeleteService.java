@@ -22,6 +22,8 @@ public class DeleteService implements Command{
 		String moveURL = null;
 		if(row == 1) {
 			System.out.println("회원 탈퇴 완료");
+			HttpSession session = request.getSession();
+			session.removeAttribute("info");
 			moveURL = "./Home.jsp";
 		}else {
 			System.out.println("회원 탈퇴 실패");

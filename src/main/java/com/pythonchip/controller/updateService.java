@@ -10,7 +10,7 @@ import com.pythonchip.model.MemberDTO;
 
 public class updateService implements Command{
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
-		
+		try {
 		System.out.println("updateService");
 		
 		String id = request.getParameter("id");
@@ -35,7 +35,9 @@ public class updateService implements Command{
 			return "./Home.jsp";
 		} else {
 			System.out.println("회원정보수정 실패");
-			return "./Fail.jsp";
+			return "./MemberUpdate.jsp";
+		}}catch(Exception e) {
+			return "./MemberUpdate.jsp";
 		}
 	}
 }

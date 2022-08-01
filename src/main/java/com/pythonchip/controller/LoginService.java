@@ -8,32 +8,32 @@ import com.pythonchip.command.Command;
 import com.pythonchip.model.MemberDAO;
 import com.pythonchip.model.MemberDTO;
 
-public class LoginService implements Command{
-	
+public class LoginService implements Command {
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
-	System.out.println("loginservice");
-	
-	String id = request.getParameter("id");
-	String pw = request.getParameter("pw");
-	System.out.println(id);
-	System.out.println(pw);
-	
-	MemberDTO dto = new MemberDTO(id,pw);
-	
-	MemberDTO info = new MemberDAO().login(dto);
-	
-	System.out.println(info);
-	
-	if(info != null) {
-		HttpSession session = request.getSession();
-		session.setAttribute("info", info);
-		return "./Home.jsp";
-	}else {
-		System.out.println("로그인 실패");
-		return "./Fail.jsp";
-	}
-	
-	
+		try {
+			System.out.println("loginservice");
+
+			String id = request.getParameter("id");
+			String pw = request.getParameter("pw");
+			System.out.println(id);
+			System.out.println(pw);
+
+			MemberDTO dto = new MemberDTO(id, pw);
+
+			MemberDTO info = new MemberDAO().login(dto);
+
+			System.out.println(info);
+
+			if (info != null) {
+				HttpSession session = request.getSession();
+				session.setAttribute("info", info);
+				return "./Home.jsp";
+			}else {
+				return "./Login.jsp";
+			}
+		} catch (Exception e) {
+			return "./Login.jsp";
+		}
 	}
 
 }
