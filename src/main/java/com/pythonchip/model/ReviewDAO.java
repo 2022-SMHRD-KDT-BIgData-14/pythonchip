@@ -1,6 +1,5 @@
 package com.pythonchip.model;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 
 import org.apache.ibatis.session.SqlSession;
@@ -24,9 +23,9 @@ public class ReviewDAO {
 	}
 	
 	// 리뷰 조회
-	public ArrayList<ReviewDTO> showReview(BigDecimal seq) {
+	public ArrayList<ReviewDTO> showReview() {
 		SqlSession session = sqlSessionFactory.openSession(true);
-		ArrayList<ReviewDTO> review_list = (ArrayList)session.selectList("showReview",seq);
+		ArrayList<ReviewDTO> review_list = (ArrayList)session.selectList("showReview");
 		session.close();
 		
 		return review_list;

@@ -1,5 +1,6 @@
 <!-- 회원가입 수정 -->
 
+<%@page import="com.pythonchip.model.MemberDTO"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.pythonchip.model.StoreDTO"%>
 <%@page import="com.pythonchip.model.StoreDAO"%>
@@ -10,6 +11,12 @@
 
 <head>
 <title>Contact</title>
+<style>
+#body {
+	font-family: Montserrat;
+}
+}
+</style>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->
@@ -51,8 +58,10 @@
 <!--===============================================================================================-->
 </head>
 
-<body class="animsition">
-
+<body class="animsition" id="body">
+	<%
+	MemberDTO info = (MemberDTO) session.getAttribute("info");
+	%>
 	<!-- Header -->
 	<header>
 		<!-- Header desktop -->
@@ -144,7 +153,7 @@
 	<!-- 상단 -->
 	<section class="bg-title-page flex-c-m p-t-160 p-b-80 p-l-15 p-r-15"
 		style="background-image: url(images/기장떡.png);">
-		<h2 class="tit6 t-center">회원가입수정</h2>
+		<h2 class="tit6 t-center">회원정보수정</h2>
 	</section>
 	<!-- 회원정보 수정 창 -->
 
@@ -153,46 +162,39 @@
 			<div id="join_form">
 				<!--회원가입 수정 폼-->
 				<form action="updateService.do" method="post">
-					<h3 class="login" style="letter-spacing: -1px;">뭘 바꾸고 싶으신가~?</h3>
-
+					<h3 class="login" style="letter-spacing: -1px;">회원정보수정</h3>
 					<hr>
-
-					<input type="hidden" name="id" value="<%=session.getAttribute("id") %>">
-					<label> 
-					<!--현재 비밀번호-->
-						<p style="text-align: center; font-size: 12px; color: #666"> 현재	비밀번호</p> 
-						<input type="password" placeholder="현재 비밀번호" name="pw" maxlength="20"class="size" style="width: 400px">
-					</label> 
-					<label> 
-					<!--비밀번호-->
-						<p style="text-align: center; font-size: 12px; color: #666">새비밀번호</p> 
-						<input type="password" placeholder="새 비밀번호" name="pw1" maxlength="20" class="size" style="width: 400px">
-					</label> 
-					<label> 
-					<!-- 비밀번호 확인 -->
-						<p style="text-align: left; font-size: 12px; color: #666"></p> 
-						<input type="password" placeholder="새 비밀번호 확인" name="pw1" maxlength="20" class="size" style="width: 400px">
-					</label> 
-					<label> 
-					<!-- 전화번호 -->
-						<p style="text-align: center; font-size: 12px; color: #666">MobilePhone</p> 
-						<input placeholder="-빼고 숫자만 입력" name="user_tel" class="size num2" style="width: 400px">
-					</label> 
-					<label> 
+					<input type="hidden" name="id"
+						value="<%=info.getId()%>"> <label>
+						<!--비밀번호-->
+						<p style="text-align: center; font-size: 12px; color: #666">새비밀번호</p>
+						<input type="password" placeholder="새 비밀번호" name="rpw"
+						maxlength="20" class="size" style="width: 400px">
+					</label> <br>
 					<!-- 나이입력-->
-						<p style="text-align: center; font-size: 12px; color: #666">age</p>
-						<input type="text" placeholder="(숫자만 입력)" name="age" class="size" style="width: 400px">
-					</label>
-
-					<!--회원정보 수정 버튼-->
-					<p>
-						<input type = "submit" value ="회원정보수정" class="btn">
-					</p>
+					<p style="text-align: center; font-size: 12px; color: #666">age</p>
+					<input type="text" placeholder="(숫자만 입력)" name="age" class="size"
+						style="width: 400px"> </label> <label> <!-- 전화번호 -->
+						<p style="text-align: center; font-size: 12px; color: #666">MobilePhone</p>
+						<input placeholder="-빼고 숫자만 입력" name="user_tel" class="size num2"
+						style="width: 400px">
+					</label><br>
+					<br>
+					<!-- 성별 -->
+					<label> <input type="radio" name="gender"
+						autocomplete="off" value="남자" checked>
+						<p style="text-align: left; font-size: 12px; color: #666">남자</p>
+					</label> <label> <input type="radio" name="gender"
+						autocomplete="off" value="여자" checked>
+						<p style="text-align: left; font-size: 12px; color: #666">여자</p></label>
+				<p>
+					<input type="submit" value="회원정보수정" class="btn">
+				</p>
 				</form>
+				<!--회원정보 수정 버튼-->
+				<!-- 취소 -->
 				<p class="find">
 					<span><a href="Mypage.jsp">취소</a></span>
-					<!-- 취소 -->
-
 
 					<!-- 회원탈퇴 -->
 					<label>

@@ -168,10 +168,9 @@
     <div id="con">
         <div id="login">
             <div id="bye_form">
-                <form action="DeleteService.do" method="post">
+                <form>
 
                     <hr>
-                    <input type="hidden" name="id" value="<%=session.getAttribute("id") %>">
 
                     <label>
 						<!--현재 비밀번호-->
@@ -183,11 +182,11 @@
                     <label>
 		  <!--비밀번호-->
 		<p style="text-align: center; font-size:12px; color:#666"> 비밀번호 </p>
-		<input type="password" placeholder="비밀번호 입력" name="pw" class="size" style="width:400px">
+		<input type="password" placeholder="비밀번호 입력" class="size" style="width:400px">
 		</label>
                     <!--회원탈퇴 버튼-->
                     <p>
-                        <input type="submit" value="회원탈퇴" class="btn">
+                        <a href="MemeberUpdage.jsp" type="submit" class="btn">회원탈퇴</a>
                     </p>
                 </form>
                 <p class="find">

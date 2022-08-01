@@ -5,11 +5,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.pythonchip.mapper.ReviewMapper">
 	
 	<insert id="insertReview" parameterType="ReviewDTO">
-		insert into review values(review_seq.nextval,#{store_seq},#{id},sysdate,#{rev_content},#{grade})
+		insert into review values(review_seq.nextval,5,'test',sysdate,#{rev_content},20)
 	</insert>
 	
 	<select id="showReview" resultType="ReviewDTO">
-		select * from review where store_seq=#{seq}
+		select * from review where store_seq=4
 	</select>
 	
 </mapper>

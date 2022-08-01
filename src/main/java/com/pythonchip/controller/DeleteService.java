@@ -16,20 +16,16 @@ public class DeleteService implements Command{
 		String pw = request.getParameter("pw");
 	
 		System.out.println(id);
-		System.out.println(pw);
 		
 		MemberDTO dto = new MemberDTO(id,pw); 
 		int row = new MemberDAO().delete(dto);
 		
-		String moveURL = null;
 		if(row == 1) {
 			System.out.println("회원 탈퇴 완료");
-			moveURL = "./Home.jsp";
 		}else {
 			System.out.println("회원 탈퇴 실패");
-			moveURL = "./MemberDelete.jsp";
 		}
 		
-		return moveURL;
+		return "./Main.jsp";
 	}	
 }

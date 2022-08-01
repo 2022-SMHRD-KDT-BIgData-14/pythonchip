@@ -1,5 +1,4 @@
 
-<%@page import="com.pythonchip.model.MemberDTO"%>
 <%@page import="com.pythonchip.model.ReviewDAO"%>
 <%@page import="com.pythonchip.model.ReviewDTO"%>
 <%@page import="java.util.ArrayList"%>
@@ -11,29 +10,6 @@
 <html lang="en">
 <head>
 <title>Blog Detail</title>
-<style>
-#list {
-	width: 100%;
-	text-align: center;
-	font-family: Montserrat;
-}
-
-#tr1 {
-	font-weight: bold;
-	text-align: center;
-	font-family: Montserrat;
-}
-
-#tr2 {
-	text-align: center;
-	font-family: Montserrat;
-}
-
-#submit{
-	text-align: right;
-	font-family: Montserrat;
-}
-</style>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->
@@ -75,9 +51,6 @@
 <!--===============================================================================================-->
 </head>
 <body class="animsition">
-	<%
-	MemberDTO info = (MemberDTO) session.getAttribute("info");
-	%>
 	<%
 	String id = request.getParameter("id");
 	if (id == null)
@@ -225,104 +198,83 @@
 
 		<div class="container">
 			<br>
-			<div class="col-md-8 col-lg-9">
-				<div class="p-t-80 p-b-124 bo5-r p-r-50 h-full p-r-0-md bo-none-md">
-					<!-- Block4 -->
-					<div class="blo4 p-b-63">
-						<div class="text-blo4 p-t-33">
-							<h2 class="p-b-16">
-								<a class="tit9"><%=dto.getStore_name()%></a>
-							</h2>
-							<div class="txt32 flex-w p-b-24">
-								<span> <%=dto.getLocation_gu()%> <span
-									class="m-r-6 m-l-4">|</span>
-								</span> <span> <%=dto.getLocation_dong()%> <span
-									class="m-r-6 m-l-4">|</span>
-								</span> <span> ★ <%=dto.getStore_grade()%> <span
-									class="m-r-6 m-l-4">|</span>
-								</span> <span> <%=dto.getStore_tel()%>
-								</span>
+				<div class="col-md-8 col-lg-9">
+					<div class="p-t-80 p-b-124 bo5-r p-r-50 h-full p-r-0-md bo-none-md">
+						<!-- Block4 -->
+						<div class="blo4 p-b-63">
+								<div class="text-blo4 p-t-33">
+								<h2 class="p-b-16">
+									<a class="tit9"><%=dto.getStore_name()%></a>
+								</h2>
+								<div class="txt32 flex-w p-b-24">
+									<span> <%=dto.getLocation_gu()%> <span
+										class="m-r-6 m-l-4">|</span>
+									</span> <span> <%=dto.getLocation_dong()%> <span
+										class="m-r-6 m-l-4">|</span>
+									</span> <span> ★ <%=dto.getStore_grade()%> <span
+										class="m-r-6 m-l-4">|</span>
+									</span> <span> <%=dto.getStore_tel()%>
+									</span>
+								</div>
 							</div>
-						</div>
-						<div class="pic-blo4 hov-img-zoom bo-rad-10 pos-relative">
-							<a href="blog-detail.html"> <img src="images/blog-05.jpg"
-								alt="IMG-BLOG">
-							</a>
+							<div class="pic-blo4 hov-img-zoom bo-rad-10 pos-relative">
+								<a href="blog-detail.html"> <img src="images/blog-05.jpg"
+									alt="IMG-BLOG">
+								</a>
 							<!-- - -->
-							<br> <br> <br> <br> <br> <br>
+							<br><br>
+								<div><h4><%=dto.getStore_name()%> 후기</h4></div><br><br>
+								
+								
+								 	<% ArrayList<ReviewDTO>review_list = new ReviewDAO().showReview(); %>
+	<div id="review">
+		<table id="list">
+			<tr>
+				<td></td>
+				<td>한줄 리뷰</td>
+				<td></td>
+				<td>id</td>
+				<td>별점</td>
+			</tr>
 
+			<tr>
+				<% for(int i=0;i<review_list.size();i++){ %>
+				<td><%= i+1%></td>
+				<td><a> <%= review_list.get(i).getRev_content()%>
+				</a></td>
+				<td></td>
+				<td><%= review_list.get(i).getId()%></td>
+				<td><%= review_list.get(i).getGrade()%></td>
+			</tr>
+			<%} %>
+		</table> 
 
+	</div>
+	<div id="board">
+		<form action="ReviewService.do" method="post">
+			<table id="list">
+				<tr>
+					<td><input type="text" name="rev_content"> 					
+					<td><input type="text" name="grade">
+					<input type="submit" value="작성하기"></td></td>
+				</tr>
 
-							<div>
-								<h4><%=dto.getStore_name()%>
-									후기
-								</h4>
-							</div>
-							<br>
-							<%
-							ArrayList<ReviewDTO> review_list = new ReviewDAO().showReview(dto.getStore_seq());
-							%>
-							<div id="review">
-								<table id="list" border=3>
-									<tr id=tr1>
-										<td>번호</td>
-										<td>id</td>
-										<td>별점</td>
-										<td >review</td>
-									</tr>
-
-									<tr>
-										<%
-										int i = 0;
-										for (i = 0; i < review_list.size(); i++) {
-										%>
-										<td><%=i + 1%></td>
-										<td><%=review_list.get(i).getId()%></td>
-										<td><%=review_list.get(i).getGrade()%></td>
-										<td ><%=review_list.get(i).getRev_content()%></td>
-									</tr>
-									<%
-									}
-									%>
-									<li>
-										<!--  로그인했을때만 후기 작성 가능 --> <%
-										 if (info != null) {
-										 %>
-										<form action="ReviewService.do" method="post">
-											<tr id=tr2>
-												<td><%=i + 1%></td>
-												<td>
-												<input type="hidden" name="id" value=<%=info.getId() %>><%=info.getId() %>
-												<input type="hidden" name="store_seq" value=<%=dto.getStore_seq().toString()%>>
-												</td>
-												<td><input type="text" onkeypress="checkNumber();" placeholder="별점을 입력해주세요" name="grade"></td>
-												<td><input type="text" placeholder="내용을 입력해주세요" name="rev_content"><input id=submit type="submit" value="작성하기"></td>
-											</tr>
-										</form> <%
- }
- %>
-									
-								</table>
-
-							</div>
-
-
-
-							<br> <br> <br> <br> <br> <br>
-
-
-
-
-							<div>
-								<h4><%=dto.getStore_name()%>
-									위치
-								</h4>
-							</div>
-							<br>
-							<div id="map" style="width: 100%; height: 350px;"></div>
-							<script type="text/javascript"
-								src="//dapi.kakao.com/v2/maps/sdk.js?appkey=2f8c752aae632b4c611274927d3bbb6a"></script>
-							<script>
+			</table>
+		</form>
+	</div>
+								
+								
+								
+								
+								
+								
+								
+								<br><br><br><br><br><br>
+								<div><h4><%=dto.getStore_name()%> 위치</h4></div><br>
+								<div id="map" style="width: 100%; height: 350px;"></div>
+								<script type="text/javascript"
+									src="//dapi.kakao.com/v2/maps/sdk.js?appkey=2f8c752aae632b4c611274927d3bbb6a"></script>
+								<script>
 								    <!-- 지도 만들어주기 -->
 									var mapContainer = document
 											.getElementById('map'), // 지도를 표시할 div 
@@ -365,41 +317,42 @@
 									marker.setMap(map);
 								</script>
 
+							</div>
 						</div>
+
+						<!-- Leave a comment -->
+						<form class="leave-comment p-t-10">
+							<h4 class="txt33 p-b-14">Reservation</h4>
+
+							<p>가게 예약을 원하신다면 정보를 입력해주세요 *</p>
+
+							<textarea
+								class="bo-rad-10 size29 bo2 txt10 p-l-20 p-t-15 m-b-10 m-t-40"
+								name="commentent" placeholder="Comment..."></textarea>
+
+							<div class="size30 bo2 bo-rad-10 m-t-3 m-b-20">
+								<input class="bo-rad-10 sizefull txt10 p-l-20" type="text"
+									name="name" placeholder="예약자 성함 *">
+							</div>
+
+							<div class="size30 bo2 bo-rad-10 m-t-3 m-b-20">
+								<input class="bo-rad-10 sizefull txt10 p-l-20" type="text"
+									name="email" placeholder="예약 일시 * ex) 2022-00-00"> 
+							</div>
+
+							<div class="size30 bo2 bo-rad-10 m-t-3 m-b-30">
+								<input class="bo-rad-10 sizefull txt10 p-l-20" type="text"
+									name="website" placeholder="예약자 전화번호">
+							</div>
+
+							<!-- Button3 -->
+							<button type="submit"
+								class="btn3 flex-c-m size31 txt11 trans-0-4">예약</button>
+						</form>
 					</div>
-
-					<!-- Leave a comment -->
-					<form class="leave-comment p-t-10">
-						<h4 class="txt33 p-b-14">Reservation</h4>
-
-						<p>가게 예약을 원하신다면 정보를 입력해주세요 *</p>
-
-						<textarea
-							class="bo-rad-10 size29 bo2 txt10 p-l-20 p-t-15 m-b-10 m-t-40"
-							name="commentent" placeholder="Comment..."></textarea>
-
-						<div class="size30 bo2 bo-rad-10 m-t-3 m-b-20">
-							<input class="bo-rad-10 sizefull txt10 p-l-20" type="text"
-								name="name" placeholder="예약자 성함 *">
-						</div>
-
-						<div class="size30 bo2 bo-rad-10 m-t-3 m-b-20">
-							<input class="bo-rad-10 sizefull txt10 p-l-20" type="text"
-								name="email" placeholder="예약 일시 * ex) 2022-00-00">
-						</div>
-
-						<div class="size30 bo2 bo-rad-10 m-t-3 m-b-30">
-							<input class="bo-rad-10 sizefull txt10 p-l-20" type="text"
-								name="website" placeholder="예약자 전화번호">
-						</div>
-
-						<!-- Button3 -->
-						<button type="submit" class="btn3 flex-c-m size31 txt11 trans-0-4">예약</button>
-					</form>
 				</div>
-			</div>
 
-
+				
 		</div>
 	</section>
 
