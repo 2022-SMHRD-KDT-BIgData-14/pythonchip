@@ -269,7 +269,13 @@
 			}
 			%>
 			<!-- <a href="Main.jsp"><button id="writer">홈으로가기</button></a>  -->
+			<%if (info != null) {%>
 			<a href="BoardWrite.jsp"><button id="writer">작성하러가기</button></a>
+			<%}else {%>
+			<a href="Login.jsp"><button id="writer">작성하러가기</button></a>
+			<%
+			}
+			%>
 
 			<!-- 경계 --><!-- 경계 --><!-- 경계 --><!-- 경계 --><!-- 경계 --><!-- 경계 --><!-- 경계 --><!-- 경계 --><!-- 경계 --><!-- 경계 --><!-- 경계 --><!-- 경계 -->
 
