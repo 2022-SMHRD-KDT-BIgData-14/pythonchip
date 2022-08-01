@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<%@page import="com.pythonchip.model.MemberDTO"%>
 <%@page import="org.apache.ibatis.reflection.SystemMetaObject"%>
 <%@page import="com.pythonchip.model.BoardDAO"%>
 <%@page import="com.pythonchip.model.BoardDTO"%>
@@ -50,7 +51,9 @@
 <!--===============================================================================================-->
 </head>
 <body class="animsition">
-	<<<<<<< HEAD
+<%
+	MemberDTO info = (MemberDTO) session.getAttribute("info");
+	%>
 	<!-- Header -->
 	<header>
 		<!-- Header desktop -->
@@ -84,10 +87,24 @@
 
 					<!-- 상단 로그인, 회원가입 -->
 					<div class="social flex-w flex-l-m p-r-20">
-						<li><a href="Login.jsp" style="padding-right: 20px;">
-								login </a></li>
+												<li>
+							<!--  로그인 이메일 출력! --> <%
+						 if (info != null) {
+						 %> <a href="./Mypage.jsp" style="padding-right: 20px;"> MyPage
+						</a>
+						<li><a href="LogoutService.do" style="padding-left: 20px;">
+								Logout </a></li>
+
+						<%
+						} else {
+						%>
+						<a href="Login.jsp" style="padding-right: 20px;"> login </a>
 						<li><a href="Join.jsp" style="padding-left: 20px;"> join
 						</a></li>
+						<%
+						}
+						%>
+						</li>
 
 
 						<button class="btn-show-sidebar m-l-33 trans-0-4"></button>
@@ -120,21 +137,29 @@
 					<li class="t-center m-b-13"><a href="Store.jsp" class="txt19">store</a>
 					</li>
 
-					<li class="t-center m-b-13"><a href=" Community.jsp"
+					<li class="t-center m-b-13"><a href=" BoardMain.jsp"
 						class="txt19">Community</a></li>
-
-					<li class="t-center m-b-13"><a href="Mypage.jsp" class="txt19">my
-							page</a></li>
-
 
 					<li class="t-center m-b-13"><a href="JoinStore.jsp"
 						class="txt19">StoreJoin</a></li>
-
-					<li class="t-center">
-						<!-- 슬라이드바 로그인 --> <a href="Login.jsp"
+					<!--  로그인했을때면 mypage 뜨게하기 -->
+					<%
+					if (info != null) {
+					%>
+					<li class="t-center m-b-13"><a href="Mypage.jsp" class="txt19">my
+							page</a></li>
+					<%
+					} else {
+					%>
+					<!-- 슬라이드바 로그인 -->
+					<a href="Login.jsp"
 						class="btn3 flex-c-m size13 txt11 trans-0-4 m-l-r-auto"> login
 					</a>
-					</li>
+					<%
+					}
+					%>
+
+					<li class="t-center"></li>
 				</ul>
 	</aside>
 
