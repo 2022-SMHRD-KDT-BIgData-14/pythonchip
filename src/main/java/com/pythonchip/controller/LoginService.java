@@ -16,8 +16,8 @@ public class LoginService implements Command{
 	
 	String id = request.getParameter("id");
 	String pw = request.getParameter("pw");
-	System.out.println("id"+id);
-	System.out.println("pw"+pw);
+	System.out.println(id);
+	System.out.println(pw);
 	
 	MemberDTO dto = new MemberDTO(id,pw);
 	
@@ -28,10 +28,10 @@ public class LoginService implements Command{
 	if(info != null) {
 		HttpSession session = request.getSession();
 		session.setAttribute("info", info);
-		return "./Main.jsp";
 	}else {
 		System.out.println("로그인 실패");
 	}
+	return "./Home.jsp";
 	
 	
 	}
