@@ -35,10 +35,10 @@ public class JoinService implements Command{
 		if(row == 1) {
 			System.out.println("회원가입 성공");
 			request.setAttribute("id", id);
-			moveURL = "./JoinSuccess.jsp";
+			moveURL = "./Login.jsp";
 		}else {
 			System.out.println("회원가입 실패");
-			moveURL = "./Main.jsp";
+			moveURL = "./Join.jsp";
 		}
 		
 		
