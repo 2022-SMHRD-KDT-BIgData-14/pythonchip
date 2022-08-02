@@ -45,6 +45,18 @@ $("input[type='checkbox']").change(function(){ // 체크박스에 변화가 생�
 		
 
 		for(var i =0; i<arr3.length; i++){
+			
+			var imageStr = null;
+			var hrefStr= "http://localhost:8081/pythonchip/DetailStore.jsp?store_seq="+arr3[i].store_seq;
+			 if(arr3[i].keyword=="전통차"){
+	            	 imageStr = "http://localhost:8081/pythonchip/images/전통차2.JPG";
+	             }else if(arr3[i].keyword=="식혜" || arr3[i].keyword=="쑥"|| arr3[i].keyword=="떡"|| arr3[i].keyword=="막걸리"){
+	            	 imageStr = "http://localhost:8081/pythonchip/images/"+arr3[i].keyword+".jpg";
+	             }
+	             else{
+	            	 imageStr = "http://localhost:8081/pythonchip/images/"+arr3[i].keyword+".JPG";
+	             }
+			
 			// 커스텀 오버레이에 표시할 컨텐츠 입니다
 			// 커스텀 오버레이는 아래와 같이 사용자가 자유롭게 컨텐츠를 구성하고 이벤트를 제어할 수 있기 때문에
 			// 별도의 이벤트 메소드를 제공하지 않습니다
@@ -56,12 +68,12 @@ $("input[type='checkbox']").change(function(){ // 체크박스에 변화가 생�
 		            '        </div>' +
 		            '        <div class="body">' +
 		            '            <div class="img">' +
-		            '                <img src="https://cfile181.uf.daum.net/image/250649365602043421936D" width="73" height="70">' +
+		            '                <img src='+imageStr+' width="73" height="70">' +
 		            '           </div>' +
 		            '            <div class="desc">' +
 		            '                <div class="ellipsis">'+arr3[i].location_gu+'</div>' +
 		            '                <div class="jibun ellipsis">'+arr3[i].location_dong+'</div>' +
-		            '                <div><a href="https://www.kakaocorp.com/main" target="_blank" class="link">홈페이지</a></div>' +
+		            '                <div><a href='+hrefStr+' target="_blank" class="link">홈페이지</a></div>' +
 		            '            </div>' +
 		            '        </div>' +
 		            '    </div>' +
@@ -83,7 +95,7 @@ $("input[type='checkbox']").change(function(){ // 체크박스에 변화가 생�
             {
                 return function(){
 
-
+					closeOverlay()
                     _overlay = new kakao.maps.CustomOverlay({
                     title : overlay.title,
                     content: overlay.content,

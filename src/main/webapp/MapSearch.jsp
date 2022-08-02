@@ -1,3 +1,4 @@
+<%@page import="com.pythonchip.model.MemberDTO"%>
 <%@page import="java.lang.reflect.Array"%>
 <%@page import="org.apache.ibatis.reflection.SystemMetaObject"%>
 <%@page import="com.google.gson.Gson"%>
@@ -12,7 +13,7 @@
 <html lang="en">
 
 <head>
-<title>Gallery</title>
+<title>Map Search</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->
@@ -336,7 +337,7 @@ ul, li {
 	display: block;
 	background: #f8f8f8;
 	color: #000;
-	padding: 0 30px;
+	padding: 0 55px;
 	line-height: 46px;
 	text-decoration: none;
 	font-size: 16px;
@@ -351,13 +352,15 @@ ul, li {
 	border: 1px solid #ddd;
 	border-top: none;
 	width: inherit;
-    height: 95%;
+	height: 95%;
 }
-#placesList{
-    width: inherit;
-    height: 86%;
-    overflow-y: scroll;
+
+#placesList {
+	width: inherit;
+	height: 86%;
+	overflow-y: scroll;
 }
+
 #placesList li {
 	list-style: none;
 }
@@ -487,28 +490,36 @@ ul, li {
 	color: #777;
 }
 
-#tab01{
-}
-#tab02{
-width: inherit;
-    height:inherit;
-}
-.option{
-    padding: 0em 5em;
-}
-#keyword{
-border: solid !important;
-    border-radius: 0.6em;
+#tab01 {
+	font-size: 20px;
+    text-align: center;
+    font-family: 'Montserrat';
 }
 
+#tab02 {
+	width: inherit;
+	height: inherit;
+}
+
+.option {
+	padding: 0em 5em;
+}
+
+#keyword {
+	border: solid !important;
+	border-radius: 0.6em;
+}
 </style>
 </head>
 
 <body class="animsition">
-<!-- 카카오 api -->
-<script type="text/javascript"
-src="//dapi.kakao.com/v2/maps/sdk.js?appkey=2f8c752aae632b4c611274927d3bbb6a"></script>
-			
+<%
+	MemberDTO info = (MemberDTO) session.getAttribute("info");
+	%>
+	<!-- 카카오 api -->
+	<script type="text/javascript"
+		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=2f8c752aae632b4c611274927d3bbb6a"></script>
+
 	<!-- Header -->
 	<header>
 		<!-- Header desktop -->
@@ -542,10 +553,24 @@ src="//dapi.kakao.com/v2/maps/sdk.js?appkey=2f8c752aae632b4c611274927d3bbb6a"></
 
 					<!-- 상단 로그인, 회원가입 -->
 					<div class="social flex-w flex-l-m p-r-20">
-						<li><a href="Login.jsp" style="padding-right: 20px;">
-								login </a></li>
+						<li>
+							<!--  로그인 이메일 출력! --> <%
+						 if (info != null) {
+						 %> <a href="./Mypage.jsp" style="padding-right: 20px;">
+														MyPage </a>
+						<li><a href="LogoutService.do" style="padding-left: 20px;">
+								Logout </a></li>
+
+						<%
+						} else {
+						%>
+						<a href="Login.jsp" style="padding-right: 20px;"> login </a>
 						<li><a href="Join.jsp" style="padding-left: 20px;"> join
 						</a></li>
+						<%
+						}
+						%>
+						</li>
 
 
 						<button class="btn-show-sidebar m-l-33 trans-0-4"></button>
@@ -562,8 +587,6 @@ src="//dapi.kakao.com/v2/maps/sdk.js?appkey=2f8c752aae632b4c611274927d3bbb6a"></
 
 
 		<div class="gallery-sidebar t-center p-l-60 p-r-60 p-b-40">
-			<!-- 슬라이드바 구성  -->
-
 			<ul class="menu-sidebar p-t-95 p-b-70">
 				<li class="t-center m-b-13"><a href="Home.jsp" class="txt19">로고</a>
 				</li>
@@ -578,40 +601,57 @@ src="//dapi.kakao.com/v2/maps/sdk.js?appkey=2f8c752aae632b4c611274927d3bbb6a"></
 					<li class="t-center m-b-13"><a href="Store.jsp" class="txt19">store</a>
 					</li>
 
-					<li class="t-center m-b-13"><a href=" Community.jsp"
+					<li class="t-center m-b-13"><a href="BoardMain.jsp"
 						class="txt19">Community</a></li>
-
-					<li class="t-center m-b-13"><a href="Mypage.jsp" class="txt19">my
-							page</a></li>
-
 
 					<li class="t-center m-b-13"><a href="JoinStore.jsp"
 						class="txt19">StoreJoin</a></li>
-
-					<li class="t-center">
-						<!-- 슬라이드바 로그인 --> <a href="Login.jsp"
+					<!--  로그인했을때면 mypage 뜨게하기 -->
+					<%
+					if (info != null) {
+					%>
+					<li class="t-center m-b-13"><a href="Mypage.jsp" class="txt19">my
+							page</a></li>
+					<%
+					} else {
+					%>
+					<!-- 슬라이드바 로그인 -->
+					<a href="Login.jsp"
 						class="btn3 flex-c-m size13 txt11 trans-0-4 m-l-r-auto"> login
 					</a>
-					</li>
+					<%
+					}
+					%>
+
+					<li class="t-center"></li>
 				</ul>
 	</aside>
 
 	<!-- Title Page -->
-	<section class="bg-title-page flex-c-m p-t-160 p-b-80 p-l-15 p-r-15"
-		style="background-image: url(images/마들렌.png);">
-		<h2 class="tit6 t-center">store</h2>
+	<section  class="bg-title-page flex-c-m p-t-160 p-b-80 p-l-15 p-r-15"
+		style="background-image: url(images/블루베리.JPG);">
+		
+		<h2 class="tit6 t-center">Map search</h2>
 	</section>
-
-
-
+	
+	
+	
+	
 	<!-- Gallery -->
-	<div class="kakaomap">
+	<div class="kakaomap" style="margin-left: 18em; margin-right: 18em;">
+		<div class="bread-crumb bo5-b p-t-17 p-b-17">
+			<div class="container">
+				<a href="./Home.jsp" class="txt27"> Home  </a> <span
+					class="txt29 m-l-10 m-r-10">/</span> <a href="blog.html"
+					class="txt27"> Map search </a> 
+			</div>
+		</div>
 		<form>
 			<!-- 1. 검색창 -->
 			<input id=input type="text" maxlength="50"><br> <br>
 
 		</form>
-		<div class="map_wrap">
+		<div class="map_wrap" radius=20%>
 			<div id="map"
 				style="width: 100%; height: 100%; position: relative; overflow: hidden;"></div>
 			<!-- 지도타입 컨트롤 div 입니다 -->
@@ -630,44 +670,40 @@ src="//dapi.kakao.com/v2/maps/sdk.js?appkey=2f8c752aae632b4c611274927d3bbb6a"></
 			</div>
 
 
-			<div id="custom_map_controller">
+			<div id="custom_map_controller" >
 				<div class="tab">
-					<ul class="tabnav">
-						<li><a href="#tab01">탭1</a></li>
-						<li><a href="#tab02">탭2</a></li>
+					<ul class="tabnav" >
+						<li ><a href="#tab01" style="font-family:Montserrat; font-weight: bold;">키워드로 찾기</a></li>
+						<li ><a href="#tab02" style="font-family:Montserrat; font-weight: bold; ">검색어로 찾기</a></li>
 					</ul>
 					<div class="tabcontent">
 						<div id="tab01">
 
 							<!-- 2. check box -->
-							<span>흑임자</span> <input id=k1 type="checkbox" name="k1"
-								value="흑임자"> <span>쑥</span> <input id=k2 type="checkbox"
-								name="keyword" value="쑥"> <span>인절미</span> <input id=k3
-								type="checkbox" name="keyword" value="인절미"> <span>식혜</span>
-							<input id=k4 type="checkbox" name="keyword" value="식혜"> <span>말차</span>
-							<input id=k5 type="checkbox" name="keyword" value="말차"><br>
-							<span>미숫가루</span> <input id=k6 type="checkbox" name="keyword"
-								value="미숫가루"> <span>누룽지</span> <input id=k7
-								type="checkbox" name="keyword" value="누룽지"> <span>달고나</span>
-							<input id=k8 type="checkbox" name="keyword" value="달고나">
-							<span>팥</span> <input id=k9 type="checkbox" name="keyword"
-								value="팥"> <span>떡</span><input id=k10 type="checkbox"
-								name="keyword" value="떡"><br> <span>흑염소</span> <input
-								id=k11 type="checkbox" name="keyword" value="흑염소"> <span>전통차</span>
-							<input id=k12 type="checkbox" name="keyword" value="전통차">
-							<span>양갱</span> <input id=k13 type="checkbox" name="keyword"
-								value="양갱"> <span>약과</span> <input id=k14
-								type="checkbox" name="keyword" value="약과"> <span>한과</span>
-							<input id=k15 type="checkbox" name="keyword" value="한과"><br>
-							<span>한방</span> <input id=k16 type="checkbox" name="keyword"
-								value="힌방"><br> <br> <br>
-
+							<br><br>
+							<span>흑임자</span> <input id=k1 type="checkbox" name="k1" value="흑임자">
+							<span>쑥</span> <input id=k2 type="checkbox" name="keyword" value="쑥">
+							<span>인절미</span> <input id=k3 type="checkbox" name="keyword" value="인절미"> 
+							<span>식혜 </span><input id=k4 type="checkbox" name="keyword" value="식혜">
+							<span>말차</span>	<input id=k5 type="checkbox" name="keyword" value="말차"> <br>
+							<span>미숫가루</span> <input id=k6 type="checkbox" name="keyword"	value="미숫가루">
+							<span>누룽지</span> <input id=k7				type="checkbox" name="keyword" value="누룽지">
+							 <span>달고나</span>				<input id=k8 type="checkbox" name="keyword" value="달고나">
+							<span>팥 </span> <input id=k9 type="checkbox" name="keyword"							value="팥">
+							 <span>떡 </span><input id=k10 type="checkbox"				name="keyword" value="떡"> <br> 
+							 <span>흑염소</span> <input			id=k11 type="checkbox" name="keyword" value="흑염소">
+							 <span>전통차</span>		<input id=k12 type="checkbox" name="keyword" value="전통차">
+							 <span>양갱</span> <input id=k13 type="checkbox" name="keyword"		value="양갱"> 
+							 <span>약과</span> <input id=k14		type="checkbox" name="keyword" value="약과">
+							 <span>한과</span>		<input id=k15 type="checkbox" name="keyword" value="한과">
+							<span>한방</span> <input id=k16 type="checkbox" name="keyword"value="힌방">
 						</div>
 						<div id="tab02">
 							<div class="option">
 								<div>
-									<form class="formSearch" onsubmit="searchPlaces();return false;">
-										키워드 ▷ <input type="text" value="광" id="keyword" size="15">
+									<form class="formSearch"
+										onsubmit="searchPlaces();return false;">
+										키워드 ▷ <input type="text" placeholder="검색어를 입력해주세요" id="keyword" size="15">
 										<button type="submit">검색하기</button>
 									</form>
 								</div>
@@ -675,7 +711,6 @@ src="//dapi.kakao.com/v2/maps/sdk.js?appkey=2f8c752aae632b4c611274927d3bbb6a"></
 							<hr>
 							<ul id="placesList"></ul>
 							<div id="pagination"></div>
-
 						</div>
 					</div>
 				</div>
@@ -751,25 +786,7 @@ src="//dapi.kakao.com/v2/maps/sdk.js?appkey=2f8c752aae632b4c611274927d3bbb6a"></
 		</div>
 
 
-		<!-- Sign up -->
-		<div class="section-signup bg1-pattern p-t-85 p-b-85">
-			<form class="flex-c-m flex-w flex-col-c-m-lg p-l-5 p-r-5">
-				<span class="txt5 m-10"> Specials Sign up </span>
-
-				<div
-					class="wrap-input-signup size17 bo2 bo-rad-10 bgwhite pos-relative txt10 m-10">
-					<input class="bo-rad-10 sizefull txt10 p-l-20" type="text"
-						name="email-address" placeholder="Email Adrress"> <i
-						class="fa fa-envelope ab-r-m m-r-18" aria-hidden="true"></i>
-				</div>
-
-				<!-- Button3 -->
-				<button type="submit"
-					class="btn3 flex-c-m size18 txt11 trans-0-4 m-10">Sign-up</button>
-			</form>
-		</div>
-
-
+<br><br><br><br><br><br><br><br>		
 		<!-- Footer -->
 		<footer class="bg1">
 			<div class="container p-t-40 p-b-70">
@@ -963,12 +980,11 @@ src="//dapi.kakao.com/v2/maps/sdk.js?appkey=2f8c752aae632b4c611274927d3bbb6a"></
 			src="vendor/isotope/isotope.pkgd.min.js"></script>
 		<!--===============================================================================================-->
 		<script type="text/javascript" src="js/main.js"></script>
-		<!-- keywordSearch, mapmain 충돌 해결  -->
 		<script type="text/javascript" src="js/mapMain.js"></script>
 
-		
+
 		<!-- <script type="text/javascript" src="js/keyWordSearch"></script> -->
-		
+
 		<script>
 
 $('.bg-title-page').css({'min-height': '0px'})
@@ -1129,10 +1145,12 @@ function displayPlaces(places) {
 //검색결과 항목을 Element로 반환하는 함수입니다
 function getListItem(index, places) {
 
+ var hrefStr= "http://localhost:8081/pythonchip/DetailStore.jsp?store_seq="+places.store_seq;
+
  var el = document.createElement('li'),
  itemStr = '<span class="markerbg marker_' + (index+1) + '"></span>' +
              '<div class="info">' +
-             '   <h5>' + places.store_name+ '</h5>';
+             '   <h5><a href='+hrefStr+' > ' + places.store_name+ '</a></h5>';
 
  if (places.location_dong) {
      itemStr += '    <span>' + places.location_dong + places.location_gu + '</span>';
@@ -1208,7 +1226,6 @@ function displayPagination(pagination) {
  }
  paginationEl.appendChild(fragment);
 }
-
 //검색결과 목록 또는 마커를 클릭했을 때 호출되는 함수입니다
 //인포윈도우에 장소명을 표시합니다
 function displayInfowindow(marker, title) {

@@ -82,9 +82,16 @@
 	<%
 	// 게시글을 식별할 수 있는 고유한 번호
 	String seq =request.getParameter("store_seq");
+	String name =request.getParameter("store_name");
 	System.out.println(seq);
 	
-	StoreDTO dto = new StoreDAO().getStoreOne(seq);
+	StoreDTO dto = null;
+	if(seq!=null){
+	 dto = new StoreDAO().getStoreOne(seq);
+	}else if(name!=null){
+	 dto = new StoreDAO().getStoreOne(seq);
+		
+	}
 	%>
 	
 	<!-- Header -->
