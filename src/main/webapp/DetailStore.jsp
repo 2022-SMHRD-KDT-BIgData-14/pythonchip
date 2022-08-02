@@ -104,30 +104,39 @@
 					<div class="wrap_menu p-l-45 p-l-0-xl">
 						<nav class="menu">
 							<ul class="main_menu">
-								<li><a href="index.html">Home</a></li>
+									<li><a href="Home.jsp">Home</a></li>
 
-								<li><a href="menu.html">Menu</a></li>
+								<li><a href="MapSearch.jsp">map search</a></li>
 
-								<li><a href="reservation.html">Reservation</a></li>
+								<li><a href="Store.jsp">store</a></li>
 
-								<li><a href="gallery.html">Gallery</a></li>
+								<li><a href="BoardMain.jsp">Community</a></li>
 
-								<li><a href="about.html">About</a></li>
-
-								<li><a href="blog.html">Blog</a></li>
-
-								<li><a href="contact.html">Contact</a></li>
+								<li><a href="JoinStore.jsp">store join</a></li>
 							</ul>
 						</nav>
 					</div>
 
 					<!-- Social -->
 					<div class="social flex-w flex-l-m p-r-20">
-						<a href="#"><i class="fa fa-tripadvisor" aria-hidden="true"></i></a>
-						<a href="#"><i class="fa fa-facebook m-l-21"
-							aria-hidden="true"></i></a> <a href="#"><i
-							class="fa fa-twitter m-l-21" aria-hidden="true"></i></a>
+						<li>
+							<!--  로그인 이메일 출력! --> <%
+						 if (info != null) {
+						 %> <a href="./Mypage.jsp" style="padding-right: 20px;">
+														MyPage </a>
+						<li><a href="LogoutService.do" style="padding-left: 20px;">
+								Logout </a></li>
 
+						<%
+						} else {
+						%>
+						<a href="Login.jsp" style="padding-right: 20px;"> login </a>
+						<li><a href="Join.jsp" style="padding-left: 20px;"> join
+						</a></li>
+						<%
+						}
+						%>
+						</li>
 						<button class="btn-show-sidebar m-l-33 trans-0-4"></button>
 					</div>
 				</div>
@@ -140,72 +149,47 @@
 		<!-- Button Hide sidebar -->
 		<button class="btn-hide-sidebar ti-close color0-hov trans-0-4"></button>
 
-		<!-- - -->
-		<ul class="menu-sidebar p-t-95 p-b-70">
-			<li class="t-center m-b-13"><a href="index.html" class="txt19">Home</a>
-			</li>
 
-			<li class="t-center m-b-13"><a href="menu.html" class="txt19">Menu</a>
-			</li>
-
-			<li class="t-center m-b-13"><a href="gallery.html" class="txt19">Gallery</a>
-			</li>
-
-			<li class="t-center m-b-13"><a href="about.html" class="txt19">About</a>
-			</li>
-
-			<li class="t-center m-b-13"><a href="blog.html" class="txt19">Blog</a>
-			</li>
-
-			<li class="t-center m-b-33"><a href="contact.html" class="txt19">Contact</a>
-			</li>
-
-			<li class="t-center">
-				<!-- Button3 --> <a href="reservation.html"
-				class="btn3 flex-c-m size13 txt11 trans-0-4 m-l-r-auto">
-					Reservation </a>
-			</li>
-		</ul>
-
-		<!-- - -->
 		<div class="gallery-sidebar t-center p-l-60 p-r-60 p-b-40">
-			<!-- - -->
-			<h4 class="txt20 m-b-33">Gallery</h4>
+			<ul class="menu-sidebar p-t-95 p-b-70">
+				<li class="t-center m-b-13"><a href="Home.jsp" class="txt19">로고</a>
+				</li>
+				<ul class="menu-sidebar p-t-95 p-b-70">
 
-			<!-- Gallery -->
-			<div class="wrap-gallery-sidebar flex-w">
-				<a class="item-gallery-sidebar wrap-pic-w"
-					href="images/photo-gallery-01.jpg" data-lightbox="gallery-footer">
-					<img src="images/photo-gallery-thumb-01.jpg" alt="GALLERY">
-				</a> <a class="item-gallery-sidebar wrap-pic-w"
-					href="images/photo-gallery-02.jpg" data-lightbox="gallery-footer">
-					<img src="images/photo-gallery-thumb-02.jpg" alt="GALLERY">
-				</a> <a class="item-gallery-sidebar wrap-pic-w"
-					href="images/photo-gallery-03.jpg" data-lightbox="gallery-footer">
-					<img src="images/photo-gallery-thumb-03.jpg" alt="GALLERY">
-				</a> <a class="item-gallery-sidebar wrap-pic-w"
-					href="images/photo-gallery-05.jpg" data-lightbox="gallery-footer">
-					<img src="images/photo-gallery-thumb-05.jpg" alt="GALLERY">
-				</a> <a class="item-gallery-sidebar wrap-pic-w"
-					href="images/photo-gallery-06.jpg" data-lightbox="gallery-footer">
-					<img src="images/photo-gallery-thumb-06.jpg" alt="GALLERY">
-				</a> <a class="item-gallery-sidebar wrap-pic-w"
-					href="images/photo-gallery-07.jpg" data-lightbox="gallery-footer">
-					<img src="images/photo-gallery-thumb-07.jpg" alt="GALLERY">
-				</a> <a class="item-gallery-sidebar wrap-pic-w"
-					href="images/photo-gallery-09.jpg" data-lightbox="gallery-footer">
-					<img src="images/photo-gallery-thumb-09.jpg" alt="GALLERY">
-				</a> <a class="item-gallery-sidebar wrap-pic-w"
-					href="images/photo-gallery-10.jpg" data-lightbox="gallery-footer">
-					<img src="images/photo-gallery-thumb-10.jpg" alt="GALLERY">
-				</a> <a class="item-gallery-sidebar wrap-pic-w"
-					href="images/photo-gallery-11.jpg" data-lightbox="gallery-footer">
-					<img src="images/photo-gallery-thumb-11.jpg" alt="GALLERY">
-				</a>
-			</div>
-		</div>
+
+					<li class="t-center m-b-13"><a href="MapSearch.jsp"
+						class="txt19">map search</a></li>
+
+
+
+					<li class="t-center m-b-13"><a href="Store.jsp" class="txt19">store</a>
+					</li>
+
+					<li class="t-center m-b-13"><a href="BoardMain.jsp"
+						class="txt19">Community</a></li>
+
+					<li class="t-center m-b-13"><a href="JoinStore.jsp"
+						class="txt19">StoreJoin</a></li>
+					<!--  로그인했을때면 mypage 뜨게하기 -->
+					<%
+					if (info != null) {
+					%>
+					<li class="t-center m-b-13"><a href="Mypage.jsp" class="txt19">my
+							page</a></li>
+					<%
+					} else {
+					%>
+					<!-- 슬라이드바 로그인 -->
+					<a href="Login.jsp"
+						class="btn3 flex-c-m size13 txt11 trans-0-4 m-l-r-auto"> login
+					</a>
+					<%
+					}
+					%>
+
+					<li class="t-center"></li>
+				</ul>
 	</aside>
-
 
 	<!-- Title Page -->
 	<section class="bg-title-page flex-c-m p-t-160 p-b-80 p-l-15 p-r-15"
@@ -218,11 +202,11 @@
 	<section>
 		<div class="bread-crumb bo5-b p-t-17 p-b-17">
 			<div class="container">
-				<a href="index.html" class="txt27"> Home </a> <span
+				<a href="./Home.jsp" class="txt27"> Home </a> <span
 					class="txt29 m-l-10 m-r-10">/</span> <a href="blog.html"
-					class="txt27"> Blog </a> <span class="txt29 m-l-10 m-r-10">/</span>
+					class="txt27"> Store </a> <span class="txt29 m-l-10 m-r-10">/</span>
 
-				<span class="txt29"> Cooking recipe delicious </span>
+				<span class="txt29"> StroeDetail </span>
 			</div>
 		</div>
 
@@ -247,8 +231,19 @@
 								</span>
 							</div>
 						</div>
+							<%
+			                 String str = null;
+			                 if(dto.getKeyword().equals("전통차")){
+			                	 str = "images/전통차2.JPG";
+			                 }else if(dto.getKeyword().equals("식혜") || dto.getKeyword().equals("쑥")|| dto.getKeyword().equals("떡")|| dto.getKeyword().equals("막걸리")){
+			                	 str = "images/"+dto.getKeyword()+".jpg";
+			                 }
+			                 else{
+			                	 str = "images/"+dto.getKeyword()+".JPG";
+			                 }
+			                 %>
 						<div class="pic-blo4 hov-img-zoom bo-rad-10 pos-relative">
-							<a href="blog-detail.html"> <img src="images/blog-05.jpg"
+							<a > <img src=<%=str %>
 								alt="IMG-BLOG">
 							</a>
 							<!-- - -->
@@ -327,8 +322,7 @@
 								src="//dapi.kakao.com/v2/maps/sdk.js?appkey=2f8c752aae632b4c611274927d3bbb6a"></script>
 							<script>
 								    <!-- 지도 만들어주기 -->
-									var mapContainer = document
-											.getElementById('map'), // 지도를 표시할 div 
+									var mapContainer = document.getElementById('map') // 지도를 표시할 div 
 									mapOption = {
 										center : new kakao.maps.LatLng(
 												<%=dto.getStore_x()%>,<%=dto.getStore_y()%>), // 지도의 중심좌표
@@ -345,8 +339,7 @@
 
 									// 지도에 컨트롤을 추가해야 지도위에 표시됩니다
 									// kakao.maps.ControlPosition은 컨트롤이 표시될 위치를 정의하는데 TOPRIGHT는 오른쪽 위를 의미합니다
-									map
-											.addControl(
+									map.addControl(
 													mapTypeControl,
 													kakao.maps.ControlPosition.TOPRIGHT);
 

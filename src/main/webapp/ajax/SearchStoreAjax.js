@@ -43,9 +43,22 @@ function AjaxKeyword(Keyword){
             data.forEach(element => {
                 
             console.log(element)
+
+             var imageStr = null;
+ 			 var hrefStr= "http://localhost:8081/pythonchip/DetailStore.jsp?store_seq="+element.store_seq;
+			 console.log(hrefStr)
+	
+             if(element.keyword=="전통차"){
+            	 imageStr = "http://localhost:8081/pythonchip/images/전통차2.JPG";
+             }else if(element.keyword=="식혜" || element.keyword=="쑥"|| element.keyword=="떡"|| element.keyword=="막걸리"){
+            	 imageStr = "http://localhost:8081/pythonchip/images/"+element.keyword+".jpg";
+             }
+             else{
+            	 imageStr = "http://localhost:8081/pythonchip/images/"+element.keyword+".JPG";
+             }
 			str = $("  <div class=\"item-gallery hov-img-zoom\">\r\n"
-				+ "      <img src=\"https://www.coffeebeankorea.com/data/menu/%EC%BD%9C%EB%93%9C%EB%B8%8C%EB%A3%A815_1.jpg\" class=\"card-img-top\" alt=\"...\">\r\n"
-				+ "                  <div class=\"overlay-item-gallery trans-0-10 flex-c-m\"><a class=\"btn-show-gallery flex-c-m fa fa-search\" href=\"https://www.coffeebeankorea.com/data/menu/%EC%BD%9C%EB%93%9C%EB%B8%8C%EB%A3%A815_1.jpg\"data-lightbox=\"gallery\"></a></div>"
+				+ "      <img src="+imageStr+" class=\"card-img-top\" alt=\"...\">\r\n"
+				+ "                  <div class=\"overlay-item-gallery trans-0-10 flex-c-m\"><a class=\"btn-show-gallery flex-c-m fa fa-search\" href="+hrefStr+"></a></div>"
 				+ "      <div><br>\r\n"
 				+ "        <h5> "+ element.store_name+" </h5>\r\n"
 				+ "        <p> 주소 : "+ element.location_dong+element.location_gu+"</p>\r\n"
@@ -101,11 +114,23 @@ function AjaxConGet(){
 			setTimeout(() => {
 
             data.forEach(element => {
-                
+            
             console.log(element)
+			 var imageStr = null;
+ 			 var hrefStr= "http://localhost:8081/pythonchip/DetailStore.jsp?store_seq="+element.store_seq;
+	
+             if(element.keyword=="전통차"){
+            	 imageStr = "http://localhost:8081/pythonchip/images/전통차2.JPG";
+             }else if(element.keyword=="식혜" || element.keyword=="쑥"|| element.keyword=="떡"|| element.keyword=="막걸리"){
+            	 imageStr = "http://localhost:8081/pythonchip/images/"+element.keyword+".jpg";
+             }
+             else{
+            	 imageStr = "http://localhost:8081/pythonchip/images/"+element.keyword+".JPG";
+             }
+
 			str = $("  <div class=\"item-gallery hov-img-zoom\">\r\n"
-				+ "      <img src=\"https://www.coffeebeankorea.com/data/menu/%EC%BD%9C%EB%93%9C%EB%B8%8C%EB%A3%A815_1.jpg\" class=\"card-img-top\" alt=\"...\">\r\n"
-				+ "                  <div class=\"overlay-item-gallery trans-0-10 flex-c-m\"><a class=\"btn-show-gallery flex-c-m fa fa-search\" href=\"https://www.coffeebeankorea.com/data/menu/%EC%BD%9C%EB%93%9C%EB%B8%8C%EB%A3%A815_1.jpg\"data-lightbox=\"gallery\"></a></div>"
+				+ "      <img src="+imageStr+" class=\"card-img-top\" alt=\"...\">\r\n"
+				+ "                  <div class=\"overlay-item-gallery trans-0-10 flex-c-m\"><a class=\"btn-show-gallery flex-c-m fa fa-search\" href="+hrefStr+"></a></div>"
 				+ "      <div>\r\n<br>"
 				+ "        <h5> "+ element.store_name+" </h5>\r\n"
 				+ "        <p> 주소 : "+ element.location_dong+element.location_gu+"</p>\r\n"

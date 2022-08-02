@@ -187,10 +187,9 @@
 
 	<!-- Title Page -->
 	<section class="bg-title-page flex-c-m p-t-160 p-b-80 p-l-15 p-r-15"
-		style="background-image: url(images/마들렌.png); min-height: 17em;">
+		style="background-image: url(images/마들렌.png);">
 		<h2 class="tit6 t-center">STORE</h2>
 	</section>
-
 
 
 
@@ -216,26 +215,24 @@
 					style="border: solid black; width: 4.3em; height: 2.5em; border-style: groove; border-radius: 0.7em;">검색</button>
 			</form>
 
-		</div>
+		</div><br>
 		<div style="margin-left: 9em; margin-right: 9em;">
 			<%
 			String[] keywordArr = {"식혜", "흑염소", "양갱", "막걸리", "인절미", "말차", "흑임자", "쑥", "한방", "미숫가루", "떡", "달고나", "전통차", "팥"};
 			%>
 			<%
-			String[] btnClassArr = {"red", "aqua", "goldenrod", "orangered", "violet", "purple", "green", "goldenrod", "orangered"};
-			%>
-			<%
 			int cnt = 0;
 			for (int i = 0; i < keywordArr.length; i++) {
-				if (btnClassArr.length - 1 <= cnt) {
+				if (keywordArr.length - 1 <= cnt) {
 					cnt = 0;
 			%><!-- <br> -->
 			<%
 			}
 			%>
 			<button type="button"
-				style="background-color:<%=btnClassArr[cnt++]%>;"
-				class="keywordBtn btn btn-outline-danger"><%=keywordArr[i]%></button>
+				style="background-color: #FFA46C; font-size: 20px; text-align: center;"
+				class="keywordBtn btn btn-outline-danger"
+				><%=keywordArr[i]%></button>
 			<%
 			}
 			%>
@@ -252,14 +249,21 @@
 
 			<div class="item-gallery isotope-item bo-red-10 hov-img-zoom">
 
-				<!-- <img src="https://www.coffeebeankorea.com/data/menu/%EC%BD%9C%EB%93%9C%EB%B8%8C%EB%A3%A815_1.jpg" class="card-img-top" alt="...">
-                   -->
-				<img src="images/photo-gallery-14.jpg" class="card-img-top"
-					alt="...">
+				<%
+                 String str = null;
+                 if(arr.get(i).getKeyword().equals("전통차")){
+                	 str = "images/전통차2.JPG";
+                 }else if(arr.get(i).getKeyword().equals("식혜") || arr.get(i).getKeyword().equals("쑥")|| arr.get(i).getKeyword().equals("떡")|| arr.get(i).getKeyword().equals("막걸리")){
+                	 str = "images/"+arr.get(i).getKeyword()+".jpg";
+                 }
+                 else{
+                	 str = "images/"+arr.get(i).getKeyword()+".JPG";
+                 }
+                 %>
+				<img src=<%=str%> class="card-img-top" alt="...">
 
 				<div class="overlay-item-gallery trans-0-10 flex-c-m">
-				
-				
+
 					<a class="btn-show-gallery flex-c-m fa fa-search"
 						href="./DetailStore.jsp?store_seq=<%=arr.get(i).getStore_seq()%>"></a>
 				</div>
@@ -276,7 +280,7 @@
 						<%=arr.get(i).getStore_tel()%></p>
 					<br>
 				</div>
-			</div>
+		</div>
 
 			<%
 			}
