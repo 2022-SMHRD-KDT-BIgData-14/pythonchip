@@ -567,7 +567,7 @@ input[type="date" i] {
     width: 100%;
     height: 120px;
     top: 0;
-    left: 0;
+    left: -5px;
     z-index: 100;
     border-top: 5px solid #ec1d25;
 }
@@ -2158,7 +2158,7 @@ a {
     background: #f4f4f4;
     text-align: center;
     position: absolute;
-    top: 136%;
+    top: 106%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
@@ -2283,3 +2283,4 @@ hr {
     left: 53%;
     transform: translate(-50%, -50%);
 }
+

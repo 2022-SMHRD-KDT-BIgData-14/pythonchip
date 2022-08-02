@@ -50,10 +50,18 @@
 <link rel="stylesheet" type="text/css" href="css/main.css">
 <!--===============================================================================================-->
 </head>
+<style>
+.blo4.p-b-63{
+    margin-left: 291px;
+} 
+
+img{
+    max-width: 600px;
+    max-height: 400px;}
+
+</style>
 <body class="animsition">
-<%
-	MemberDTO info = (MemberDTO) session.getAttribute("info");
-	%>
+<%MemberDTO info = (MemberDTO) session.getAttribute("info");%>
 	<!-- Header -->
 	<header>
 		<!-- Header desktop -->
@@ -62,8 +70,8 @@
 				<div class="wrap_header trans-0-3">
 					<!-- 로고 -->
 					<div class="logo">
-						<a href="Home.jsp"> <img src="images/logo2.png" alt="IMG-LOGO"
-							data-logofixed="images/logo.png"></a> </a>
+						<a href="Home.jsp"> <img src="images/logo.png" alt="IMG-LOGO"
+							data-logofixed="images/logo.png"></a> 
 					</div>
 
 					<!-- 상단 메뉴창-->
@@ -87,7 +95,7 @@
 
 					<!-- 상단 로그인, 회원가입 -->
 					<div class="social flex-w flex-l-m p-r-20">
-												<li>
+												
 							<!--  로그인 이메일 출력! --> <%
 						 if (info != null) {
 						 %> <a href="./Mypage.jsp" style="padding-right: 20px;"> MyPage
@@ -202,7 +210,7 @@
 
 
 					<tr>
-						<% for(int i=0;i<board_list.size();i++){ %>
+						<%-- <% for(int i=0;i<board_list.size();i++){ %> --%>
 						<%-- <%=i+1%> --%>
 <%-- 						<%System.out.println(board_list.get(i).getNum()); %>
 						<%System.out.println(board_list.get(i).getTitle()); %>
@@ -230,33 +238,30 @@
 <!-- 경계 --><!-- 경계 --><!-- 경계 --><!-- 경계 --><!-- 경계 --><!-- 경계 --><!-- 경계 --><!-- 경계 --><!-- 경계 --><!-- 경계 --><!-- 경계 --><!-- 경계 -->
 			<div class="blo4 p-b-63">
 				<div class="pic-blo4 hov-img-zoom bo-rad-10 pos-relative">
-					<a href="blog-detail.html"> <!-- <img src="images/blog-10.jpg" alt="IMG-BLOG"> -->
-						<img src="file/<%=board_list.get(i).getFilename()%>"
+					<a href="blog-detail.html"> 
+						<img src="file/<%=board_list.get(0).getFilename()%>"
 						alt="IMG-BLOG">
 					</a>
 
-					<div class="date-blo4 flex-col-c-m">
-						<span class="txt30 m-b-4"> 12 </span> <span class="txt31">
-							Dec, 2018 </span>
-					</div>
+
 				</div>
 
 				<div class="text-blo4 p-t-33">
 					<h4 class="p-b-16">
-						<a href="blog-detail.html" class="tit9"><%=board_list.get(i).getTitle()%></a>
+						<a href="blog-detail.html" class="tit9"><%=board_list.get(0).getTitle()%></a>
 					</h4>
 
 					<div class="txt32 flex-w p-b-24">
-						<span> by <%=board_list.get(i).getWriter()%> <span
+						<span> by <%=board_list.get(0).getWriter()%> <span
 							class="m-r-6 m-l-4">|</span>
-						</span> <span> <%=board_list.get(i).getB_date().toString()%> <span
+						</span> <span> <%=board_list.get(0).getB_date().toString()%> <span
 							class="m-r-6 m-l-4">|</span>
 						</span> <span> Cooking, Food <span class="m-r-6 m-l-4">|</span>
 						</span> <span> 8 Comments </span>
 					</div>
 
 					<p>
-						<%=board_list.get(i).getContent()%>
+						<%=board_list.get(0).getContent()%>
 					</p>
 
 					<!--                                 <a href="blog-detail.html" class="dis-block txt4 m-t-30">
@@ -265,25 +270,20 @@
 								</a> -->
 				</div>
 			</div>
-			<%
-			}
-			%>
+			<%-- <%}	%> --%>
 			<!-- <a href="Main.jsp"><button id="writer">홈으로가기</button></a>  -->
 			<%if (info != null) {%>
-			<a href="BoardWrite.jsp"><button id="writer">작성하러가기</button></a>
+			<a href="BoardWrite.jsp"><button id="writer" style="width:1850px;">작성하러가기</button></a>
 			<%}else {%>
 			<a href="Login.jsp"><button id="writer">작성하러가기</button></a>
-			<%
-			}
-			%>
-
+			<%}	%>
 
 			<!-- 경계 --><!-- 경계 --><!-- 경계 --><!-- 경계 --><!-- 경계 --><!-- 경계 --><!-- 경계 --><!-- 경계 --><!-- 경계 --><!-- 경계 --><!-- 경계 --><!-- 경계 -->
 
 
 			<!-- 끝 -->
 			<!-- Pagination -->
-			<div class="pagination flex-l-m flex-w m-l--6 p-t-25">
+ 			<div class="pagination flex-l-m flex-w m-l-530 p-t-25">
 				<a href="#"
 					class="item-pagination flex-c-m trans-0-4 active-pagination">1</a>
 				<a href="#" class="item-pagination flex-c-m trans-0-4">2</a>
@@ -291,277 +291,24 @@
 		</div>
 		</div>
 
-		<div class="col-md-4 col-lg-3">
+<!-- 		<div class="col-md-4 col-lg-3">
 			<div class="sidebar2 p-t-80 p-b-80 p-l-20 p-l-0-md p-t-0-md">
-				<!-- Search -->
+				Search
 				<div class="search-sidebar2 size12 bo2 pos-relative">
 					<input class="input-search-sidebar2 txt10 p-l-20 p-r-55"
 						type="text" name="search" placeholder="Search">
 					<button class="btn-search-sidebar2 flex-c-m ti-search trans-0-4"></button>
-				</div>
+				</div> -->
 
 				<!-- Categories -->
-				<div class="categories">
-					<h4 class="txt33 bo5-b p-b-35 p-t-58">Categories</h4>
+				
 
-					<ul>
-						<li class="bo5-b p-t-8 p-b-8"><a href="#" class="txt27">
-								Cooking recipe </a></li>
-
-						<li class="bo5-b p-t-8 p-b-8"><a href="#" class="txt27">
-								Delicious foods </a></li>
-
-						<li class="bo5-b p-t-8 p-b-8"><a href="#" class="txt27">
-								Events Design </a></li>
-
-						<li class="bo5-b p-t-8 p-b-8"><a href="#" class="txt27">
-								Restaurant Place </a></li>
-
-						<li class="bo5-b p-t-8 p-b-8"><a href="#" class="txt27">
-								WordPress </a></li>
-					</ul>
-				</div>
-
-				<!-- Most Popular -->
-				<div class="popular">
-					<h4 class="txt33 p-b-35 p-t-58">Most popular</h4>
-
-					<ul>
-						<li class="flex-w m-b-25">
-							<div class="size16 bo-rad-10 wrap-pic-w of-hidden m-r-18">
-								<a href="#"> <img src="images/blog-11.jpg" alt="IMG-BLOG">
-								</a>
-							</div>
-
-							<div class="size28">
-								<a href="#" class="dis-block txt28 m-b-8"> Best Places for
-									Wine </a> <span class="txt14"> 3 days ago </span>
-							</div>
-						</li>
-
-						<li class="flex-w m-b-25">
-							<div class="size16 bo-rad-10 wrap-pic-w of-hidden m-r-18">
-								<a href="#"> <img src="images/blog-12.jpg" alt="IMG-BLOG">
-								</a>
-							</div>
-
-							<div class="size28">
-								<a href="#" class="dis-block txt28 m-b-8"> Eggs and Cheese </a>
-								<span class="txt14"> July 2, 2017 </span>
-							</div>
-						</li>
-
-						<li class="flex-w m-b-25">
-							<div class="size16 bo-rad-10 wrap-pic-w of-hidden m-r-18">
-								<a href="#"> <img src="images/blog-13.jpg" alt="IMG-BLOG">
-								</a>
-							</div>
-
-							<div class="size28">
-								<a href="#" class="dis-block txt28 m-b-8"> Style the Wedding
-									Party </a> <span class="txt14"> May 28, 2017 </span>
-							</div>
-						</li>
-
-						<li class="flex-w m-b-25">
-							<div class="size16 bo-rad-10 wrap-pic-w of-hidden m-r-18">
-								<a href="#"> <img src="images/blog-14.jpg" alt="IMG-BLOG">
-								</a>
-							</div>
-
-							<div class="size28">
-								<a href="#" class="dis-block txt28 m-b-8"> Cooking recipe
-									Delicious </a> <span class="txt14"> May 25, 2017 </span>
-							</div>
-						</li>
-
-						<li class="flex-w m-b-25">
-							<div class="size16 bo-rad-10 wrap-pic-w of-hidden m-r-18">
-								<a href="#"> <img src="images/blog-15.jpg" alt="IMG-BLOG">
-								</a>
-							</div>
-
-							<div class="size28">
-								<a href="#" class="dis-block txt28 m-b-8"> Pizza is prepared
-									fresh </a> <span class="txt14"> May 2, 2017 </span>
-							</div>
-						</li>
-					</ul>
-				</div>
-
-
-				<!-- Archive -->
-				<div class="archive">
-					<h4 class="txt33 p-b-20 p-t-43">Archive</h4>
-
-					<ul>
-						<li class="flex-sb-m p-t-8 p-b-8"><a href="#" class="txt27">
-								uly 2018 </a> <span class="txt29"> (9) </span></li>
-
-						<li class="flex-sb-m p-t-8 p-b-8"><a href="#" class="txt27">
-								June 2018 </a> <span class="txt29"> (39) </span></li>
-
-						<li class="flex-sb-m p-t-8 p-b-8"><a href="#" class="txt27">
-								May 2018 </a> <span class="txt29"> (29) </span></li>
-
-						<li class="flex-sb-m p-t-8 p-b-8"><a href="#" class="txt27">
-								April 2018 </a> <span class="txt29"> (35) </span></li>
-
-						<li class="flex-sb-m p-t-8 p-b-8"><a href="#" class="txt27">
-								March 2018 </a> <span class="txt29"> (22) </span></li>
-
-						<li class="flex-sb-m p-t-8 p-b-8"><a href="#" class="txt27">
-								February 2018 </a> <span class="txt29"> (32) </span></li>
-
-						<li class="flex-sb-m p-t-8 p-b-8"><a href="#" class="txt27">
-								January 2018 </a> <span class="txt29"> (21) </span></li>
-
-						<li class="flex-sb-m p-t-8 p-b-8"><a href="#" class="txt27">
-								December 2017 </a> <span class="txt29"> (26) </span></li>
-					</ul>
-				</div>
-			</div>
-		</div>
-		</div>
-		</div>
+				
 	</section>
 
 
 
-	<!-- Footer -->
-	<footer class="bg1">
-		<div class="container p-t-40 p-b-70">
-			<div class="row">
-				<div class="col-sm-6 col-md-4 p-t-50">
-					<!-- - -->
-					<h4 class="txt13 m-b-33">Contact Us</h4>
 
-					<ul class="m-b-70">
-						<li class="txt14 m-b-14"><i
-							class="fa fa-map-marker fs-16 dis-inline-block size19"
-							aria-hidden="true"></i> 8th floor, 379 Hudson St, New York, NY
-							10018</li>
-
-						<li class="txt14 m-b-14"><i
-							class="fa fa-phone fs-16 dis-inline-block size19"
-							aria-hidden="true"></i> (+1) 96 716 6879</li>
-
-						<li class="txt14 m-b-14"><i
-							class="fa fa-envelope fs-13 dis-inline-block size19"
-							aria-hidden="true"></i> contact@site.com</li>
-					</ul>
-
-					<!-- - -->
-					<h4 class="txt13 m-b-32">Opening Times</h4>
-
-					<ul>
-						<li class="txt14">09:30 AM – 11:00 PM</li>
-
-						<li class="txt14">Every Day</li>
-					</ul>
-				</div>
-
-				<div class="col-sm-6 col-md-4 p-t-50">
-					<!-- - -->
-					<h4 class="txt13 m-b-33">Latest twitter</h4>
-
-					<div class="m-b-25">
-						<span class="fs-13 color2 m-r-5"> <i class="fa fa-twitter"
-							aria-hidden="true"></i>
-						</span> <a href="#" class="txt15"> @colorlib </a>
-
-						<p class="txt14 m-b-18">
-							Activello is a good option. It has a slider built into that
-							displays the featured image in the slider. <a href="#"
-								class="txt15"> https://buff.ly/2zaSfAQ </a>
-						</p>
-
-						<span class="txt16"> 21 Dec 2017 </span>
-					</div>
-
-					<div>
-						<span class="fs-13 color2 m-r-5"> <i class="fa fa-twitter"
-							aria-hidden="true"></i>
-						</span> <a href="#" class="txt15"> @colorlib </a>
-
-						<p class="txt14 m-b-18">
-							Activello is a good option. It has a slider built into that
-							displays <a href="#" class="txt15"> https://buff.ly/2zaSfAQ </a>
-						</p>
-
-						<span class="txt16"> 21 Dec 2017 </span>
-					</div>
-				</div>
-
-				<div class="col-sm-6 col-md-4 p-t-50">
-					<!-- - -->
-					<h4 class="txt13 m-b-38">Gallery</h4>
-
-					<!-- Gallery footer -->
-					<div class="wrap-gallery-footer flex-w">
-						<a class="item-gallery-footer wrap-pic-w"
-							href="images/photo-gallery-01.jpg" data-lightbox="gallery-footer">
-							<img src="images/photo-gallery-thumb-01.jpg" alt="GALLERY">
-						</a> <a class="item-gallery-footer wrap-pic-w"
-							href="images/photo-gallery-02.jpg" data-lightbox="gallery-footer">
-							<img src="images/photo-gallery-thumb-02.jpg" alt="GALLERY">
-						</a> <a class="item-gallery-footer wrap-pic-w"
-							href="images/photo-gallery-03.jpg" data-lightbox="gallery-footer">
-							<img src="images/photo-gallery-thumb-03.jpg" alt="GALLERY">
-						</a> <a class="item-gallery-footer wrap-pic-w"
-							href="images/photo-gallery-04.jpg" data-lightbox="gallery-footer">
-							<img src="images/photo-gallery-thumb-04.jpg" alt="GALLERY">
-						</a> <a class="item-gallery-footer wrap-pic-w"
-							href="images/photo-gallery-05.jpg" data-lightbox="gallery-footer">
-							<img src="images/photo-gallery-thumb-05.jpg" alt="GALLERY">
-						</a> <a class="item-gallery-footer wrap-pic-w"
-							href="images/photo-gallery-06.jpg" data-lightbox="gallery-footer">
-							<img src="images/photo-gallery-thumb-06.jpg" alt="GALLERY">
-						</a> <a class="item-gallery-footer wrap-pic-w"
-							href="images/photo-gallery-07.jpg" data-lightbox="gallery-footer">
-							<img src="images/photo-gallery-thumb-07.jpg" alt="GALLERY">
-						</a> <a class="item-gallery-footer wrap-pic-w"
-							href="images/photo-gallery-08.jpg" data-lightbox="gallery-footer">
-							<img src="images/photo-gallery-thumb-08.jpg" alt="GALLERY">
-						</a> <a class="item-gallery-footer wrap-pic-w"
-							href="images/photo-gallery-09.jpg" data-lightbox="gallery-footer">
-							<img src="images/photo-gallery-thumb-09.jpg" alt="GALLERY">
-						</a> <a class="item-gallery-footer wrap-pic-w"
-							href="images/photo-gallery-10.jpg" data-lightbox="gallery-footer">
-							<img src="images/photo-gallery-thumb-10.jpg" alt="GALLERY">
-						</a> <a class="item-gallery-footer wrap-pic-w"
-							href="images/photo-gallery-11.jpg" data-lightbox="gallery-footer">
-							<img src="images/photo-gallery-thumb-11.jpg" alt="GALLERY">
-						</a> <a class="item-gallery-footer wrap-pic-w"
-							href="images/photo-gallery-12.jpg" data-lightbox="gallery-footer">
-							<img src="images/photo-gallery-thumb-12.jpg" alt="GALLERY">
-						</a>
-					</div>
-
-				</div>
-			</div>
-		</div>
-
-		<div class="end-footer bg2">
-			<div class="container">
-				<div class="flex-sb-m flex-w p-t-22 p-b-22">
-					<div class="p-t-5 p-b-5">
-						<a href="#" class="fs-15 c-white"><i class="fa fa-tripadvisor"
-							aria-hidden="true"></i></a> <a href="#" class="fs-15 c-white"><i
-							class="fa fa-facebook m-l-18" aria-hidden="true"></i></a> <a href="#"
-							class="fs-15 c-white"><i class="fa fa-twitter m-l-18"
-							aria-hidden="true"></i></a>
-					</div>
-
-					<div class="txt17 p-r-20 p-t-5 p-b-5">
-						Copyright &copy; 2018 All rights reserved | This template is made
-						with <i class="fa fa-heart"></i> by <a href="https://colorlib.com"
-							target="_blank">Colorlib</a>
-					</div>
-				</div>
-			</div>
-		</div>
-	</footer>
 
 
 	<!-- Back to top -->

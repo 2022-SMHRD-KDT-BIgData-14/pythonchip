@@ -228,13 +228,13 @@
 					<!-- <사업자등록증> -->
 				 
 					<p style="text-align: center; font-size: 12px; color: #666">
-					사업자등록증 <input type="file"  value="파일선택" class="join"	style="height"; 30px; width: 70px; > </p>			
+					사업자등록증 <input type="submit"  value="파일선택" class="join"	style="height"; 30px; width: 70px; > </p>			
 					</label>
                     
                     <label>
 				 <!-- 업체이미지 -->
 				<p style="text-align: center; font-size:12px; color:#666; width: 180px;"> 
-				업체이미지 <input type="file" value="파일선택" class="join" style="height": 30px; width: 70px; > </p>
+				업체이미지 <input type="submit" value="파일선택" class="join" style="height": 30px; width: 70px; > </p>
 					</label>
                     <!--버튼-->
                     <br>
