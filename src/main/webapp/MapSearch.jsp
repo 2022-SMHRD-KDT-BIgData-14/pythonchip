@@ -7,13 +7,65 @@
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<!--store-->
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
+<title>Gallery</title>
 <meta charset="UTF-8">
-<title>Insert title here</title>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->
+<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700"
+	rel="stylesheet">
+<!--===============================================================================================-->
+<link rel="icon" type="image/png" href="images/icons/favicon.png" />
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css"
+	href="vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css"
+	href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css"
+	href="fonts/themify/themify-icons.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css"
+	href="vendor/css-hamburgers/hamburgers.min.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css"
+	href="vendor/animsition/css/animsition.min.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css"
+	href="vendor/select2/select2.min.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css"
+	href="vendor/daterangepicker/daterangepicker.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css" href="vendor/slick/slick.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css"
+	href="vendor/lightbox2/css/lightbox.min.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css" href="css/util.css">
+<link rel="stylesheet" type="text/css" href="css/main.css">
+<!--===============================================================================================-->
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css">
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
 <style>
+bg-title-page {
+	min-height: 0px !important;
+	height: 0px;
+}
+
 html, body {
 	width: 100%;
 	height: 100%;
@@ -25,7 +77,7 @@ html, body {
 	position: relative;
 	overflow: hidden;
 	width: 100%;
-	height: 350px;
+	height: 100%;
 }
 
 .radius_border {
@@ -220,58 +272,429 @@ html, body {
 .info .link {
 	color: #5085BB;
 }
+
+.kakaomap {
+	
+}
+
+.map_wrap {
+	padding: 0px 0.5em;
+	height: 960px;
+}
+
+#custom_map_controller {
+	top: 0px;
+	right: 0px;
+	background-color: white;
+	position: absolute;
+	width: 428px;
+	height: inherit;
+	z-index: 1;
+	border: solid 0.18em;
+}
+
+ul, li {
+	list-style: none;
+}
+
+.tab {
+	width: inherit;
+	height: inherit;
+}
+
+.tabnav {
+	font-size: 0;
+	width: 600px;
+}
+
+.tabnav li {
+	display: inline-block;
+	height: 46px;
+	text-align: center;
+	border-right: 1px solid #ddd;
+}
+
+.tabnav li a:before {
+	content: "";
+	position: absolute;
+	left: 0;
+	top: 0px;
+	width: 100%;
+	height: 3px;
+}
+
+.tabnav li a.active:before {
+	background: #7ea21e;
+}
+
+.tabnav li a.active {
+	border-bottom: 1px solid #fff;
+}
+
+.tabnav li a {
+	position: relative;
+	display: block;
+	background: #f8f8f8;
+	color: #000;
+	padding: 0 30px;
+	line-height: 46px;
+	text-decoration: none;
+	font-size: 16px;
+}
+
+.tabnav li a:hover, .tabnav li a.active {
+	background: #fff;
+	color: #7ea21e;
+}
+
+.tabcontent {
+	border: 1px solid #ddd;
+	border-top: none;
+	width: inherit;
+    height: 95%;
+}
+#placesList{
+    width: inherit;
+    height: 86%;
+    overflow-y: scroll;
+}
+#placesList li {
+	list-style: none;
+}
+
+#placesList .item {
+	position: relative;
+	border-bottom: 1px solid #888;
+	overflow: hidden;
+	cursor: pointer;
+	min-height: 65px;
+}
+
+#placesList .item span {
+	display: block;
+	margin-top: 4px;
+}
+
+#placesList .item h5, #placesList .item .info {
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+}
+
+#placesList .item .info {
+	padding: 10px 0 10px 55px;
+}
+
+#placesList .info .gray {
+	color: #8a8a8a;
+}
+
+#placesList .info .jibun {
+	padding-left: 26px;
+	background:
+		url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/places_jibun.png)
+		no-repeat;
+}
+
+#placesList .info .tel {
+	color: #009900;
+}
+
+#placesList .item .markerbg {
+	float: left;
+	position: absolute;
+	width: 36px;
+	height: 37px;
+	margin: 10px 0 0 10px;
+	background:
+		url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_number_blue.png)
+		no-repeat;
+}
+
+#placesList .item .marker_1 {
+	background-position: 0 -10px;
+}
+
+#placesList .item .marker_2 {
+	background-position: 0 -56px;
+}
+
+#placesList .item .marker_3 {
+	background-position: 0 -102px
+}
+
+#placesList .item .marker_4 {
+	background-position: 0 -148px;
+}
+
+#placesList .item .marker_5 {
+	background-position: 0 -194px;
+}
+
+#placesList .item .marker_6 {
+	background-position: 0 -240px;
+}
+
+#placesList .item .marker_7 {
+	background-position: 0 -286px;
+}
+
+#placesList .item .marker_8 {
+	background-position: 0 -332px;
+}
+
+#placesList .item .marker_9 {
+	background-position: 0 -378px;
+}
+
+#placesList .item .marker_10 {
+	background-position: 0 -423px;
+}
+
+#placesList .item .marker_11 {
+	background-position: 0 -470px;
+}
+
+#placesList .item .marker_12 {
+	background-position: 0 -516px;
+}
+
+#placesList .item .marker_13 {
+	background-position: 0 -562px;
+}
+
+#placesList .item .marker_14 {
+	background-position: 0 -608px;
+}
+
+#placesList .item .marker_15 {
+	background-position: 0 -654px;
+}
+
+#pagination {
+	margin: 10px auto;
+	text-align: center;
+}
+
+#pagination a {
+	display: inline-block;
+	margin-right: 10px;
+}
+
+#pagination .on {
+	font-weight: bold;
+	cursor: default;
+	color: #777;
+}
+
+#tab01{
+}
+#tab02{
+width: inherit;
+    height:inherit;
+}
+.option{
+    padding: 0em 5em;
+}
+#keyword{
+border: solid !important;
+    border-radius: 0.6em;
+}
+
 </style>
 </head>
-<body>
-	<form>
-		<!-- 1. 검색창 -->
-		<input id=input type="text" maxlength="50"><br> <br>
-		<!-- 2. check box -->
-		<span>흑임자</span> <input id=k1 type="checkbox" name="k1" value="흑임자">
-		<span>쑥</span> <input id=k2 type="checkbox" name="keyword" value="쑥">
-		<span>인절미</span> <input id=k3 type="checkbox" name="keyword"
-			value="인절미"> <span>식혜</span> <input id=k4 type="checkbox"
-			name="keyword" value="식혜"> <span>말차</span> <input id=k5
-			type="checkbox" name="keyword" value="말차"><br> <span>미숫가루</span>
-		<input id=k6 type="checkbox" name="keyword" value="미숫가루"> <span>누룽지</span>
-		<input id=k7 type="checkbox" name="keyword" value="누룽지"> <span>달고나</span>
-		<input id=k8 type="checkbox" name="keyword" value="달고나"> <span>팥</span>
-		<input id=k9 type="checkbox" name="keyword" value="팥"> <span>떡</span><input
-			id=k10 type="checkbox" name="keyword" value="떡"><br> <span>흑염소</span>
-		<input id=k11 type="checkbox" name="keyword" value="흑염소"> <span>전통차</span>
-		<input id=k12 type="checkbox" name="keyword" value="전통차"> <span>양갱</span>
-		<input id=k13 type="checkbox" name="keyword" value="양갱"> <span>약과</span>
-		<input id=k14 type="checkbox" name="keyword" value="약과"> <span>한과</span>
-		<input id=k15 type="checkbox" name="keyword" value="한과"><br>
-		<span>한방</span> <input id=k16 type="checkbox" name="keyword"
-			value="힌방"><br> <br> <br>
-	</form>
-	<div class="map_wrap">
-		<div id="map"
-			style="width: 100%; height: 100%; position: relative; overflow: hidden;"></div>
-		<!-- 지도타입 컨트롤 div 입니다 -->
-		<div class="custom_typecontrol radius_border">
-			<span id="btnRoadmap" class="selected_btn"
-				onclick="setMapType('roadmap')">지도</span> <span id="btnSkyview"
-				class="btn" onclick="setMapType('skyview')">스카이뷰</span>
-		</div>
-		<!-- 지도 확대, 축소 컨트롤 div 입니다 -->
-		<div class="custom_zoomcontrol radius_border">
-			<span onclick="zoomIn()"><img
-				src="https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/ico_plus.png"
-				alt="확대"></span> <span onclick="zoomOut()"><img
-				src="https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/ico_minus.png"
-				alt="축소"></span>
-		</div>
-	</div>
-	<%
-	ArrayList<StoreDTO> arr = new StoreDAO().getStoreList();
-	Gson gson = new Gson();
-	String json = gson.toJson(arr);
-	System.out.println(json);
-	%>
 
-	<script>
+<body class="animsition">
+<!-- 카카오 api -->
+<script type="text/javascript"
+src="//dapi.kakao.com/v2/maps/sdk.js?appkey=2f8c752aae632b4c611274927d3bbb6a"></script>
+			
+	<!-- Header -->
+	<header>
+		<!-- Header desktop -->
+		<div class="wrap-menu-header gradient1 trans-0-4">
+			<div class="container h-full">
+				<div class="wrap_header trans-0-3">
+					<!-- 로고 -->
+					<div class="logo">
+						<a href="Home.jsp"> <img src="images/logo.png" alt="IMG-LOGO"
+							data-logofixed="images/logo.png"></a> </a>
+					</div>
+
+					<!-- 상단 메뉴창-->
+					<div class="wrap_menu p-l-45 p-l-0-xl">
+						<nav class="menu">
+							<ul class="main_menu">
+								<li><a href="Home.jsp">Home</a></li>
+
+								<li><a href="MapSearch.jsp">map search</a></li>
+
+								<li><a href="Store.jsp">store</a></li>
+
+								<li><a href=" Community.jsp">Community</a></li>
+
+								<li><a href="JoinStore.jsp">store join</a></li>
+
+
+							</ul>
+						</nav>
+					</div>
+
+					<!-- 상단 로그인, 회원가입 -->
+					<div class="social flex-w flex-l-m p-r-20">
+						<li><a href="Login.jsp" style="padding-right: 20px;">
+								login </a></li>
+						<li><a href="Join.jsp" style="padding-left: 20px;"> join
+						</a></li>
+
+
+						<button class="btn-show-sidebar m-l-33 trans-0-4"></button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</header>
+
+	<!-- 슬라이드 바 -->
+	<aside class="sidebar trans-0-4">
+		<!-- Button Hide sidebar -->
+		<button class="btn-hide-sidebar ti-close color0-hov trans-0-4"></button>
+
+
+		<div class="gallery-sidebar t-center p-l-60 p-r-60 p-b-40">
+			<!-- 슬라이드바 구성  -->
+
+			<ul class="menu-sidebar p-t-95 p-b-70">
+				<li class="t-center m-b-13"><a href="Home.jsp" class="txt19">로고</a>
+				</li>
+				<ul class="menu-sidebar p-t-95 p-b-70">
+
+
+					<li class="t-center m-b-13"><a href="MapSearch.jsp"
+						class="txt19">map search</a></li>
+
+
+
+					<li class="t-center m-b-13"><a href="Store.jsp" class="txt19">store</a>
+					</li>
+
+					<li class="t-center m-b-13"><a href=" Community.jsp"
+						class="txt19">Community</a></li>
+
+					<li class="t-center m-b-13"><a href="Mypage.jsp" class="txt19">my
+							page</a></li>
+
+
+					<li class="t-center m-b-13"><a href="JoinStore.jsp"
+						class="txt19">StoreJoin</a></li>
+
+					<li class="t-center">
+						<!-- 슬라이드바 로그인 --> <a href="Login.jsp"
+						class="btn3 flex-c-m size13 txt11 trans-0-4 m-l-r-auto"> login
+					</a>
+					</li>
+				</ul>
+	</aside>
+
+	<!-- Title Page -->
+	<section class="bg-title-page flex-c-m p-t-160 p-b-80 p-l-15 p-r-15"
+		style="background-image: url(images/마들렌.png);">
+		<h2 class="tit6 t-center">store</h2>
+	</section>
+
+
+
+	<!-- Gallery -->
+	<div class="kakaomap">
+		<form>
+			<!-- 1. 검색창 -->
+			<input id=input type="text" maxlength="50"><br> <br>
+
+		</form>
+		<div class="map_wrap">
+			<div id="map"
+				style="width: 100%; height: 100%; position: relative; overflow: hidden;"></div>
+			<!-- 지도타입 컨트롤 div 입니다 -->
+			<div class="custom_typecontrol radius_border">
+				<span id="btnRoadmap" class="selected_btn"
+					onclick="setMapType('roadmap')">지도</span> <span id="btnSkyview"
+					class="btn" onclick="setMapType('skyview')">스카이뷰</span>
+			</div>
+			<!-- 지도 확대, 축소 컨트롤 div 입니다 -->
+			<div class="custom_zoomcontrol radius_border">
+				<span onclick="zoomIn()"><img
+					src="https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/ico_plus.png"
+					alt="확대"></span> <span onclick="zoomOut()"><img
+					src="https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/ico_minus.png"
+					alt="축소"></span>
+			</div>
+
+
+			<div id="custom_map_controller">
+				<div class="tab">
+					<ul class="tabnav">
+						<li><a href="#tab01">탭1</a></li>
+						<li><a href="#tab02">탭2</a></li>
+					</ul>
+					<div class="tabcontent">
+						<div id="tab01">
+
+							<!-- 2. check box -->
+							<span>흑임자</span> <input id=k1 type="checkbox" name="k1"
+								value="흑임자"> <span>쑥</span> <input id=k2 type="checkbox"
+								name="keyword" value="쑥"> <span>인절미</span> <input id=k3
+								type="checkbox" name="keyword" value="인절미"> <span>식혜</span>
+							<input id=k4 type="checkbox" name="keyword" value="식혜"> <span>말차</span>
+							<input id=k5 type="checkbox" name="keyword" value="말차"><br>
+							<span>미숫가루</span> <input id=k6 type="checkbox" name="keyword"
+								value="미숫가루"> <span>누룽지</span> <input id=k7
+								type="checkbox" name="keyword" value="누룽지"> <span>달고나</span>
+							<input id=k8 type="checkbox" name="keyword" value="달고나">
+							<span>팥</span> <input id=k9 type="checkbox" name="keyword"
+								value="팥"> <span>떡</span><input id=k10 type="checkbox"
+								name="keyword" value="떡"><br> <span>흑염소</span> <input
+								id=k11 type="checkbox" name="keyword" value="흑염소"> <span>전통차</span>
+							<input id=k12 type="checkbox" name="keyword" value="전통차">
+							<span>양갱</span> <input id=k13 type="checkbox" name="keyword"
+								value="양갱"> <span>약과</span> <input id=k14
+								type="checkbox" name="keyword" value="약과"> <span>한과</span>
+							<input id=k15 type="checkbox" name="keyword" value="한과"><br>
+							<span>한방</span> <input id=k16 type="checkbox" name="keyword"
+								value="힌방"><br> <br> <br>
+
+						</div>
+						<div id="tab02">
+							<div class="option">
+								<div>
+									<form class="formSearch" onsubmit="searchPlaces();return false;">
+										키워드 ▷ <input type="text" value="광" id="keyword" size="15">
+										<button type="submit">검색하기</button>
+									</form>
+								</div>
+							</div>
+							<hr>
+							<ul id="placesList"></ul>
+							<div id="pagination"></div>
+
+						</div>
+					</div>
+				</div>
+				<!--tab-->
+
+
+
+			</div>
+			<%
+
+			%>
+			<%
+			ArrayList<StoreDTO> arr = new StoreDAO().getStoreList();
+			Gson gson = new Gson();
+			String json = gson.toJson(arr);
+			System.out.println(json);
+			%>
+
+			<script>
 	var arr2 = <%=json%>; <!-- 자바의 배열을 자바스크립트에서 바로 쓸 수 있게 만든 객체배열입니다. -->
 	
 	let keyword = []; <!-- 사용자가 선택한 키워드를 담을 배열입니다. -->
@@ -289,198 +712,30 @@ html, body {
 	let selectMarker =null;
 	
 	</script>
-	<!--  kakao open api 연결 -->
-	<script type="text/javascript"
-		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=2f8c752aae632b4c611274927d3bbb6a"></script>
-	<!-- 지도창 여는 script -->
-	<script>
+			<!--  kakao open api 연결 -->
+			<!-- 지도창 여는 script -->
+			<script>
 		let mapContainer = document.getElementById('map'), // 지도를 표시할 div
 		mapOption = {
 			center : new kakao.maps.LatLng(35.16017229999956, 126.84807380000012),
 			// 지도의 중심좌표(광주광역시)
-			level : 3
+			level : 7
 		// 지도의 확대 레벨
 		};
 		let map = new kakao.maps.Map(mapContainer, mapOption);
+
+	    mapContainer.style.height = '1000px'; 
+	    map.relayout();
+	    
+	    
 	</script>
 
-	<script>
-	$("input[type='checkbox']").change(function(){ // 체크박스에 변화가 생긴다면
-	
-		if(this.checked){
-			alert("체크되었습니다.")
-			alert($(this).val())
-			keyword.push($(this).val()) // 변한 체크박스의 value를 keyword에 넣어 준다
-			console.log(keyword)
-            hideMarkers()
-		}else {
-			alert("체크가 해제되었습니다.")
-			alert($(this).val())
-            hideMarkers()
-			var index = keyword.indexOf($(this).val()) // 변한 value값이 들어 있는 keyword 인덱스를 찾는다.
-            keyword.splice(index,1) // 해당 인덱스의 값을 빼준다.
-		}
-	
-		arr3=[];
-        markers=[]
-		console.log(keyword)
-		// keyword가 있는 장소만 arr3에 저장
-		for(var i = 0; i< arr2.length; i++){
-			for(var j =0; j<keyword.length; j++){
-				if(arr2[i].keyword.includes(keyword[j])){
-					arr3.push(arr2[i]);
-				}
-			}
-		}
-		
-		console.log(arr3.length)
-		console.log(arr3)
-		
-		var marker = null;
-		var contents = [];
-		var cnt = 0;
-		
-		
-		<!-- 마커 지도에 그려주기 -->
-		for(var i =0; i<arr3.length; i++){
-			
-			marker = new kakao.maps.Marker({
-    		title : arr3[i].store_name,
-			map : map, // 마커를 표시할 지도
-    		position: new kakao.maps.LatLng(arr3[i].store_x, arr3[i].store_y)
-			});
-			
-			// 마커가 지도 위에 표시되도록 설정합니다
-			markers.push(marker);
-			}
-		
 
-		<!-- 커스텀 오버레이 overlays 만들어주기 -->
-		for(var i =0; i<arr3.length; i++){
-			// 커스텀 오버레이에 표시할 컨텐츠 입니다
-			// 커스텀 오버레이는 아래와 같이 사용자가 자유롭게 컨텐츠를 구성하고 이벤트를 제어할 수 있기 때문에
-			// 별도의 이벤트 메소드를 제공하지 않습니다
-			content = '<div class="wrap">' +
-		            '    <div class="info">' +
-		            '        <div class="title">' +
-		            arr3[i].store_name +
-		            '            <div class="close"+ onclick="closeOverlay()" title="닫기"></div>' +
-		            '        </div>' +
-		            '        <div class="body">' +
-		            '            <div class="img">' +
-		            '                <img src="https://cfile181.uf.daum.net/image/250649365602043421936D" width="73" height="70">' +
-		            '           </div>' +
-		            '            <div class="desc">' +
-		            '                <div class="ellipsis">'+arr3[i].location_gu+'</div>' +
-		            '                <div class="jibun ellipsis">'+arr3[i].location_dong+'</div>' +
-		            '                <div><a href="https://www.kakaocorp.com/main" target="_blank" class="link">홈페이지</a></div>' +
-		            '            </div>' +
-		            '        </div>' +
-		            '    </div>' +
-		            '</div>';
-		     
-			 // 마커 위에 커스텀오버레이를 표시합니다
-		 	 // 마커를 중심으로 커스텀 오버레이를 표시하기위해 CSS를 이용해 위치를 설정했습니다
-		 	 overlay = new kakao.maps.CustomOverlay({
-		     title : arr3[i].store_name,
-		     content: content,
-			 map: map,
-			 position: new kakao.maps.LatLng(arr3[i].store_x, arr3[i].store_y)
-			 });
-			 
-			console.log('overlay')
-            overlays.push(overlay)
-            position = overlay.getPosition()  
-            
-			kakao.maps.event.addListener(markers[i], 'click', (function(position,_marker, _overlay)
-            {
-                return function(){
-				console.log('listener')
-                console.log(position)
-
-                markers.forEach(el => {
-                    if(_marker.getPosition().equals(position)){
-
-                    _overlay.setMap(map)
-                }
-                });
-            }
-			})(position, markers[i], overlay));
-
-
-		}
-
-			// 마커에 click 이벤트를 등록합니다
-
-		<%--
-		console.log("markers : ",Object.values(markers[2])[14])
-		var str = Object.values(overlays[2])[9]
-		
-		console.log("str : ",str)
-		var Char = str.indexOf('            <',66)
-		console.log("최종 : ",str.substring(67,Char))
-		
-		
-		for(var i=0; i<markers.length;i++){
-		    kakao.maps.event.addListener(markers[j], 'click', function() {
-			console.log("markers : ",Object.values(markers[i])[14])	
-			}
-		}
-		--%>	
-		
-		showMarkers()
-		});
-	
-	<!-- 필요한 함수들을 모아놓은 스크립트입니다. -->
-	<!-- 커스텀 오버레이 닫아주기 -->
-	// 커스텀 오버레이를 닫기 위해 호출되는 함수입니다
-	function closeOverlay() {
-        overlays.forEach(el => {
-            el.setMap(null);
-        });
-	}
-	
-	//지도타입 컨트롤의 지도 또는 스카이뷰 버튼을 클릭하면 호출되어 지도타입을 바꾸는 함수입니다
-	function setMapType(maptype) {
-	 var roadmapControl = document.getElementById('btnRoadmap');
-	 var skyviewControl = document.getElementById('btnSkyview');
-	 if (maptype === 'roadmap') {
-	     map.setMapTypeId(kakao.maps.MapTypeId.ROADMAP);
-	     roadmapControl.className = 'selected_btn';
-	     skyviewControl.className = 'btn';
-	 } else {
-	     map.setMapTypeId(kakao.maps.MapTypeId.HYBRID);
-	     skyviewControl.className = 'selected_btn';
-	     roadmapControl.className = 'btn';
-	 }
-	}
-	//지도 확대, 축소 컨트롤에서 확대 버튼을 누르면 호출되어 지도를 확대하는 함수입니다
-	function zoomIn() {
-	 map.setLevel(map.getLevel() - 1);
-	}
-	//지도 확대, 축소 컨트롤에서 축소 버튼을 누르면 호출되어 지도를 확대하는 함수입니다
-	function zoomOut() {
-	 map.setLevel(map.getLevel() + 1);
-	}
-	function setMarkers(map) {
-	    for (var i = 0; i < markers.length; i++) {
-	        markers[i].setMap(map);
-	    }
-	}
-	//"마커 보이기" 버튼을 클릭하면 호출되어 배열에 추가된 마커를 지도에 표시하는 함수입니다
-	function showMarkers() {
-	    setMarkers(map)
-	}
-	// "마커 감추기" 버튼을 클릭하면 호출되어 배열에 추가된 마커를 지도에서 삭제하는 함수입니다
-	function hideMarkers() {
-	    setMarkers(null);
-	}
-	</script>
-	<!-- 모든 가게 한눈에 보기 -->
-	<p>
-		<button onclick="setBounds()">모든 가게 한눈에 보기</button>
-	</p>
-	<script>
+			<!-- 모든 가게 한눈에 보기 -->
+			<p>
+				<button onclick="setBounds()">모든 가게 한눈에 보기</button>
+			</p>
+			<script>
 	//지도를 재설정할 범위정보를 가지고 있을 LatLngBounds 객체를 생성합니다
 	let bounds = new kakao.maps.LatLngBounds();
 	function setBounds() {
@@ -493,5 +748,485 @@ html, body {
 	    map.setBounds(bounds);
 	}
 </script>
+		</div>
+
+
+		<!-- Sign up -->
+		<div class="section-signup bg1-pattern p-t-85 p-b-85">
+			<form class="flex-c-m flex-w flex-col-c-m-lg p-l-5 p-r-5">
+				<span class="txt5 m-10"> Specials Sign up </span>
+
+				<div
+					class="wrap-input-signup size17 bo2 bo-rad-10 bgwhite pos-relative txt10 m-10">
+					<input class="bo-rad-10 sizefull txt10 p-l-20" type="text"
+						name="email-address" placeholder="Email Adrress"> <i
+						class="fa fa-envelope ab-r-m m-r-18" aria-hidden="true"></i>
+				</div>
+
+				<!-- Button3 -->
+				<button type="submit"
+					class="btn3 flex-c-m size18 txt11 trans-0-4 m-10">Sign-up</button>
+			</form>
+		</div>
+
+
+		<!-- Footer -->
+		<footer class="bg1">
+			<div class="container p-t-40 p-b-70">
+				<div class="row">
+					<div class="col-sm-6 col-md-4 p-t-50">
+						<!-- - -->
+						<h4 class="txt13 m-b-33">Contact Us</h4>
+
+						<ul class="m-b-70">
+							<li class="txt14 m-b-14"><i
+								class="fa fa-map-marker fs-16 dis-inline-block size19"
+								aria-hidden="true"></i> 8th floor, 379 Hudson St, New York, NY
+								10018</li>
+
+							<li class="txt14 m-b-14"><i
+								class="fa fa-phone fs-16 dis-inline-block size19"
+								aria-hidden="true"></i> (+1) 96 716 6879</li>
+
+							<li class="txt14 m-b-14"><i
+								class="fa fa-envelope fs-13 dis-inline-block size19"
+								aria-hidden="true"></i> contact@site.com</li>
+						</ul>
+
+						<!-- - -->
+						<h4 class="txt13 m-b-32">Opening Times</h4>
+
+						<ul>
+							<li class="txt14">09:30 AM – 11:00 PM</li>
+
+							<li class="txt14">Every Day</li>
+						</ul>
+					</div>
+
+					<div class="col-sm-6 col-md-4 p-t-50">
+						<!-- - -->
+						<h4 class="txt13 m-b-33">Latest twitter</h4>
+
+						<div class="m-b-25">
+							<span class="fs-13 color2 m-r-5"> <i class="fa fa-twitter"
+								aria-hidden="true"></i>
+							</span> <a href="#" class="txt15"> @colorlib </a>
+
+							<p class="txt14 m-b-18">
+								Activello is a good option. It has a slider built into that
+								displays the featured image in the slider. <a href="#"
+									class="txt15"> https://buff.ly/2zaSfAQ </a>
+							</p>
+
+							<span class="txt16"> 21 Dec 2017 </span>
+						</div>
+
+						<div>
+							<span class="fs-13 color2 m-r-5"> <i class="fa fa-twitter"
+								aria-hidden="true"></i>
+							</span> <a href="#" class="txt15"> @colorlib </a>
+
+							<p class="txt14 m-b-18">
+								Activello is a good option. It has a slider built into that
+								displays <a href="#" class="txt15"> https://buff.ly/2zaSfAQ
+								</a>
+							</p>
+
+							<span class="txt16"> 21 Dec 2017 </span>
+						</div>
+					</div>
+
+					<div class="col-sm-6 col-md-4 p-t-50">
+						<!-- - -->
+						<h4 class="txt13 m-b-38">Gallery</h4>
+
+						<!-- Gallery footer -->
+						<div class="wrap-gallery-footer flex-w">
+							<a class="item-gallery-footer wrap-pic-w"
+								href="images/photo-gallery-01.jpg"
+								data-lightbox="gallery-footer"> <img
+								src="images/photo-gallery-thumb-01.jpg" alt="GALLERY">
+							</a> <a class="item-gallery-footer wrap-pic-w"
+								href="images/photo-gallery-02.jpg"
+								data-lightbox="gallery-footer"> <img
+								src="images/photo-gallery-thumb-02.jpg" alt="GALLERY">
+							</a> <a class="item-gallery-footer wrap-pic-w"
+								href="images/photo-gallery-03.jpg"
+								data-lightbox="gallery-footer"> <img
+								src="images/photo-gallery-thumb-03.jpg" alt="GALLERY">
+							</a> <a class="item-gallery-footer wrap-pic-w"
+								href="images/photo-gallery-04.jpg"
+								data-lightbox="gallery-footer"> <img
+								src="images/photo-gallery-thumb-04.jpg" alt="GALLERY">
+							</a> <a class="item-gallery-footer wrap-pic-w"
+								href="images/photo-gallery-05.jpg"
+								data-lightbox="gallery-footer"> <img
+								src="images/photo-gallery-thumb-05.jpg" alt="GALLERY">
+							</a> <a class="item-gallery-footer wrap-pic-w"
+								href="images/photo-gallery-06.jpg"
+								data-lightbox="gallery-footer"> <img
+								src="images/photo-gallery-thumb-06.jpg" alt="GALLERY">
+							</a> <a class="item-gallery-footer wrap-pic-w"
+								href="images/photo-gallery-07.jpg"
+								data-lightbox="gallery-footer"> <img
+								src="images/photo-gallery-thumb-07.jpg" alt="GALLERY">
+							</a> <a class="item-gallery-footer wrap-pic-w"
+								href="images/photo-gallery-08.jpg"
+								data-lightbox="gallery-footer"> <img
+								src="images/photo-gallery-thumb-08.jpg" alt="GALLERY">
+							</a> <a class="item-gallery-footer wrap-pic-w"
+								href="images/photo-gallery-09.jpg"
+								data-lightbox="gallery-footer"> <img
+								src="images/photo-gallery-thumb-09.jpg" alt="GALLERY">
+							</a> <a class="item-gallery-footer wrap-pic-w"
+								href="images/photo-gallery-10.jpg"
+								data-lightbox="gallery-footer"> <img
+								src="images/photo-gallery-thumb-10.jpg" alt="GALLERY">
+							</a> <a class="item-gallery-footer wrap-pic-w"
+								href="images/photo-gallery-11.jpg"
+								data-lightbox="gallery-footer"> <img
+								src="images/photo-gallery-thumb-11.jpg" alt="GALLERY">
+							</a> <a class="item-gallery-footer wrap-pic-w"
+								href="images/photo-gallery-12.jpg"
+								data-lightbox="gallery-footer"> <img
+								src="images/photo-gallery-thumb-12.jpg" alt="GALLERY">
+							</a>
+						</div>
+
+					</div>
+				</div>
+			</div>
+
+			<div class="end-footer bg2">
+				<div class="container">
+					<div class="flex-sb-m flex-w p-t-22 p-b-22">
+						<div class="p-t-5 p-b-5">
+							<a href="#" class="fs-15 c-white"><i
+								class="fa fa-tripadvisor" aria-hidden="true"></i></a> <a href="#"
+								class="fs-15 c-white"><i class="fa fa-facebook m-l-18"
+								aria-hidden="true"></i></a> <a href="#" class="fs-15 c-white"><i
+								class="fa fa-twitter m-l-18" aria-hidden="true"></i></a>
+						</div>
+
+						<div class="txt17 p-r-20 p-t-5 p-b-5">
+							Copyright &copy; 2018 All rights reserved | This template is made
+							with <i class="fa fa-heart"></i> by <a
+								href="https://colorlib.com" target="_blank">Colorlib</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</footer>
+
+
+		<!-- Back to top -->
+		<div class="btn-back-to-top bg0-hov" id="myBtn">
+			<span class="symbol-btn-back-to-top"> <i
+				class="fa fa-angle-double-up" aria-hidden="true"></i>
+			</span>
+		</div>
+
+
+
+		<!--===============================================================================================-->
+		<script type="text/javascript" src="vendor/jquery/jquery-3.2.1.min.js"></script>
+		<!--===============================================================================================-->
+		<script type="text/javascript"
+			src="vendor/animsition/js/animsition.min.js"></script>
+		<!--===============================================================================================-->
+		<script type="text/javascript" src="vendor/bootstrap/js/popper.js"></script>
+		<script type="text/javascript"
+			src="vendor/bootstrap/js/bootstrap.min.js"></script>
+		<!--===============================================================================================-->
+		<script type="text/javascript" src="vendor/select2/select2.min.js"></script>
+		<!--===============================================================================================-->
+		<script type="text/javascript"
+			src="vendor/daterangepicker/moment.min.js"></script>
+		<script type="text/javascript"
+			src="vendor/daterangepicker/daterangepicker.js"></script>
+		<!--===============================================================================================-->
+		<script type="text/javascript" src="vendor/slick/slick.min.js"></script>
+		<script type="text/javascript" src="js/slick-custom.js"></script>
+		<!--===============================================================================================-->
+		<script type="text/javascript" src="vendor/parallax100/parallax100.js"></script>
+		<script type="text/javascript">
+        $('.parallax100').parallax100();
+    </script>
+		<!--===============================================================================================-->
+		<script type="text/javascript"
+			src="vendor/countdowntime/countdowntime.js"></script>
+		<!--===============================================================================================-->
+		<script type="text/javascript"
+			src="vendor/lightbox2/js/lightbox.min.js"></script>
+		<!--===============================================================================================-->
+		<script type="text/javascript"
+			src="vendor/isotope/isotope.pkgd.min.js"></script>
+		<!--===============================================================================================-->
+		<script type="text/javascript" src="js/main.js"></script>
+		<!-- keywordSearch, mapmain 충돌 해결  -->
+		<script type="text/javascript" src="js/mapMain.js"></script>
+
+		
+		<!-- <script type="text/javascript" src="js/keyWordSearch"></script> -->
+		
+		<script>
+
+$('.bg-title-page').css({'min-height': '0px'})
+$('.bg-title-page').css({'height': '0px'})
+
+$(function(){
+  $('.tabcontent > div').hide();
+  $('.tabnav a').click(function () {
+    $('.tabcontent > div').hide().filter(this.hash).fadeIn();
+    $('.tabnav a').removeClass('active');
+    $(this).addClass('active');
+    return false;
+  }).filter(':eq(0)').click();
+  });
+$('.formSearch').attr("onsubmit", "searchPlaces(); return false;");
+
+
+//장소 검색 객체를 생성합니다
+//let ps = new kakao.maps.services.Places();
+//검색 결과 목록이나 마커를 클릭했을 때 장소명을 표출할 인포윈도우를 생성합니다
+let infowindow = new kakao.maps.InfoWindow({zIndex:1});
+
+//키워드로 장소를 검색합니다
+//searchPlaces();
+//키워드 검색을 요청하는 함수입니다
+function searchPlaces() {
+	console.log('searchPlaces')
+ var searchkeyword = document.getElementById('keyword').value;
+
+ if (!searchkeyword.replace(/^\s+|\s+$/g, '')) {
+     alert('키워드를 입력해주세요!');
+     return false;
+ }
+ 
+ // 장소검색 객체를 통해 키워드로 장소검색을 요청합니다
+ var url = "http://localhost:8081/pythonchip/SearchStoreAjax";
+
+ $.ajax({
+     type:"GET",
+     url:url,
+     dataType:"json",
+     data:{
+         keyword : searchkeyword,
+     },
+     success : function(d){
+         placesSearchCB(d)
+
+     },
+     error : function(request,status,error){
+
+         console.log(error);
+
+     }
+ })
+ 
+}
+
+//장소검색이 완료됐을 때 호출되는 콜백함수 입니다
+function placesSearchCB(data) {
+
+     // 정상적으로 검색이 완료됐으면
+     // 검색 목록과 마커를 표출합니다
+     console.log(data)
+     if(data.length > 0){
+     slice = data.slice(0,15)
+     console.log(slice)
+     displayPlaces(slice);
+     // 페이지 번호를 표출합니다
+
+     //pagination
+     last = Math.ceil(data.length/15)
+     pagination={
+         current :0,
+         first:1,
+         gotoFirst : function(){},
+         gotoLast : function(){},
+         gotoPage : function(idx){
+             slice = data.slice(0+((idx-1)*15),15*(idx-1)+15)
+             displayPlaces(slice);
+             console.log(idx)
+             console.log(data)
+         },
+         hasNextPage : true,
+         hasPrevPage : false,
+         last : last,
+         nextPage : function(){},
+         perPage: 15,
+         prevPage : function(){},
+         totalCount: data.length
+     }
+     console.log(pagination)
+     displayPagination(pagination);
+ }else
+ {
+     alert('검색 결과 : 0 ')
+ }
+}
+
+//검색 결과 목록과 마커를 표출하는 함수입니다
+function displayPlaces(places) {
+
+ var listEl = document.getElementById('placesList'), 
+ menuEl = document.getElementById('tab02'),
+
+ fragment = document.createDocumentFragment(), 
+ bounds = new kakao.maps.LatLngBounds(), 
+ listStr = '';
+ 
+ // 검색 결과 목록에 추가된 항목들을 제거합니다
+ removeAllChildNods(listEl);
+
+ // 지도에 표시되고 있는 마커를 제거합니다
+ removeMarker();
+ 
+ for ( var i=0; i<places.length; i++ ) {
+
+     // 마커를 생성하고 지도에 표시합니다
+     var placePosition = new kakao.maps.LatLng(places[i].store_x, places[i].store_y),
+         marker = addMarker(placePosition, i, places.store_name), 
+         itemEl = getListItem(i, places[i]); // 검색 결과 항목 Element를 생성합니다
+
+     // 검색된 장소 위치를 기준으로 지도 범위를 재설정하기위해
+     // LatLngBounds 객체에 좌표를 추가합니다
+     bounds.extend(placePosition);
+
+     // 마커와 검색결과 항목에 mouseover 했을때
+     // 해당 장소에 인포윈도우에 장소명을 표시합니다
+     // mouseout 했을 때는 인포윈도우를 닫습니다
+     (function(marker, title) {
+         kakao.maps.event.addListener(marker, 'mouseover', function() {
+             displayInfowindow(marker, title);
+         });
+
+         kakao.maps.event.addListener(marker, 'mouseout', function() {
+             infowindow.close();
+         });
+
+         itemEl.onmouseover =  function () {
+             displayInfowindow(marker, title);
+         };
+
+         itemEl.onmouseout =  function () {
+             infowindow.close();
+         };
+     })(marker, places[i].store_name);
+
+     fragment.appendChild(itemEl);
+ }
+
+ // 검색결과 항목들을 검색결과 목록 Element에 추가합니다
+ listEl.appendChild(fragment);
+ menuEl.scrollTop = 0;
+
+ // 검색된 장소 위치를 기준으로 지도 범위를 재설정합니다
+ map.setBounds(bounds);
+}
+
+//검색결과 항목을 Element로 반환하는 함수입니다
+function getListItem(index, places) {
+
+ var el = document.createElement('li'),
+ itemStr = '<span class="markerbg marker_' + (index+1) + '"></span>' +
+             '<div class="info">' +
+             '   <h5>' + places.store_name+ '</h5>';
+
+ if (places.location_dong) {
+     itemStr += '    <span>' + places.location_dong + places.location_gu + '</span>';
+ } else {
+     itemStr += '    <span>' +  places.address_name  + '</span>'; 
+ }
+              
+   itemStr += '  <span class="tel">' + places.store_tel  + '</span>' +
+             '</div>';           
+
+ el.innerHTML = itemStr;
+ el.className = 'item';
+
+ return el;
+}
+
+//마커를 생성하고 지도 위에 마커를 표시하는 함수입니다
+function addMarker(position, idx, title) {
+ var imageSrc = 'https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_number_blue.png', // 마커 이미지 url, 스프라이트 이미지를 씁니다
+     imageSize = new kakao.maps.Size(36, 37),  // 마커 이미지의 크기
+     imgOptions =  {
+         spriteSize : new kakao.maps.Size(36, 691), // 스프라이트 이미지의 크기
+         spriteOrigin : new kakao.maps.Point(0, (idx*46)+10), // 스프라이트 이미지 중 사용할 영역의 좌상단 좌표
+         offset: new kakao.maps.Point(13, 37) // 마커 좌표에 일치시킬 이미지 내에서의 좌표
+     },
+     markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imgOptions),
+         marker = new kakao.maps.Marker({
+         position: position, // 마커의 위치
+         image: markerImage 
+     });
+
+ marker.setMap(map); // 지도 위에 마커를 표출합니다
+ markers.push(marker);  // 배열에 생성된 마커를 추가합니다
+
+ return marker;
+}
+
+//지도 위에 표시되고 있는 마커를 모두 제거합니다
+function removeMarker() {
+ for ( var i = 0; i < markers.length; i++ ) {
+     markers[i].setMap(null);
+ }   
+ markers = [];
+}
+
+//검색결과 목록 하단에 페이지번호를 표시는 함수입니다
+function displayPagination(pagination) {
+ var paginationEl = document.getElementById('pagination'),
+     fragment = document.createDocumentFragment(),
+     i; 
+
+ // 기존에 추가된 페이지번호를 삭제합니다
+ while (paginationEl.hasChildNodes()) {
+     paginationEl.removeChild (paginationEl.lastChild);
+ }
+
+ for (i=1; i<=pagination.last; i++) {
+     var el = document.createElement('a');
+     el.href = "#";
+     el.innerHTML = i;
+
+     if (i===pagination.current) {
+         el.className = 'on';
+     } else {
+         el.onclick = (function(i) {
+             return function() {
+                 pagination.gotoPage(i);
+             }
+         })(i);
+     }
+
+     fragment.appendChild(el);
+ }
+ paginationEl.appendChild(fragment);
+}
+
+//검색결과 목록 또는 마커를 클릭했을 때 호출되는 함수입니다
+//인포윈도우에 장소명을 표시합니다
+function displayInfowindow(marker, title) {
+ var content = '<div style="padding:5px;z-index:1;">' + title + '</div>';
+
+ infowindow.setContent(content);
+ infowindow.open(map, marker);
+}
+
+// 검색결과 목록의 자식 Element를 제거하는 함수입니다
+function removeAllChildNods(el) {   
+ while (el.hasChildNodes()) {
+     el.removeChild (el.lastChild);
+ }
+}
+
+
+</script>
 </body>
+
 </html>
