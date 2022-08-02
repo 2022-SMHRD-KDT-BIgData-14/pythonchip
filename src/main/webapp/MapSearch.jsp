@@ -542,7 +542,7 @@ ul, li {
 
 								<li><a href="Store.jsp">store</a></li>
 
-								<li><a href=" Community.jsp">Community</a></li>
+								<li><a href="BoardMain.jsp">Community</a></li>
 
 								<li><a href="JoinStore.jsp">store join</a></li>
 

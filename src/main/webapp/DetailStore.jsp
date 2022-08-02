@@ -293,14 +293,14 @@
 										<!--  로그인했을때만 후기 작성 가능 --> <%
 										 if (info != null) {
 										 %>
-										<form action="ReviewService.do" method="post">
+										<form action="ReviewService.do" method="post" onsubmit="if(checkNumber()==false) return false;">
 											<tr id=tr2>
 												<td><%=i + 1%></td>
 												<td>
 												<input type="hidden" name="id" value=<%=info.getId() %>><%=info.getId() %>
 												<input type="hidden" name="store_seq" value=<%=dto.getStore_seq().toString()%>>
 												</td>
-												<td><input type="text" onkeypress="checkNumber();" placeholder="별점을 입력해주세요" name="grade"></td>
+												<td><input id="num" type="text" placeholder="별점을 입력해주세요(5점)" name="grade"></td>
 												<td><input type="text" placeholder="내용을 입력해주세요" name="rev_content"><input id=submit type="submit" value="작성하기"></td>
 											</tr>
 										</form> <%
@@ -310,12 +310,26 @@
 								</table>
 
 							</div>
-
+							<script>
+							
+							</script>
 
 
 							<br> <br> <br> <br> <br> <br>
 
-
+							<script>
+							function checkNumber(){
+								if(document.getElementById('num').value<=5 && document.getElementById('num').value>=0){
+									return true;
+								}else if(document.getElementById('num').value>5){
+									alert("별점은 5점이하로 적어주세요")
+									return false;
+								}else{
+									alert("별점은 숫자를 입력해주세요")
+									return false;
+								}
+							}
+							</script>
 
 
 							<div>
