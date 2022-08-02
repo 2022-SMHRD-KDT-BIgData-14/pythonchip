@@ -83,8 +83,8 @@
 				<div class="wrap_header trans-0-3">
 					<!-- 로고 -->
 					<div class="logo">
-						<a href="Home.jsp"> <img src="images/logo.png" alt="IMG-LOGO"
-							data-logofixed="images/logo.png"></a> </a>
+						<a href="Home.jsp"> <img src="images/logo2.png" alt="IMG-LOGO"
+							data-logofixed="images/logo2.png"></a> </a>
 					</div>
 
 					<!-- 상단 메뉴창-->
@@ -144,10 +144,11 @@
 			<!-- 슬라이드바 구성  -->
 
 			<ul class="menu-sidebar p-t-95 p-b-70">
-				<li class="t-center m-b-13"><a href="Home.jsp" class="txt19">로고</a>
-				</li>
-				<ul class="menu-sidebar p-t-95 p-b-70">
-
+				<div class="logo">
+						<a href="Home.jsp"> <img src="images/logo.png" alt="IMG-LOGO"
+							data-logofixed="images/logo.png"></a> </a>
+					</div>
+					
 
 					<li class="t-center m-b-13"><a href="MapSearch.jsp"
 						class="txt19">map search</a></li>

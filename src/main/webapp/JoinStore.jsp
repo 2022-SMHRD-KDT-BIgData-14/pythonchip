@@ -148,8 +148,7 @@
 					<li class="t-center m-b-13"><a href="Store.jsp" class="txt19">store</a>
 					</li>
 
-					<li class="t-center m-b-13"><a href="BoardMain.jsp"
-						class="txt19">Community</a></li>
+					<li class="t-center m-b-13"><a href="BoardMain.jsp" class="txt19">Community</a></li>
 
 					<li class="t-center m-b-13"><a href="JoinStore.jsp"
 						class="txt19">StoreJoin</a></li>

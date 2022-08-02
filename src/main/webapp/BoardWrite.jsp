@@ -167,13 +167,12 @@
 	<div id="con">
 		<div id="login">
 			<div id="join_form">
-				게시판 작성 폼
 				<form action="BoardService.do" method="post" enctype="multipart/form-data">
 					<h3 class="login" style="letter-spacing: -1px;">글 작성</h3>
 
 					<hr>
-					<label> 사진 <input type="file" name="filename">
-					</label> <label> 제목
+					<label style="width:500px;"> 사진 <input type="file" name="filename">
+					</label style="width:650px;"> <label> 제목
 						<p style="text-align": left; font-size: 12px; color: #666></p> 
 						<input type="text" placeholder="제목 작성" name="title" class="size"
 						maxlength="20" style="width: 420px;">

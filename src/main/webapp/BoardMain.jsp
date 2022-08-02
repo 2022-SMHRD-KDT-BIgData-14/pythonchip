@@ -15,7 +15,7 @@
 <!--===============================================================================================-->
 <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700"
 	rel="stylesheet">
-<!--===============================================================================================-->
+<!--====================================================================================\===========-->
 <link rel="icon" type="image/png" href="images/icons/favicon.png" />
 <!--===============================================================================================-->
 <link rel="stylesheet" type="text/css"
@@ -52,11 +52,11 @@
 </head>
 <style>
 .blo4.p-b-63{
-    margin-left: 291px;
+    margin-left: 650px;
 } 
 
 img{
-    max-width: 600px;
+    max-width: 1500px;
     max-height: 400px;}
 
 </style>
@@ -192,7 +192,7 @@ img{
 			</div>
 		</div>
 
-		<div class="container">
+		
 			<div class="row"></div>
 			<% ArrayList<BoardDTO> board_list = new BoardDAO().showBoard(); %>
 			<div id="board">
@@ -210,7 +210,7 @@ img{
 
 
 					<tr>
-						<%-- <% for(int i=0;i<board_list.size();i++){ %> --%>
+						<% for(int i=0;i<board_list.size();i++){ %>
 						<%-- <%=i+1%> --%>
 <%-- 						<%System.out.println(board_list.get(i).getNum()); %>
 						<%System.out.println(board_list.get(i).getTitle()); %>
@@ -236,11 +236,11 @@ img{
 
 
 <!-- 경계 --><!-- 경계 --><!-- 경계 --><!-- 경계 --><!-- 경계 --><!-- 경계 --><!-- 경계 --><!-- 경계 --><!-- 경계 --><!-- 경계 --><!-- 경계 --><!-- 경계 -->
-			<div class="blo4 p-b-63">
+			<div class="blo4 p-b-63" style="margin-left:260px; width:1200px;">
 				<div class="pic-blo4 hov-img-zoom bo-rad-10 pos-relative">
 					<a href="blog-detail.html"> 
-						<img src="file/<%=board_list.get(0).getFilename()%>"
-						alt="IMG-BLOG">
+						<img src="file/<%=board_list.get(i).getFilename()%>"
+						alt="IMG-BLOG" style="width:1250px;" >
 					</a>
 
 
@@ -248,20 +248,20 @@ img{
 
 				<div class="text-blo4 p-t-33">
 					<h4 class="p-b-16">
-						<a href="blog-detail.html" class="tit9"><%=board_list.get(0).getTitle()%></a>
+						<a href="blog-detail.html" class="tit9"><%=board_list.get(i).getTitle()%></a>
 					</h4>
 
 					<div class="txt32 flex-w p-b-24">
-						<span> by <%=board_list.get(0).getWriter()%> <span
+						<span> by <%=board_list.get(i).getWriter()%> <span
 							class="m-r-6 m-l-4">|</span>
-						</span> <span> <%=board_list.get(0).getB_date().toString()%> <span
+						</span> <span> <%=board_list.get(i).getB_date().toString()%> <span
 							class="m-r-6 m-l-4">|</span>
 						</span> <span> Cooking, Food <span class="m-r-6 m-l-4">|</span>
 						</span> <span> 8 Comments </span>
 					</div>
 
 					<p>
-						<%=board_list.get(0).getContent()%>
+						<%=board_list.get(i).getContent()%>
 					</p>
 
 					<!--                                 <a href="blog-detail.html" class="dis-block txt4 m-t-30">
@@ -270,13 +270,17 @@ img{
 								</a> -->
 				</div>
 			</div>
-			<%-- <%}	%> --%>
+			<%
+			}
+			%>
 			<!-- <a href="Main.jsp"><button id="writer">홈으로가기</button></a>  -->
 			<%if (info != null) {%>
-			<a href="BoardWrite.jsp"><button id="writer" style="width:1850px;">작성하러가기</button></a>
+			<a href="BoardWrite.jsp"><button id="writer" style="width:1900px;">작성하러가기</button></a>
 			<%}else {%>
 			<a href="Login.jsp"><button id="writer">작성하러가기</button></a>
-			<%}	%>
+			<%
+			}
+			%>
 
 			<!-- 경계 --><!-- 경계 --><!-- 경계 --><!-- 경계 --><!-- 경계 --><!-- 경계 --><!-- 경계 --><!-- 경계 --><!-- 경계 --><!-- 경계 --><!-- 경계 --><!-- 경계 -->
 
