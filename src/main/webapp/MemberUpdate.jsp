@@ -10,7 +10,7 @@
 <html lang="en">
 
 <head>
-<title>Contact</title>
+<title>MemberUpdate</title>
 <style>
 #body {
 	font-family: Montserrat;

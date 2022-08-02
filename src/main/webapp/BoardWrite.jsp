@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Forty by HTML5 UP</title>
+<title>BoardWrite</title>
 <meta charset="utf-8" />
 <title>Contact</title>
     <meta charset="UTF-8">

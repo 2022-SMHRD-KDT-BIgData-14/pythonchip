@@ -9,7 +9,7 @@
 <html lang="en">
 
 <head>
-<title>Contact</title>
+<title>Login</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->
@@ -52,21 +52,6 @@
 </head>
 
 <body class="animsition">
-<%
-	//어디서 요청이 들어왔는지 확인
-			String requstURI = request.getRequestURI();
-			String contextPath = request.getContextPath();
-			String result = requstURI.substring(contextPath.length() + 1);
-			System.out.println("요청 서블릿: " + result); 
-			
-			if(result.equals("./Login.jsp")){%>
-			<script>
-			alert('존재하지않는 회원정보입니다.')
-			</script>
-			<%	
-			}
-			%>
-
 
 	<!-- Header -->
 	<header>
