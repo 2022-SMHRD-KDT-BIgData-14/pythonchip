@@ -43,7 +43,20 @@
 </head>
 
 <body class="animsition">
-
+<%
+	//어디서 요청이 들어왔는지 확인
+			String requstURI = request.getRequestURI();
+			String contextPath = request.getContextPath();
+			String result = requstURI.substring(contextPath.length() + 1);
+			System.out.println("요청 서블릿: " + result); 
+			
+			if(result.equals("./Join.jsp")){%>
+			<script>
+			alert('이미 존재하는 아이디입니다. 다른 아이디를 입력해주세요')
+			</script>
+			<%	
+			}
+			%>
   
     <!-- Header -->
     <header>

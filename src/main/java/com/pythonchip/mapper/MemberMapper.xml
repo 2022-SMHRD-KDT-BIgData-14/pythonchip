@@ -17,11 +17,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		update user_table set pw=#{pw}, gender=#{gender}, age=#{age} , user_tel=#{user_tel} where id=#{id} 
 	</update>
 	
-	<select id="showMember" resultType="MemberDTO">
-		select * from user_table
-	</select>
-	
-	<delete id="delete" parameterType="String">
+	<delete id="deleteMember" parameterType="MemberDTO">
 		delete from user_table where id=#{id}
 	</delete>
 

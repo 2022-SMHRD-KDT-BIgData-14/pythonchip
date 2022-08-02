@@ -14,6 +14,7 @@ public class StoreService implements Command {
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
+		try {
 		System.out.println("[StoreService]");
 
 		String store_name = request.getParameter("store_name");
@@ -44,7 +45,9 @@ public class StoreService implements Command {
 			// Main.jsp
 			return "./Home.jsp";
 		}else {
-			return "./Fail.jsp";
+			return "./JoinStore.jsp";
+		}}catch(Exception e){
+			return "./JoinStore.jsp";
 		}
 	}
 

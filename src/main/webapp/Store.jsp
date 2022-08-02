@@ -210,7 +210,7 @@
 					<option value="name" selected>가게 이름</option>
 					<option value="location">위치</option>
 					<option value="menu">메뉴</option>
-				</select> <input type="text" size="66em" id="searchinput"
+				</select> <input type="text" size="66em" id=" "
 					style="height: 2.5em; border: solid !important; margin-left: 0.1em; margin-right: 0.1em; border-radius: 0.7em; padding-left: 1em;">
 				<button id="searchButton"
 					style="border: solid black; width: 4.3em; height: 2.5em; border-style: groove; border-radius: 0.7em;">검색</button>
@@ -258,9 +258,10 @@
 					alt="...">
 
 				<div class="overlay-item-gallery trans-0-10 flex-c-m">
+				
+				
 					<a class="btn-show-gallery flex-c-m fa fa-search"
-						href="https://www.coffeebeankorea.com/data/menu/%EC%BD%9C%EB%93%9C%EB%B8%8C%EB%A3%A815_1.jpg"
-						data-lightbox="gallery"></a>
+						href="./DetailStore.jsp?store_seq=<%=arr.get(i).getStore_seq()%>"></a>
 				</div>
 				<div>
 					<br>
