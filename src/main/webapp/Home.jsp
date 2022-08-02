@@ -84,7 +84,7 @@
 				<div class="wrap_header trans-0-3">
 					<!-- 로고 -->
 					<div class="logo">
-						<a href="Home.jsp"> <img src="images/logo.png" alt="IMG-LOGO"
+						<a href="Home.jsp"> <img src="images/logo2.png" alt="IMG-LOGO"
 							data-logofixed="images/logo.png"></a> </a>
 					</div>
 
@@ -98,10 +98,9 @@
 
 								<li><a href="Store.jsp">store</a></li>
 
-								<li><a href=" BoardMain.jsp">Community</a></li>
+								<li><a href="BoardMain.jsp">Community</a></li>
 
 								<li><a href="JoinStore.jsp">store join</a></li>
-
 
 							</ul>
 						</nav>
@@ -191,7 +190,7 @@
 		<div class="wrap-slick1">
 			<div class="slick1">
 				<div class="item-slick1 item1-slick1"
-					style="background-image: url(images/slide1-01.jpg);">
+					style="background-image: url(images/master-slides-01.png);">
 					<div
 						class="wrap-content-slide1 sizefull flex-col-c-m p-l-15 p-r-15 p-t-150 p-b-170">
 						<span
@@ -262,7 +261,7 @@
 
 				<!-- 네번째 슬라이드 -->
 				<div class="item-slick1 item3-slick1"
-					style="background-image: url(images/master-slides-01.png);">
+					style="background-image: url(images/slide1-01.jpg);">
 					<div
 						class="wrap-content-slide1 sizefull flex-col-c-m p-l-15 p-r-15 p-t-150 p-b-170">
 						<span

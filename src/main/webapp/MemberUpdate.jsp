@@ -15,6 +15,7 @@
 #body {
 	font-family: Montserrat;
 }
+}
 </style>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -69,8 +70,8 @@
 				<div class="wrap_header trans-0-3">
 					<!-- 로고 -->
 					<div class="logo">
-						<a href="Home.jsp"> <img src="images/logo.png" alt="IMG-LOGO"
-							data-logofixed="images/logo.png"></a> </a>
+						<a href="Home.jsp"> <img src="images/logo2.png" alt="IMG-LOGO"
+							data-logofixed="images/logo2.png"></a> </a>
 					</div>
 
 					<!-- 상단 메뉴창-->
@@ -126,7 +127,6 @@
 						class="txt19">map search</a></li>
 
 
-
 					<li class="t-center m-b-13"><a href="Store.jsp" class="txt19">store</a>
 					</li>
 
@@ -173,7 +173,7 @@
 					<!-- 나이입력-->
 					<p style="text-align: center; font-size: 12px; color: #666">age</p>
 					<input type="text" placeholder="(숫자만 입력)" name="age" class="size"
-						style="width: 400px"> </label> <label> <!-- 전화번호 -->
+						style="width: 400px"> </label> <br><label> <!-- 전화번호 -->
 						<p style="text-align: center; font-size: 12px; color: #666">MobilePhone</p>
 						<input placeholder="-빼고 숫자만 입력" name="user_tel" class="size num2"
 						style="width: 400px">

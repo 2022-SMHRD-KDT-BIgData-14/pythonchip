@@ -1831,7 +1831,6 @@ a {
     border: none;
     border-radius: 5px;
 }
-
 .btn {
     width: 322px;
     height: 36px;
@@ -1841,6 +1840,16 @@ a {
     border: none;
     cursor: pointer;
     border-radius: 5px;
+}
+.btn10 {
+    width: 188px;
+    height: 41px;
+    font-size: 20px;
+    background-color: #FFA46C;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 34px;
 }
 
 .btn:hover {
@@ -2161,7 +2170,7 @@ a {
 }
 
 .size {
-    width: 300px;
+    width: 389px;
     height: 30px;
     padding-left: 10px;
     background-color: #f4f4f4;
@@ -2171,14 +2180,14 @@ a {
 }
 
 .join {
-    width: 310px;
-    height: 40px;
+    width: 67px;
+    height: 29px;
     font-size: 15px;
-    background-color: blue;
+    background-color: black;
     color: #fff;
     border: none;
     cursor: pointer;
-    border-radius: 5px;
+    border-radius: 35px;
 }
 
 .join:hover {

@@ -51,8 +51,9 @@
 <!--===============================================================================================-->
 </head>
 <body class="animsition">
-<% MemberDTO info = (MemberDTO)session.getAttribute("info"); %>
-	<<<<<<< HEAD
+<%
+	MemberDTO info = (MemberDTO) session.getAttribute("info");
+	%>
 	<!-- Header -->
 	<header>
 		<!-- Header desktop -->
@@ -61,7 +62,7 @@
 				<div class="wrap_header trans-0-3">
 					<!-- 로고 -->
 					<div class="logo">
-						<a href="Home.jsp"> <img src="images/logo.png" alt="IMG-LOGO"
+						<a href="Home.jsp"> <img src="images/logo2.png" alt="IMG-LOGO"
 							data-logofixed="images/logo.png"></a> </a>
 					</div>
 
@@ -75,7 +76,7 @@
 
 								<li><a href="Store.jsp">store</a></li>
 
-								<li><a href=" BoardMain.jsp">Community</a></li>
+								<li><a href="BoardMain.jsp">Community</a></li>
 
 								<li><a href="JoinStore.jsp">store join</a></li>
 
@@ -86,10 +87,24 @@
 
 					<!-- 상단 로그인, 회원가입 -->
 					<div class="social flex-w flex-l-m p-r-20">
-						<li><a href="Login.jsp" style="padding-right: 20px;">
-								login </a></li>
+												<li>
+							<!--  로그인 이메일 출력! --> <%
+						 if (info != null) {
+						 %> <a href="./Mypage.jsp" style="padding-right: 20px;"> MyPage
+						</a>
+						<li><a href="LogoutService.do" style="padding-left: 20px;">
+								Logout </a></li>
+
+						<%
+						} else {
+						%>
+						<a href="Login.jsp" style="padding-right: 20px;"> login </a>
 						<li><a href="Join.jsp" style="padding-left: 20px;"> join
 						</a></li>
+						<%
+						}
+						%>
+						</li>
 
 
 						<button class="btn-show-sidebar m-l-33 trans-0-4"></button>
@@ -122,21 +137,29 @@
 					<li class="t-center m-b-13"><a href="Store.jsp" class="txt19">store</a>
 					</li>
 
-					<li class="t-center m-b-13"><a href=" Community.jsp"
+					<li class="t-center m-b-13"><a href=" BoardMain.jsp"
 						class="txt19">Community</a></li>
-
-					<li class="t-center m-b-13"><a href="Mypage.jsp" class="txt19">my
-							page</a></li>
-
 
 					<li class="t-center m-b-13"><a href="JoinStore.jsp"
 						class="txt19">StoreJoin</a></li>
-
-					<li class="t-center">
-						<!-- 슬라이드바 로그인 --> <a href="Login.jsp"
+					<!--  로그인했을때면 mypage 뜨게하기 -->
+					<%
+					if (info != null) {
+					%>
+					<li class="t-center m-b-13"><a href="Mypage.jsp" class="txt19">my
+							page</a></li>
+					<%
+					} else {
+					%>
+					<!-- 슬라이드바 로그인 -->
+					<a href="Login.jsp"
 						class="btn3 flex-c-m size13 txt11 trans-0-4 m-l-r-auto"> login
 					</a>
-					</li>
+					<%
+					}
+					%>
+
+					<li class="t-center"></li>
 				</ul>
 	</aside>
 
@@ -209,13 +232,13 @@
 				<div class="pic-blo4 hov-img-zoom bo-rad-10 pos-relative">
 					<a href="blog-detail.html"> <!-- <img src="images/blog-10.jpg" alt="IMG-BLOG"> -->
 						<img src="file/<%=board_list.get(i).getFilename()%>"
-						alt="IMG-BLOG" style="width:800px; height:400px;">
+						alt="IMG-BLOG">
 					</a>
 
-<!-- 					<div class="date-blo4 flex-col-c-m">
+					<div class="date-blo4 flex-col-c-m">
 						<span class="txt30 m-b-4"> 12 </span> <span class="txt31">
 							Dec, 2018 </span>
-					</div> -->
+					</div>
 				</div>
 
 				<div class="text-blo4 p-t-33">
@@ -246,7 +269,6 @@
 			}
 			%>
 			<!-- <a href="Main.jsp"><button id="writer">홈으로가기</button></a>  -->
-
 			<%if (info != null) {%>
 			<a href="BoardWrite.jsp"><button id="writer">작성하러가기</button></a>
 			<%}else {%>
@@ -255,6 +277,7 @@
 			}
 			%>
 
+			
 
 			<!-- 경계 --><!-- 경계 --><!-- 경계 --><!-- 경계 --><!-- 경계 --><!-- 경계 --><!-- 경계 --><!-- 경계 --><!-- 경계 --><!-- 경계 --><!-- 경계 --><!-- 경계 -->
 
@@ -307,7 +330,7 @@
 					<ul>
 						<li class="flex-w m-b-25">
 							<div class="size16 bo-rad-10 wrap-pic-w of-hidden m-r-18">
-								<a href="#"> <img src="images/blog-11.jpg" alt="IMG-BLOG" style="width:800px; height:400px;">
+								<a href="#"> <img src="images/blog-11.jpg" alt="IMG-BLOG">
 								</a>
 							</div>
 
@@ -319,7 +342,7 @@
 
 						<li class="flex-w m-b-25">
 							<div class="size16 bo-rad-10 wrap-pic-w of-hidden m-r-18">
-								<a href="#"> <img src="images/blog-12.jpg" alt="IMG-BLOG" style="width:800px; height:400px;">
+								<a href="#"> <img src="images/blog-12.jpg" alt="IMG-BLOG">
 								</a>
 							</div>
 
@@ -331,7 +354,7 @@
 
 						<li class="flex-w m-b-25">
 							<div class="size16 bo-rad-10 wrap-pic-w of-hidden m-r-18">
-								<a href="#"> <img src="images/blog-13.jpg" alt="IMG-BLOG" style="width:800px; height:400px;">
+								<a href="#"> <img src="images/blog-13.jpg" alt="IMG-BLOG">
 								</a>
 							</div>
 
@@ -343,7 +366,7 @@
 
 						<li class="flex-w m-b-25">
 							<div class="size16 bo-rad-10 wrap-pic-w of-hidden m-r-18">
-								<a href="#"> <img src="images/blog-14.jpg" alt="IMG-BLOG" style="width:800px; height:400px;">
+								<a href="#"> <img src="images/blog-14.jpg" alt="IMG-BLOG">
 								</a>
 							</div>
 
@@ -355,7 +378,7 @@
 
 						<li class="flex-w m-b-25">
 							<div class="size16 bo-rad-10 wrap-pic-w of-hidden m-r-18">
-								<a href="#"> <img src="images/blog-15.jpg" alt="IMG-BLOG" style="width:800px; height:400px;">
+								<a href="#"> <img src="images/blog-15.jpg" alt="IMG-BLOG">
 								</a>
 							</div>
 
