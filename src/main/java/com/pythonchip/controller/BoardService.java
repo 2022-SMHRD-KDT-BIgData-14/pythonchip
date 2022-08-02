@@ -1,6 +1,8 @@
 package com.pythonchip.controller;
 
+import java.math.BigDecimal;
 import java.net.URLEncoder;
+import java.sql.Timestamp;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -18,12 +20,12 @@ public class BoardService implements Command {
 		System.out.println("[BoardService]");
 	
 		try {
-//			request.setCharacterEncoding("UTF-8");
+			request.setCharacterEncoding("UTF-8");
 			// 파일 업로드를위한 변수 설정
 			// 1. request 객체		
 			// 2. 파일을 저장할 경로
 			String path = request.getServletContext().getRealPath("file");
-//			System.out.println(path);
+			System.out.println(path);
 			
 			// 3. 파일의 최대크기 지정
 			int maxSize = 10*1024*1024;
@@ -50,7 +52,7 @@ public class BoardService implements Command {
 			System.out.println("filename : " + filename);
 			
 			// DTO로 묶기 
-			BoardDTO dto = new BoardDTO(null, writer, title, content, null, filename);
+			BoardDTO dto = new BoardDTO(new BigDecimal(0), writer, title, content, new Timestamp(0), filename);
 			
 			// insertBoard 메소드 호출
 			int row = new BoardDAO().insertBoard(dto);

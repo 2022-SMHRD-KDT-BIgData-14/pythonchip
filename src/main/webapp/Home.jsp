@@ -84,7 +84,7 @@
 					<!-- 로고 -->
 					<div class="logo">
 						<a href="Home.jsp"> <img src="images/logo2.png" alt="IMG-LOGO"
-							data-logofixed="images/logo2.png"></a> </a>
+							data-logofixed="images/logo2.png"></a>
 					</div>
 
 					<!-- 상단 메뉴창-->

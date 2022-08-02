@@ -41,20 +41,17 @@
 
 </head>
 <body class="animsition">
-
-  
     <!-- Header -->
     <header>
-        <!-- Header desktop -->
-        <div class="wrap-menu-header gradient1 trans-0-4">
-            <div class="container h-full">
-                <div class="wrap_header trans-0-3">
-                    <!-- 로고 -->
-                    <div class="logo">
-                        <a href="Home.jsp">
-                            <img src="images/logo2.png" alt="IMG-LOGO" data-logofixed="images/logo2.png"></a>
-                        </a>
-                    </div>
+       <!-- Header desktop -->
+		<div class="wrap-menu-header gradient1 trans-0-4">
+			<div class="container h-full">
+					<!-- 로고 -->
+				<div class="wrap_header trans-0-3">
+					<div class="logo" >
+						<a href="Home.jsp" > <img  src="images/logo2.png" alt="IMG-LOGO" style="width:50%"
+							data-logofixed="images/logo2.png" ></a>
+					</div>
 
                     <!-- 상단 메뉴창-->
                     <div class="wrap_menu p-l-45 p-l-0-xl">
@@ -168,6 +165,7 @@
 		<div id="login">
 			<div id="join_form">
 				<form action="BoardService.do" method="post" enctype="multipart/form-data">
+				
 					<h3 class="login" style="letter-spacing: -1px;">글 작성</h3>
 
 					<hr>
@@ -177,14 +175,7 @@
 						<input type="text" placeholder="제목 작성" name="title" class="size"
 						maxlength="20" style="width: 420px;">
 					</label><br> 
-					<label>
-<!-- 						작성자
-						<p style="text-align: left; font-size: 12px; color: #666">작성자</p>
-						<input type="hidden" placeholder="작성자" name="writer" class="size"
-						maxlength="20" style="width: 420px;"> -->
-					</label>
 					<li><input type="hidden" name = "writer" value=<%=info.getId() %>></li>
-					
 					<label>
 						<p style="text-align: left; font-size: 12px; color: #666">내용</p> 
 						<textarea rows="10" name="content" type="text" class="size" style="width: 420px; height: 266px;"></textarea>
