@@ -68,20 +68,6 @@
 			}
 			%>
 
-
-    <!-- Header -->
-    <header>
-        <!-- Header desktop -->
-        <div class="wrap-menu-header gradient1 trans-0-4">
-            <div class="container h-full">
-                <div class="wrap_header trans-0-3">
-                    <!-- 로고 -->
-                    <div class="logo">
-                        <a href="Home.jsp">
-                            <img src="images/logo2.png" alt="IMG-LOGO" data-logofixed="images/logo2.png"></a>
-                        </a>
-                    </div>
-
 	<!-- Header -->
 	<header>
 		<!-- Header desktop -->
@@ -90,11 +76,9 @@
 				<div class="wrap_header trans-0-3">
 					<!-- 로고 -->
 					<div class="logo">
-						<a href="Home.jsp"> <img src="images/logo.png" alt="IMG-LOGO"
-							data-logofixed="images/logo.png"></a> </a>
+						<a href="Home.jsp"> <img src="images/logo2.png" alt="IMG-LOGO"
+							data-logofixed="images/logo2.png"></a> </a>
 					</div>
-
-
 					<!-- 상단 메뉴창-->
 					<div class="wrap_menu p-l-45 p-l-0-xl">
 						<nav class="menu">
@@ -138,13 +122,12 @@
 		<div class="gallery-sidebar t-center p-l-60 p-r-60 p-b-40">
 			<!-- 슬라이드바 구성  -->
 
-			<ul class="menu-sidebar p-t-95 p-b-70">
+		<ul class="menu-sidebar p-t-95 p-b-70">
 					<div class="logo">
 						<a href="Home.jsp"> <img src="images/logo.png" alt="IMG-LOGO"
 							data-logofixed="images/logo.png"></a>
 					</div>
-				<ul class="menu-sidebar p-t-95 p-b-70">
-
+                <ul class="menu-sidebar p-t-95 p-b-70">
 
 					<li class="t-center m-b-13"><a href="MapSearch.jsp"
 						class="txt19">map search</a></li>
@@ -182,7 +165,7 @@
 
 	<div id="con">
 		<div id="login">
-			<div id="bye_form">
+			<div id="bye_form" style="width: 550px; height: 500px; ">
 				<%
 				MemberDTO info = (MemberDTO) session.getAttribute("info"); 
 				System.out.println(info.getId());

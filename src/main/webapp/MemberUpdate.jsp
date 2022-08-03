@@ -13,7 +13,7 @@
 <title>Contact</title>
 <style>
 #body {
-	font-family: Montserrat;
+	font-family: Jua;
 }
 }
 </style>

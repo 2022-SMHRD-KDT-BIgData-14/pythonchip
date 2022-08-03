@@ -201,7 +201,7 @@
 
 				<hr>
 				<p class="find">
-					<span><a href="join.jsp">회원가입</a></span>
+					<span><a href="Join.jsp">회원가입</a></span>
 				</p>
 			</div>
 

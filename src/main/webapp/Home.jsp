@@ -14,7 +14,7 @@
 <style>
 #loginid {
 	color: white;
-	font-family: Montserrat;
+	font-family: Jua;
 	letter-spacing: 2px;
 	font-size: 14px;
 
@@ -62,7 +62,7 @@
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
-<link rel="stylesheet" href="./css/main.css">
+<!-- <link rel="stylesheet" href="./css/main.css"> -->
 <script defer src="./js/main.js"></script>
 <title>Document</title>
 
@@ -190,12 +190,18 @@
 		<div class="wrap-slick1">
 			<div class="slick1">
 				<div class="item-slick1 item1-slick1"
-					style="background-image: url(images/slide1-01.jpg);">
+					style="background-image: url(images/master-slides-01.png);">
 					<div
 						class="wrap-content-slide1 sizefull flex-col-c-m p-l-15 p-r-15 p-t-150 p-b-170">
 						<span
 							class="caption1-slide1 txt1 t-center animated visible-false m-b-15"
-							data-appear="fadeInDown"> 맛나는 음식을 위해! </span>
+							data-appear="rollIn"> 저희  BBOGEUL은  </span> <span
+							class="caption1-slide1 txt1 t-center animated visible-false m-b-15"
+							data-appear="rollIn"> 할매니얼에 관한 음식을 지도를 통해 </span>
+						<h2
+							class="caption2-slide1 tit1 t-center animated visible-false m-b-37"
+							data-appear="lightSpeedIn">손쉽게 찾을 수 있습니다!!</h2>
+
 
 
 						<!-- 검색창 -->
@@ -211,6 +217,8 @@
 				</div>
 
 
+		
+
 				<!-- 두번째 슬라이드 -->
 				<div class="item-slick1 item2-slick1"
 					style="background-image: url(images/master-slides-02.jpg);">
@@ -220,66 +228,23 @@
 							class="caption1-slide1 txt1 t-center animated visible-false m-b-15"
 							data-appear="rollIn"> 할매니얼이란? </span> <span
 							class="caption1-slide1 txt1 t-center animated visible-false m-b-15"
-							data-appear="rollIn"> 어른입맛을 선호하는 </span>
+							data-appear="rollIn"> 할머니들이 먹고 입는 음식과 패션 취향을 선호하는  </span>
 						<h2
 							class="caption2-slide1 tit1 t-center animated visible-false m-b-37"
-							data-appear="lightSpeedIn">MZ세대를 말한다!</h2>
+							data-appear="lightSpeedIn"> 밀레니얼 세대를 의미한다!</h2>
 
 						<div class="wrap-btn-slide1 animated visible-false"
 							data-appear="slideInUp">
 							<!-- Button1 -->
 							<a href="MapSearch.jsp"
-								class="btn1 flex-c-m size1 txt3 trans-0-4"> 맛나는거 찾아보기! </a>
-						</div>
-					</div>
-				</div>
-
-				<!-- 세번째 슬라이드 -->
-				<div class="item-slick1 item2-slick1"
-					style="background-image: url(images/lunch-06.jpg);">
-					<div
-						class="wrap-content-slide1 sizefull flex-col-c-m p-l-15 p-r-15 p-t-150 p-b-170">
-						<span
-							class="caption1-slide1 txt1 t-center animated visible-false m-b-15"
-							data-appear="rollIn"> 할매니얼이란? </span> <span
-							class="caption1-slide1 txt1 t-center animated visible-false m-b-15"
-							data-appear="rollIn"> 어른입맛을 선호하는 </span>
-						<h2
-							class="caption2-slide1 tit1 t-center animated visible-false m-b-37"
-							data-appear="lightSpeedIn">MZ세대를 말한다!</h2>
-
-						<div class="wrap-btn-slide1 animated visible-false"
-							data-appear="slideInUp">
-							<!-- Button1 -->
-							<a href="MapSearch.jsp"
-								class="btn1 flex-c-m size1 txt3 trans-0-4"> 맛나는거 찾아보기! </a>
+								class="btn1 flex-c-m size1 txt3 trans-0-4"> search! </a>
 						</div>
 					</div>
 				</div>
 
 
 
-				<!-- 네번째 슬라이드 -->
-				<div class="item-slick1 item3-slick1"
-					style="background-image: url(images/master-slides-01.png);">
-					<div
-						class="wrap-content-slide1 sizefull flex-col-c-m p-l-15 p-r-15 p-t-150 p-b-170">
-						<span
-							class="caption1-slide1 txt1 t-center animated visible-false m-b-15"
-							data-appear="rotateInDownLeft"> 어디로 </span>
-
-						<h2
-							class="caption2-slide1 tit1 t-center animated visible-false m-b-37"
-							data-appear="rotateInUpRight">가야하오...</h2>
-
-						<div class="wrap-btn-slide1 animated visible-false"
-							data-appear="rotateIn">
-							<!-- Button1 -->
-							<a href="MapSearch.jsp"
-								class="btn1 flex-c-m size1 txt3 trans-0-4"> Look Menu </a>
-						</div>
-					</div>
-				</div>
+			
 
 			</div>
 
