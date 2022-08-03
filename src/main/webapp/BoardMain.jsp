@@ -1,4 +1,5 @@
 <!--블로그, 리뷰-->
+<%@page import="java.lang.reflect.Array"%>
 <%@page import="com.pythonchip.model.MemberDTO"%>
 <%@page import="org.apache.ibatis.reflection.SystemMetaObject"%>
 <%@page import="com.pythonchip.model.BoardDAO"%>
@@ -170,7 +171,6 @@
                 <a href="./Home.jsp" class="txt27">
 					Home
 				</a>
-
                 <span class="txt29 m-l-10 m-r-10">/</span>
 
                 <span class="txt29">
@@ -178,7 +178,18 @@
 				</span>
             </div>
         </div>
+        <%
+        ArrayList<String> arrlistjpg = new ArrayList<String>();
+        arrlistjpg.add("https://i.pinimg.com/736x/1e/9a/d8/1e9ad86a54fe9a7968698806d2cecc3b.jpg");
+        arrlistjpg.add("https://post-phinf.pstatic.net/MjAyMjA2MDJfMTQ3/MDAxNjU0MTUwNzQwMjc5.SeOwioI_hhtRNlRtx4f5bEhNBxq_7HPZoay0nd718YQg.b3a6xKEGfvkMkMk6zj-LbAm32yPfKMC1pB-94MFUZpsg.JPEG/%ED%95%A0%EB%A7%A4%EB%8B%88%EC%96%BC_%EC%9D%B4%EB%AF%B8%EC%A7%8003.jpg?type=w1200");
+        arrlistjpg.add("https://image.fnnews.com/resource/media/image/2022/04/28/202204281803048909_l.jpg");
+        arrlistjpg.add("https://cafe24img.poxo.com/jececec/web/product/extra/big/202105/7b0e7c1e53f5853f47de1b7cb4b9e57e.jpg");
+        arrlistjpg.add("https://pbs.twimg.com/media/E71rL3-UcAQTb5V?format=jpg&name=4096x4096");
+        arrlistjpg.add("https://0538542121.modoo.at/?link=azmxwupl");
+        arrlistjpg.add("https://kormedi.com/1402332/%EF%BB%BF%EA%B3%A0%EC%86%8C%ED%95%98%EA%B3%A0-%EB%8B%AC%EC%BD%A4%ED%95%98%EA%B3%A0-%EA%B1%B4%EA%B0%95%EC%97%90-%EC%9C%A0%EC%9D%B5%ED%95%9C-%EC%94%A8%EC%95%97-6/");
+        arrlistjpg.add("https://beatmarket.speedgabia.com/godo/goods/re/80463/MC1126_0235_re.jpg");
         
+		%>
 
         <div class="container">
             <div class="row">
@@ -188,13 +199,14 @@
 				BoardWrite</a></h3><br><br>
 					<%}%>
                 <div class="col-md-8 col-lg-9">
-
+					<% String path = request.getServletContext().getRealPath("file");
+					System.out.println(path); %>
 					<% for(int i=0;i<board_list.size();i++){ %>
                         <!-- Block -->
                         <div class="blo4 p-b-63">
                             <div class="pic-blo4 hov-img-zoom bo-rad-10 pos-relative">
                                 <a>
-                                    <img src="images/blog-05.jpg" alt="IMG-BLOG">
+                                    <img src=<%=arrlistjpg.get(i) %> alt="IMG-BLOG">
                                 </a>
                             </div>
                             <div class="text-blo4 p-t-33">

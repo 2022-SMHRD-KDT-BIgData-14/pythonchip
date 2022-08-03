@@ -41,6 +41,7 @@
 
 </head>
 <body class="animsition">
+<%MemberDTO info = (MemberDTO) session.getAttribute("info");%>
     <!-- Header -->
     <header>
        <!-- Header desktop -->
@@ -70,7 +71,7 @@
                                 </li>
 
                                 <li>
-                                    <a href=" Community.jsp">Community</a>
+                                    <a href="BoardMain.jsp">Community</a>
                                 </li>
 
                                 <li>
@@ -84,18 +85,23 @@
 
                     <!-- 상단 로그인, 회원가입 -->
                     <div class="social flex-w flex-l-m p-r-20">
-                        <li>
-                            <a href="Login.jsp" style="padding-right: 20px;">
-                                login
-                            </a>
-                        </li>
-                        <li>
-                            <a href="Join.jsp" style="padding-left: 20px;">
-                                join
-                            </a>
-                        </li>
+                     							<!--  로그인 이메일 출력! --> <%
+						 if (info != null) {
+						 %> <a href="./Mypage.jsp" style="padding-right: 20px;"> MyPage
+						</a>
+						<li><a href="LogoutService.do" style="padding-left: 20px;">
+								Logout </a></li>
 
-
+						<%
+						} else {
+						%>
+						<a href="Login.jsp" style="padding-right: 20px;"> login </a>
+						<li><a href="Join.jsp" style="padding-left: 20px;"> join
+						</a></li>
+						<%
+						}
+						%>
+						</li>
                         <button class="btn-show-sidebar m-l-33 trans-0-4"></button>
                     </div>
                 </div>
@@ -113,44 +119,47 @@
             <!-- 슬라이드바 구성  -->
 
             <ul class="menu-sidebar p-t-95 p-b-70">
-                <li class="t-center m-b-13">
-                    <a href="Home.jsp" class="txt19">로고</a>
-                </li>
-                <ul class="menu-sidebar p-t-95 p-b-70">
+				<div class="logo">
+						<a href="Home.jsp"> <img src="images/logo.png" alt="IMG-LOGO"
+							data-logofixed="images/logo.png"></a>
+					</div>
+				<ul class="menu-sidebar p-t-95 p-b-70">
 
 
-                    <li class="t-center m-b-13">
-                        <a href="MapSearch.jsp" class="txt19">map search</a>
-                    </li>
+					<li class="t-center m-b-13"><a href="MapSearch.jsp"
+						class="txt19">map search</a></li>
 
 
 
-                    <li class="t-center m-b-13">
-                        <a href="Store.jsp" class="txt19">store</a>
-                    </li>
+					<li class="t-center m-b-13"><a href="Store.jsp" class="txt19">store</a>
+					</li>
 
-                    <li class="t-center m-b-13">
-                        <a href=" Community.jsp" class="txt19">Community</a>
-                    </li>
+					<li class="t-center m-b-13"><a href=" BoardMain.jsp"
+						class="txt19">Community</a></li>
 
-                    <li class="t-center m-b-13">
-                        <a href="Mypage.jsp" class="txt19">my page</a>
-                    </li>
+					<li class="t-center m-b-13"><a href="JoinStore.jsp"
+						class="txt19">StoreJoin</a></li>
+					<!--  로그인했을때면 mypage 뜨게하기 -->
+					<%
+					if (info != null) {
+					%>
+					<li class="t-center m-b-13"><a href="Mypage.jsp" class="txt19">my
+							page</a></li>
+					<%
+					} else {
+					%>
+					<!-- 슬라이드바 로그인 -->
+					<a href="Login.jsp"
+						class="btn3 flex-c-m size13 txt11 trans-0-4 m-l-r-auto"> login
+					</a>
+					<%
+					}
+					%>
 
+					<li class="t-center"></li>
+				</ul>
+	</aside>
 
-                    <li class="t-center m-b-13">
-                        <a href="JoinStore.jsp" class="txt19">StoreJoin</a>
-                    </li>
-
-                    <li class="t-center">
-                        <!-- 슬라이드바 로그인 -->
-                        <a href="Login.jsp" class="btn3 flex-c-m size13 txt11 trans-0-4 m-l-r-auto">
-					login
-				</a>
-                    </li>
-                </ul>
-
-    </aside>
 
     <!-- 상단 이미지 -->
     <section class="bg-title-page flex-c-m p-t-160 p-b-80 p-l-15 p-r-15" style="background-image: url(images/photo-gallery-thumb-08.jpg);">
@@ -159,7 +168,6 @@
         </h2>
     </section>
 <!--==*==*==*==*==*==*==*==*==*==*==*==*==*==*==*==*==*==*==*==*==*==*==*==*==*==*==*==*==*==*==*==*==*==*==*==*==*==*==*==*==*==*==*==*==*==  -->
-<% MemberDTO info = (MemberDTO)session.getAttribute("info"); %>
 <!-- 게시판 작성 폼 -->
 	<div id="con">
 		<div id="login">
@@ -169,30 +177,28 @@
 					<h3 class="login" style="letter-spacing: -1px;">글 작성</h3>
 
 					<hr>
-					<label style="width:500px;"> 사진 <input type="file" name="filename">
-					</label style="width:650px;"> <label> 제목
+					<label style="width:500px;"> 사진 <p style="font-color:gray;">*파일 제목을 영어로 수정 후 업로드해주세요* </p>
+					<input id=filename type="file" name="filename" style="width:250px;">
+					</label style="width:650px;"> <br><br><label> 제목
 						<p style="text-align": left; font-size: 12px; color: #666></p> 
 						<input type="text" placeholder="제목 작성" name="title" class="size"
-						maxlength="20" style="width: 420px;">
+						maxlength="50" style="width: 420px;">
 					</label><br> 
 					<li><input type="hidden" name = "writer" value=<%=info.getId() %>></li>
 					<label>
 						<p style="text-align: left; font-size: 12px; color: #666">내용</p> 
 						<textarea rows="10" name="content" type="text" class="size" style="width: 420px; height: 266px;"></textarea>
 					</label>
-						
-			
-					
 					<p>
-						<input type="reset" value="초기화" >
-						<input type="submit" value="작성하기" >
+						<input type="reset" value="초기화" class="btn10">
+						<input type="submit" value="작성하기" class="btn10">
 					</p>
 					</form>
+					
 					
 			</div>
 		</div>
 	</div>
-
 
 
 

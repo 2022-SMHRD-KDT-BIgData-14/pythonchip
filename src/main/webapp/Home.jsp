@@ -84,7 +84,7 @@
 					<!-- 로고 -->
 					<div class="logo">
 						<a href="Home.jsp"> <img src="images/logo2.png" alt="IMG-LOGO"
-							data-logofixed="images/logo2.png"></a>
+							data-logofixed="images/logo2.png"></a> </a>
 					</div>
 
 					<!-- 상단 메뉴창-->
@@ -144,10 +144,12 @@
 			<!-- 슬라이드바 구성  -->
 
 			<ul class="menu-sidebar p-t-95 p-b-70">
-				<div class="logo">
+					<div class="logo">
 						<a href="Home.jsp"> <img src="images/logo.png" alt="IMG-LOGO"
-							data-logofixed="images/logo.png"></a> </a>
+							data-logofixed="images/logo.png"></a>
 					</div>
+                <ul class="menu-sidebar p-t-95 p-b-70">
+
 					
 
 					<li class="t-center m-b-13"><a href="MapSearch.jsp"
