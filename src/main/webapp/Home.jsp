@@ -228,7 +228,10 @@
 							class="caption1-slide1 txt1 t-center animated visible-false m-b-15"
 							data-appear="rollIn"> 할매니얼이란? </span> <span
 							class="caption1-slide1 txt1 t-center animated visible-false m-b-15"
-							data-appear="rollIn"> 할머니들이 먹고 입는 음식과 패션 취향을 선호하는  </span>
+							data-appear="rollIn"> 할머니들이 먹는 음식과</span>
+							<span
+							class="caption1-slide1 txt1 t-center animated visible-false m-b-15"
+							data-appear="rollIn"> 할머니들의 패션 취향을 선호하는  </span>
 						<h2
 							class="caption2-slide1 tit1 t-center animated visible-false m-b-37"
 							data-appear="lightSpeedIn"> 밀레니얼 세대를 의미한다!</h2>

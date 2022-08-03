@@ -528,8 +528,9 @@ ul, li {
 				<div class="wrap_header trans-0-3">
 					<!-- 로고 -->
 					<div class="logo">
-						<a href="Home.jsp"> <img src="images/logo.png" alt="IMG-LOGO"
-							data-logofixed="images/logo.png"></a> </a>
+					<a href="index.html"> <img src="images/logo2.png"
+							alt="IMG-LOGO" data-logofixed="images/logo2.png">
+						</a>
 					</div>
 
 					<!-- 상단 메뉴창-->
@@ -588,8 +589,10 @@ ul, li {
 
 		<div class="gallery-sidebar t-center p-l-60 p-r-60 p-b-40">
 			<ul class="menu-sidebar p-t-95 p-b-70">
-				<li class="t-center m-b-13"><a href="Home.jsp" class="txt19">로고</a>
-				</li>
+				<div class="logo">
+						<a href="Home.jsp"> <img src="images/logo.png" alt="IMG-LOGO"
+							data-logofixed="images/logo.png"></a>
+					</div>
 				<ul class="menu-sidebar p-t-95 p-b-70">
 
 
@@ -703,7 +706,7 @@ ul, li {
 								<div>
 									<form class="formSearch"
 										onsubmit="searchPlaces();return false;">
-										키워드 ▷ <input type="text" placeholder="검색어를 입력해주세요" id="keyword" size="15">
+										키워드 ▷ <input type="text" placeholder="검색어를 입력해주세요" id="keyword" size="18">
 										<button type="submit">검색하기</button>
 									</form>
 								</div>

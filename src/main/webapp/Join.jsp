@@ -182,7 +182,7 @@
 
     <!-- 회원가입 폼 -->
     <div id="con">
-        <div id="login">
+    <br><br><br><br>
             <div id="join_form">
                 <!--회원가입 폼-->
                 <form action="JoinService.do" method="post">
@@ -219,7 +219,7 @@
 					</label> 
 					<label> <input type="radio" name="gender"  autocomplete="off" value="여자" checked><p style="text-align: left; font-size: 12px; color: #666"> 여자</p></label> 
 					<p>
-						<input type="submit" value="회원가입" class="btn">
+						<input type="submit" value="회원가입" class="btn10">
 					</p>
 				</form>
 
@@ -228,7 +228,6 @@
                 </p>
             
             </div>
-            <div>
             </div>
 
 

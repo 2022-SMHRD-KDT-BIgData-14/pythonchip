@@ -13,10 +13,11 @@ import lombok.RequiredArgsConstructor;
 public class MenuDTO {
 	
 
-	BigDecimal menu_seq;
-	@NonNull String price;
+
 	@NonNull String menu_name;
-	@NonNull String store_name;
+	@NonNull String price;
+	@NonNull BigDecimal store_seq;
+	BigDecimal menu_seq;
 	
 }
 

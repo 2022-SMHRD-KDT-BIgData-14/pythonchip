@@ -1,4 +1,6 @@
 
+<%@page import="com.pythonchip.model.MenuDAO"%>
+<%@page import="com.pythonchip.model.MenuDTO"%>
 <%@page import="com.pythonchip.model.UpdateStoreViewDO"%>
 <%@page import="com.pythonchip.model.StoreViewDAO"%>
 <%@page import="com.pythonchip.model.StoreViewDTO"%>
@@ -82,20 +84,23 @@
 	<%
 	MemberDTO info = (MemberDTO) session.getAttribute("info");
 	%>
-
 	<%
 	// 게시글을 식별할 수 있는 고유한 번호
-	String seq = request.getParameter("store_seq");
-	String name = request.getParameter("store_name");
-	System.out.println(seq);
+	String seq = null;
+	seq = request.getParameter("store_seq");
+
+	String name = null;
 
 	StoreDTO dto = null;
 	if (seq != null) {
 		dto = new StoreDAO().getStoreOne(seq);
-	} else if (name != null) {
-		dto = new StoreDAO().getStoreOne(seq);
-
+	} else {
+		name = request.getParameter("store_name");
+		dto = new StoreDAO().getStore(name);
 	}
+	System.out.println(seq);
+
+	ArrayList<MenuDTO> menu_list = new MenuDAO().showMenu(dto.getStore_seq());
 
 	//차트 준비 시작===
 
@@ -173,8 +178,8 @@
 					<div class="social flex-w flex-l-m p-r-20">
 						<li>
 							<!--  로그인 이메일 출력! --> <%
- if (info != null) {
- %> <a href="./Mypage.jsp" style="padding-right: 20px;"> MyPage </a>
+						 if (info != null) {
+						 %> <a href="./Mypage.jsp" style="padding-right: 20px;"> MyPage </a>
 						<li><a href="LogoutService.do" style="padding-left: 20px;">
 								Logout </a></li>
 
@@ -203,8 +208,10 @@
 
 		<div class="gallery-sidebar t-center p-l-60 p-r-60 p-b-40">
 			<ul class="menu-sidebar p-t-95 p-b-70">
-				<li class="t-center m-b-13"><a href="Home.jsp" class="txt19">로고</a>
-				</li>
+				<div class="logo">
+					<a href="Home.jsp"> <img src="images/logo.png" alt="IMG-LOGO"
+						data-logofixed="images/logo.png"></a>
+				</div>
 				<ul class="menu-sidebar p-t-95 p-b-70">
 
 
@@ -278,8 +285,7 @@
 									class="m-r-6 m-l-4">|</span>
 								</span> <span> ★ <%=dto.getStore_grade()%> <span
 									class="m-r-6 m-l-4">|</span>
-								</span> <span> <%=dto.getStore_tel()%>
-								  |  <span>조회수 : <%=viewdto.getView()%></span>
+								</span> <span> <%=dto.getStore_tel()%> | <span>조회수 : <%=viewdto.getView()%></span>
 								</span>
 							</div>
 						</div>
@@ -298,22 +304,39 @@
 							<a> <img src=<%=str%> alt="IMG-BLOG">
 							</a> <br> <br> <br> <br> <br> <br>
 
-
 						</div>
 
 						<!-- 차트 여기다 넣음 -->
 
 						<script
 							src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
-						<div id="chartchart"
-							style="height: 300px; display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr;">
-							<div style="height: inherit; width: 75%;">
-								<canvas id="bar-chart" style="height: 100%; width: 100%"></canvas>
-							</div>
-							<div style="height: inherit; width: 75%;">
-								<canvas id="pie-chart" style="height: 100%; width: 100%"></canvas>
-							</div>
-						</div>
+						<table>
+							<tr>
+								<td>
+									<canvas id="bar-chart" style="height:50%; width:400px"></canvas>
+								</td>
+								<td>
+									<canvas id="pie-chart" style="height: 50%; width: 400px"></canvas>
+								</td>
+							</tr>
+						</table>
+						<br><br>
+						<table style="height: 100%; width: 800px; text-align:center; font-family:Montserrat;" border=3 >
+							<tr>
+								<td style="font-weight:bold; width: 400px;">메뉴 이름</td>
+								<td style="font-weight:bold; width: 400px;">가격</td>
+							</tr>
+							<%
+							for (int i = 0; i < menu_list.size(); i++) {
+							%>
+							<tr>
+								<td><%=menu_list.get(i).getMenu_name()%></td>
+								<td><%=menu_list.get(i).getPrice()%></td>
+							</tr>
+							<%
+							}
+							%>
+						</table>
 						<script>
 							
 							new Chart(document.getElementById("pie-chart"), {
@@ -330,7 +353,7 @@
 							    	maintainAspectRatio: false,
 							      title: {
 							        display: true,
-							        text: '타이틀 2'
+							        text: '성별 조회수'
 							      }
 							    }
 							});
@@ -353,90 +376,14 @@
 							      legend: { display: false },
 							      title: {
 							        display: true,
-							        text: '타이틀 여따가 넣게요'
+							        text: '연령별 조회수'
 							      }
 							    }
 							});
 							</script>
 						<!-- 차트 여기까지 -->
 
-						<div>
-							<h4><%=dto.getStore_name()%>
-								후기
-							</h4>
-						</div>
-						<br>
-						<%
-						ArrayList<ReviewDTO> review_list = new ReviewDAO().showReview(dto.getStore_seq());
-						%>
-						<div id="review">
-							<table id="list" border=3>
-								<tr id=tr1>
-									<td>번호</td>
-									<td>id</td>
-									<td>별점</td>
-									<td>review</td>
-								</tr>
-
-								<tr>
-									<%
-									int i = 0;
-									for (i = 0; i < review_list.size(); i++) {
-									%>
-									<td><%=i + 1%></td>
-									<td><%=review_list.get(i).getId()%></td>
-									<td><%=review_list.get(i).getGrade()%></td>
-									<td><%=review_list.get(i).getRev_content()%></td>
-								</tr>
-								<%
-								}
-								%>
-								<li>
-									<!--  로그인했을때만 후기 작성 가능 --> <%
- if (info != null) {
- %>
-									<form action="ReviewService.do" method="post"
-										onsubmit="if(checkNumber()==false) return false;">
-										<tr id=tr2>
-											<td><%=i + 1%></td>
-											<td><input type="hidden" name="id"
-												value=<%=info.getId()%>><%=info.getId()%> <input
-												type="hidden" name="store_seq"
-												value=<%=dto.getStore_seq().toString()%>></td>
-											<td><input id="num" type="text"
-												placeholder="별점을 입력해주세요(5점)" name="grade"></td>
-											<td><input type="text" placeholder="내용을 입력해주세요"
-												name="rev_content"><input id=submit type="submit"
-												value="작성하기"></td>
-										</tr>
-									</form> <%
- }
- %>
-								
-							</table>
-
-						</div>
-						<script>
-							
-							</script>
-
-
-						<br> <br> <br> <br> <br> <br>
-
-						<script>
-							function checkNumber(){
-								if(document.getElementById('num').value<=5 && document.getElementById('num').value>=0){
-									return true;
-								}else if(document.getElementById('num').value>5){
-									alert("별점은 5점이하로 적어주세요")
-									return false;
-								}else{
-									alert("별점은 숫자를 입력해주세요")
-									return false;
-								}
-							}
-							</script>
-
+						<br><br>
 
 						<div>
 							<h4><%=dto.getStore_name()%>
@@ -488,44 +435,95 @@
 									marker.setMap(map);
 								</script>
 
-					</div>
-				</div>
+					<br><br>				
+				
+							<div>
+							<h4><%=dto.getStore_name()%>
+								후기
+							</h4>
+						</div>
+						
+						<br>
+						<%
+						ArrayList<ReviewDTO> review_list = new ReviewDAO().showReview(dto.getStore_seq());
+						%>
+						<div id="review">
+							<table id="list" border=3>
+								<tr id=tr1>
+									<td>번호</td>
+									<td>id</td>
+									<td>별점</td>
+									<td>review</td>
+								</tr>
 
-				<!-- Leave a comment -->
-				<form class="leave-comment p-t-10">
-					<h4 class="txt33 p-b-14">Reservation</h4>
+								<tr>
+									<%
+									int i = 0;
+									for (i = 0; i < review_list.size(); i++) {
+									%>
+									<td><%=i + 1%></td>
+									<td><%=review_list.get(i).getId()%></td>
+									<td><%=review_list.get(i).getGrade()%></td>
+									<td><%=review_list.get(i).getRev_content()%></td>
+								</tr>
+								<%
+								}
+								%>
+								
+							</table>
 
-					<p>가게 예약을 원하신다면 정보를 입력해주세요 *</p>
+						</div>
+						<script>
+							
+							</script>
 
-					<textarea
-						class="bo-rad-10 size29 bo2 txt10 p-l-20 p-t-15 m-b-10 m-t-40"
-						name="commentent" placeholder="Comment..."></textarea>
 
-					<div class="size30 bo2 bo-rad-10 m-t-3 m-b-20">
+						<br> <br> 
+							
+							
+					<!--  로그인했을때만 후기 작성 가능 --> <%
+								 if (info != null) {
+								 %>		
+			 	<form class="leave-comment p-t-10" action="ReviewService.do" method="post" onsubmit="if(checkNumber()==false) return false;">
+						
+						<h4 class="txt33 p-b-14">
+								<%= dto.getStore_name() %> 후기 작성
+							</h4>
+						<p>
+								가게에 대한 후기를 작성해주세요*
+							</p>
+						<input type="hidden" name="id" value=<%=info.getId()%> >
+						<input type="hidden" name="store_seq" value=<%=dto.getStore_seq().toString()%>>
+						
+						<div class="size30 bo2 bo-rad-10 m-t-3 m-b-20">
+						<input id = num class="bo-rad-10 sizefull txt10 p-l-20" type="text"
+							name="grade" placeholder="별점을 입력해주세요(5점)"> 
+						</div>
+						<div class="size30 bo2 bo-rad-10 m-t-3 m-b-20">
 						<input class="bo-rad-10 sizefull txt10 p-l-20" type="text"
-							name="name" placeholder="예약자 성함 *">
-					</div>
-
-					<div class="size30 bo2 bo-rad-10 m-t-3 m-b-20">
-						<input class="bo-rad-10 sizefull txt10 p-l-20" type="text"
-							name="email" placeholder="예약 일시 * ex) 2022-00-00">
-					</div>
-
-					<div class="size30 bo2 bo-rad-10 m-t-3 m-b-30">
-						<input class="bo-rad-10 sizefull txt10 p-l-20" type="text"
-							name="website" placeholder="예약자 전화번호">
-					</div>
-
-					<!-- Button3 -->
-					<button type="submit" class="btn3 flex-c-m size31 txt11 trans-0-4">예약</button>
-				</form>
-			</div>
-		</div>
+							name="rev_content" placeholder="내용을 입력해주세요"> 
+						</div>
+						<input class="btn10" id=submit type="submit" value="작성하기" style="font-family:Jua-Regular; text-align:center;">
+					 <%
+							 }
+							 %></form>
 
 
 		</div>
 	</section>
-
+			<script>
+							function checkNumber(){
+								if(document.getElementById('num').value<=5 && document.getElementById('num').value>=0){
+									return true;
+								}else if(document.getElementById('num').value>5){
+									alert("별점은 5점이하로 적어주세요")
+									return false;
+								}else{
+									alert("별점은 숫자를 입력해주세요")
+									return false;
+								}
+							}
+							</script>
 
 	<!-- Footer -->
 	<footer class="bg1">

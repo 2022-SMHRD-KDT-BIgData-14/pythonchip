@@ -192,7 +192,7 @@
 					</label><br>
 					
 					<p>
-						<input type="submit" value="login" class="btn">
+						<input type="submit" value="login" class="btn10">
 					</p>
 				</form>
 

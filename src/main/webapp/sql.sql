@@ -10,7 +10,7 @@ location_dong
 
 select * from Store where location_gu||' '||location_dong LIKE'%%' 
 
-select * from menu
+select * from menu where store_seq='140'
 
 select * from Store where store_name='느린먹거리by부각마을'
 

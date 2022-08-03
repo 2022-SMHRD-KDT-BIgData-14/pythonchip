@@ -30,6 +30,14 @@ public class StoreDAO {
 		return dto;
 	}
 	
+	public StoreDTO getStore(String store_name) {
+		
+		SqlSession session = sqlSessionFactory.openSession();
+		StoreDTO dto = session.selectOne("getStore",store_name);
+		session.close();
+		return dto;
+	}
+	
 	public ArrayList<StoreDTO> getStoreNameSearchList(String query) {
 		
 		SqlSession session = sqlSessionFactory.openSession();

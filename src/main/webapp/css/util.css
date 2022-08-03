@@ -9837,8 +9837,7 @@ TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT
 
 .tit1 {
     font-family: Jua-Regular;
-    font-weight: 700;
-    font-size: 90px;
+    font-size: 60px;
     line-height: 1.1;
     color: white;
     text-transform: uppercase;
@@ -9946,6 +9945,9 @@ TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT
     font-size: 60px;
     line-height: 1.1;
     color: white;
+    text-transform: uppercase;
+    letter-spacing: 10px;
+    word-spacing: 10px;
 }
 
 .txt2 {

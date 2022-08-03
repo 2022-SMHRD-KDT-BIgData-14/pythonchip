@@ -1,5 +1,6 @@
 package com.pythonchip.model;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 
 import org.apache.ibatis.session.SqlSession;
@@ -39,6 +40,18 @@ public class MenuDAO {
 		return row;
 	}
 
+	// 전체 메뉴 조회
+		public ArrayList<MenuDTO> showMenu(BigDecimal seq) {
+			SqlSession session = sqlSessionFactory.openSession(true);
+			ArrayList<MenuDTO> menu_list = (ArrayList)session.selectList("showMenu",seq);
+			session.close();
+			
+			return menu_list;
+			}
+		
+	
+		
+		
 
 	
 	

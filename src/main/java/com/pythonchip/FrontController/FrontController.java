@@ -12,7 +12,6 @@ import com.pythonchip.controller.DeleteService;
 import com.pythonchip.controller.JoinService;
 import com.pythonchip.controller.LoginService;
 import com.pythonchip.controller.LogoutService;
-import com.pythonchip.controller.MenuService;
 import com.pythonchip.controller.ReviewService;
 import com.pythonchip.controller.StoreService;
 import com.pythonchip.controller.updateService;
@@ -48,8 +47,6 @@ public class FrontController extends HttpServlet {
 			service = new BoardService();
 		} else if (result.equals("ReviewService.do")) {
 			service = new ReviewService();
-		} else if (result.equals("MenuService.do")) {
-			service = new MenuService();
 		}else if (result.equals("JoinService.do")) {
 			service = new JoinService();
 		}else if (result.equals("LogoutService.do")) {
