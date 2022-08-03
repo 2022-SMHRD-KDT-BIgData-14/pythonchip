@@ -90,7 +90,7 @@
 				<div class="wrap_header trans-0-3">
 					<!-- Logo -->
 					<div class="logo">
-						<a href="index.html"> <img src="images/logo2.png"
+						<a href="Home.jsp"> <img src="images/logo2.png"
 							alt="IMG-LOGO" data-logofixed="images/logo2.png">
 						</a>
 					</div>
@@ -243,50 +243,6 @@
 		<div class="wrap-gallery isotope-grid flex-w p-l-25 p-r-25"
 			id="insideStoreTable">
 
-			<%
-			ArrayList<StoreDTO> arr = new StoreDAO().getStoreList();
-
-			for (int i = 0; i < arr.size(); i++) {
-			%>
-
-			<div class="item-gallery isotope-item bo-red-10 hov-img-zoom">
-
-				<%
-                 String str = null;
-                 if(arr.get(i).getKeyword().equals("전통차")){
-                	 str = "images/전통차2.JPG";
-                 }else if(arr.get(i).getKeyword().equals("식혜") || arr.get(i).getKeyword().equals("쑥")|| arr.get(i).getKeyword().equals("떡")|| arr.get(i).getKeyword().equals("막걸리")){
-                	 str = "images/"+arr.get(i).getKeyword()+".jpg";
-                 }
-                 else{
-                	 str = "images/"+arr.get(i).getKeyword()+".JPG";
-                 }
-                 %>
-				<img src=<%=str%> class="card-img-top" alt="...">
-
-				<div class="overlay-item-gallery trans-0-10 flex-c-m">
-
-					<a class="btn-show-gallery flex-c-m fa fa-search"
-						href="./DetailStore.jsp?store_seq=<%=arr.get(i).getStore_seq()%>"></a>
-				</div>
-				<div>
-					<br>
-					<h5 class=""><%=arr.get(i).getStore_name()%></h5>
-					<br>
-					<p class="">
-						주소 :
-						<%=arr.get(i).getLocation_dong()%><%=arr.get(i).getLocation_gu()%></p>
-					<br>
-					<p class="">
-						tel :
-						<%=arr.get(i).getStore_tel()%></p>
-					<br>
-				</div>
-		</div>
-
-			<%
-			}
-			%>
 		</div>
 
 
@@ -493,8 +449,83 @@
 	<script src="js/main.js"></script>
 
 	<script type="text/javascript" src="ajax/SearchStoreAjax.js"></script>
+	
+	
+	<%
+	String searchWord =(String)request.getParameter("searchWord");
+	if(searchWord == null){
+		searchWord = "광주";
+	}
+	%>
 	<script>
+	setTimeout(() => {
+	  var url = "http://localhost:8081/pythonchip/SearchStoreAjax";
+		key = '<%=searchWord%>'
+		job = $("#searchSelector option:selected").val();
+	    $.ajax({
+	        type:"GET",
+	        url:url,
+	        dataType:"json",
+	        data:{
+	            keyword : key,
+				job : job 
+	        },
+	        success : function(data){
 		
+	            var str=""
+	            console.log(data)
+				$('#insideStoreTable').isotope('remove',$('.item-gallery') )
+				$('.wrap-gallery').isotope({
+	                itemSelector: '.item-gallery',
+	                percentPosition: true,
+	 	  			layoutMode: 'masonry',
+	                animationEngine: 'best-available',
+	                masonry: {
+	                    columnWidth: '.item-gallery',
+						columnHeight: '.item-gallery'
+	                }
+	            })
+				setTimeout(() => {
+
+	            data.forEach(element => {
+	            
+	            console.log(element)
+				 var imageStr = null;
+	 			 var hrefStr= "http://localhost:8081/pythonchip/DetailStore.jsp?store_seq="+element.store_seq;
+		
+	             if(element.keyword=="전통차"){
+	            	 imageStr = "http://localhost:8081/pythonchip/images/전통차2.JPG";
+	             }else if(element.keyword=="식혜" || element.keyword=="쑥"|| element.keyword=="떡"|| element.keyword=="막걸리"){
+	            	 imageStr = "http://localhost:8081/pythonchip/images/"+element.keyword+".jpg";
+	             }
+	             else{
+	            	 imageStr = "http://localhost:8081/pythonchip/images/"+element.keyword+".JPG";
+	             }
+
+				str = $("  <div class=\"item-gallery hov-img-zoom\">\r\n"
+					+ "      <img src="+imageStr+" class=\"card-img-top\" alt=\"...\">\r\n"
+					+ "                  <div class=\"overlay-item-gallery trans-0-10 flex-c-m\"><a class=\"btn-show-gallery flex-c-m fa fa-search\" href="+hrefStr+"></a></div>"
+					+ "      <div>\r\n<br>"
+					+ "        <h5> "+ element.store_name+" </h5>\r\n"
+					+ "        <p> 주소 : "+ element.location_dong+element.location_gu+"</p>\r\n"
+					+ "        <p> 별점 : "+ element.store_grade  +"  </p>\r\n"
+	                + "        <p> tel : "+ element.store_tel +" </p>\r\n"
+					+ "    </div>\r\n"
+					+ "  </div>")
+					$('#insideStoreTable').isotope().append(str).isotope('appended',str).isotope('layout');
+					console.log('isotope')
+	            });
+			setTimeout(() => {
+			$('.wrap-gallery').isotope('layout')
+			},500)
+	        }, 300);
+	            },
+	        error : function(request,status,error){
+	            
+	        }
+	    })
+	}, 500);
+
 	</script>
 
 </body>

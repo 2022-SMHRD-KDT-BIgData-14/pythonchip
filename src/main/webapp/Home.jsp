@@ -207,10 +207,11 @@
 						<!-- 검색창 -->
 						<div class="menu">
 							<div class="search">
-								<input type="text" style="text-align: center;">
+							<form action="/pythonchip/Store.jsp" method="get">
+								<input name="searchWord" id="searchinput" type="text" style="text-align: center;">
 								<p class="material-icons">search</p>
 
-
+</form>
 							</div>
 						</div>
 					</div>
@@ -294,6 +295,58 @@
 		src="vendor/lightbox2/js/lightbox.min.js"></script>
 	<!--===============================================================================================-->
 	<script src="js/main.js"></script>
+
+<script>
+
+
+</script>
+
+
+
+
+<div style="
+margin-top:10em;
+margin-left: 14em; margin-right: 14em;
+text-align: center;
+">
+<span style="font-size: 2.2em;">이런이런 태그태그 클릭 ㄱㄱ</span>
+<br>
+<br>
+			<%
+			String[] keywordArr = {"식혜", "흑염소", "양갱", "막걸리", "인절미", "말차",
+					"흑임자", "쑥", "한방", "미숫가루", "떡", "달고나", "전통차", "팥"};
+			%>
+			<%
+			int cnt = 0;
+			for (int i = 0; i < keywordArr.length; i++) {
+				if (keywordArr.length - 1 <= cnt) {
+					cnt = 0;
+			%><!-- <br> -->
+			<%
+			}
+			%>
+			<button type="button"
+				style="background-color: #FFA46C; font-size: 20px; text-align: center;
+			    width: auto;
+			    height: 2em;
+			    margin-top: 0.25em;
+			    padding-left: 1.2em;
+			    padding-right: 1.2em;
+			    margin-left: 0.2em;
+				"
+				class="keywordBtn btn btn-outline-danger"
+				><%=keywordArr[i]%></button>
+			<%
+			}
+			%>
+
+		</div>
+<div style="padding-bottom: 10em;"></div>
+
+<script>
+$('.btn').on('click', function(){
+	window.location.href = '/pythonchip/Store.jsp?searchWord='+$(this).text();})
+</script>
 
 </body>
 
