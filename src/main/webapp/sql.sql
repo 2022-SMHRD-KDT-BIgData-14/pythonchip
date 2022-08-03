@@ -56,3 +56,26 @@ increment by 1
 
 delete from board
 
+create table store_view(
+age10 number DEFAULT 0,
+age20 number DEFAULT 0,
+age30 number DEFAULT 0,
+age40 number DEFAULT 0,
+age50 number DEFAULT 0,
+age60 number DEFAULT 0,
+man number DEFAULT 0,
+woman number DEFAULT 0,
+store_seq number DEFAULT 0,
+constraint store_view_store_seq_fk foreign key(store_seq) references store(store_seq)
+)
+select * from Store
+select * from Store_view
+insert into store_view(store_seq) values(140)
+
+
+select * from store_view where store_seq=1
+
+update store_view set age10 = 278,age20 = 456,age30 = 345,age40 = 255,age50 = 634,age60 = 123, man= 728,  woman= 928where store_seq=141
+
+
+update store_view set age10 = 512, woman= 781 where store_seq=140
