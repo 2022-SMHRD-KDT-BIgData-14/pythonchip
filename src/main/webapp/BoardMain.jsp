@@ -52,9 +52,11 @@
 			<div class="container h-full">
 					<!-- 로고 -->
 				<div class="wrap_header trans-0-3">
-					<div class="logo" >
-						<a href="Home.jsp" > <img  src="images/logo2.png" alt="IMG-LOGO" style="width:50%"
-							data-logofixed="images/logo2.png" ></a>
+					<!-- 로고 -->
+					<div class="logo">
+					<a href="Home.jsp"> <img src="images/logo2.png"
+							alt="IMG-LOGO" data-logofixed="images/logo2.png">
+						</a>
 					</div>
 
                     <!-- Menu -->

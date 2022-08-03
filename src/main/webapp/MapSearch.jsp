@@ -528,7 +528,7 @@ ul, li {
 				<div class="wrap_header trans-0-3">
 					<!-- 로고 -->
 					<div class="logo">
-					<a href="index.html"> <img src="images/logo2.png"
+					<a href="Home.jsp"> <img src="images/logo2.png"
 							alt="IMG-LOGO" data-logofixed="images/logo2.png">
 						</a>
 					</div>
