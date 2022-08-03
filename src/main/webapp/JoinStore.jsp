@@ -8,7 +8,7 @@
 <html lang="en">
 
 <head>
-<title>JoinStore</title>
+<title>Contact</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->
@@ -135,8 +135,10 @@
 			<!-- 슬라이드바 구성  -->
 
 			<ul class="menu-sidebar p-t-95 p-b-70">
-				<li class="t-center m-b-13"><a href="Home.jsp" class="txt19">로고</a>
-				</li>
+					<div class="logo">
+						<a href="Home.jsp"> <img src="images/logo.png" alt="IMG-LOGO"
+							data-logofixed="images/logo.png"></a>
+					</div>
 				<ul class="menu-sidebar p-t-95 p-b-70">
 
 
