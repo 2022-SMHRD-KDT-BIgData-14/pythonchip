@@ -18,6 +18,11 @@
 			alias="MemberDTO" />
 		<typeAlias type="com.pythonchip.model.BoardDTO"
 			alias="BoardDTO" />
+		<typeAlias type="com.pythonchip.model.StoreViewDTO"
+			alias="StoreViewDTO" />
+		<typeAlias type="com.pythonchip.model.UpdateStoreViewDO"
+			alias="UpdateStoreViewDO" />
+			
 
 	</typeAliases>
 	<environments default="development">
@@ -38,6 +43,7 @@
 		<mapper resource="com/pythonchip/mapper/ReviewMapper.xml"></mapper>
 		<mapper resource="com/pythonchip/mapper/MemberMapper.xml"></mapper>
 		<mapper resource="com/pythonchip/mapper/BoardMapper.xml"></mapper>
+		<mapper resource="com/pythonchip/mapper/StoreViewMapper.xml"></mapper>
 
 	</mappers>
 </configuration>

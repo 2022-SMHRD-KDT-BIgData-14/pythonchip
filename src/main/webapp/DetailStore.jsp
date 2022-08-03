@@ -1,4 +1,8 @@
 
+<%@page import="com.pythonchip.model.UpdateStoreViewDO"%>
+<%@page import="com.pythonchip.model.StoreViewDAO"%>
+<%@page import="com.pythonchip.model.StoreViewDTO"%>
+<%@page import="java.math.BigDecimal"%>
 <%@page import="com.pythonchip.model.MemberDTO"%>
 <%@page import="com.pythonchip.model.ReviewDAO"%>
 <%@page import="com.pythonchip.model.ReviewDTO"%>
@@ -29,7 +33,7 @@
 	font-family: Montserrat;
 }
 
-#submit{
+#submit {
 	text-align: right;
 	font-family: Montserrat;
 }
@@ -78,22 +82,63 @@
 	<%
 	MemberDTO info = (MemberDTO) session.getAttribute("info");
 	%>
-	
+
 	<%
 	// 게시글을 식별할 수 있는 고유한 번호
-	String seq =request.getParameter("store_seq");
-	String name =request.getParameter("store_name");
+	String seq = request.getParameter("store_seq");
+	String name = request.getParameter("store_name");
 	System.out.println(seq);
-	
+
 	StoreDTO dto = null;
-	if(seq!=null){
-	 dto = new StoreDAO().getStoreOne(seq);
-	}else if(name!=null){
-	 dto = new StoreDAO().getStoreOne(seq);
-		
+	if (seq != null) {
+		dto = new StoreDAO().getStoreOne(seq);
+	} else if (name != null) {
+		dto = new StoreDAO().getStoreOne(seq);
+
 	}
+
+	//차트 준비 시작===
+
+	BigDecimal id = new BigDecimal(seq);
+	StoreViewDTO viewdto = null;
+
+	//해당 가게 조회수 테이블 조회 
+	viewdto = new StoreViewDAO().getViewStore(id);
+	if (viewdto == null) {
+		//해당 가게의 조회수 테이블이 생성된적 없으면 생성후 다시 조회함.
+		//잘못된 가게 번호라면 생성조차 되지 못하고 404 페이지(에러 페이지)넘어감
+		new StoreViewDAO().insertStoreView(id);
+		viewdto = new StoreViewDAO().getViewStore(id);
+	}
+
+	//					=조회수 늘리기 로직=
+	ArrayList<String> view = (ArrayList) session.getAttribute("view");
+	Cookie[] cookies = request.getCookies();
+	//세션이 생성된 적이 없다면 세션 생성
+
+	//세션 조회 내역 체크
+	System.out.println("=======쿠키 조회=========");
+	boolean viewFlag = false;
+	for (Cookie cookie : cookies) {
+		System.out.println(cookie.getName());
+		if (cookie.getName().equals(seq)) {
+			viewFlag = true;
+		}
+	}
+	System.out.println("=======================");
+
+	//1. 로그인 상태일 경우와 세션 체크 후 해당 가게를 조회 한 적 없으면 실행 
+	if (info != null && viewFlag == false)
+	//2. 회원의 나이, 성별을 가져와 해당 [가게 조회수 테이블]의 해당 컬럼 데이터의 숫자를 +1 시켜줌 
+	{
+		System.out.println("조회수 증가 로직 : " + seq);
+		new StoreViewDAO().updateStoreView(new UpdateStoreViewDO("age10", "woman", seq));
+		response.addCookie(new Cookie(seq, ""));
+		viewdto = new StoreViewDAO().getViewStore(id);
+	}
+	//차트 준비 끝
 	%>
-	
+
 	<!-- Header -->
 	<header>
 		<!-- Header desktop -->
@@ -111,7 +156,7 @@
 					<div class="wrap_menu p-l-45 p-l-0-xl">
 						<nav class="menu">
 							<ul class="main_menu">
-									<li><a href="Home.jsp">Home</a></li>
+								<li><a href="Home.jsp">Home</a></li>
 
 								<li><a href="MapSearch.jsp">map search</a></li>
 
@@ -128,9 +173,8 @@
 					<div class="social flex-w flex-l-m p-r-20">
 						<li>
 							<!--  로그인 이메일 출력! --> <%
-						 if (info != null) {
-						 %> <a href="./Mypage.jsp" style="padding-right: 20px;">
-														MyPage </a>
+ if (info != null) {
+ %> <a href="./Mypage.jsp" style="padding-right: 20px;"> MyPage </a>
 						<li><a href="LogoutService.do" style="padding-left: 20px;">
 								Logout </a></li>
 
@@ -235,89 +279,151 @@
 								</span> <span> ★ <%=dto.getStore_grade()%> <span
 									class="m-r-6 m-l-4">|</span>
 								</span> <span> <%=dto.getStore_tel()%>
+								  |  <span>조회수 : <%=viewdto.getView()%></span>
 								</span>
 							</div>
 						</div>
-							<%
-			                 String str = null;
-			                 if(dto.getKeyword().equals("전통차")){
-			                	 str = "images/전통차2.JPG";
-			                 }else if(dto.getKeyword().equals("식혜") || dto.getKeyword().equals("쑥")|| dto.getKeyword().equals("떡")|| dto.getKeyword().equals("막걸리")){
-			                	 str = "images/"+dto.getKeyword()+".jpg";
-			                 }
-			                 else{
-			                	 str = "images/"+dto.getKeyword()+".JPG";
-			                 }
-			                 %>
+						<%
+						String str = null;
+						if (dto.getKeyword().equals("전통차")) {
+							str = "images/전통차2.JPG";
+						} else if (dto.getKeyword().equals("식혜") || dto.getKeyword().equals("쑥") || dto.getKeyword().equals("떡")
+								|| dto.getKeyword().equals("막걸리")) {
+							str = "images/" + dto.getKeyword() + ".jpg";
+						} else {
+							str = "images/" + dto.getKeyword() + ".JPG";
+						}
+						%>
 						<div class="pic-blo4 hov-img-zoom bo-rad-10 pos-relative">
-							<a > <img src=<%=str %>
-								alt="IMG-BLOG">
-							</a>
-							<!-- - -->
-							<br> <br> <br> <br> <br> <br>
+							<a> <img src=<%=str%> alt="IMG-BLOG">
+							</a> <br> <br> <br> <br> <br> <br>
 
 
+						</div>
 
-							<div>
-								<h4><%=dto.getStore_name()%>
-									후기
-								</h4>
+						<!-- 차트 여기다 넣음 -->
+
+						<script
+							src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+						<div id="chartchart"
+							style="height: 300px; display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr;">
+							<div style="height: inherit; width: 75%;">
+								<canvas id="bar-chart" style="height: 100%; width: 100%"></canvas>
 							</div>
-							<br>
-							<%
-							ArrayList<ReviewDTO> review_list = new ReviewDAO().showReview(dto.getStore_seq());
-							%>
-							<div id="review">
-								<table id="list" border=3>
-									<tr id=tr1>
-										<td>번호</td>
-										<td>id</td>
-										<td>별점</td>
-										<td >review</td>
-									</tr>
+							<div style="height: inherit; width: 75%;">
+								<canvas id="pie-chart" style="height: 100%; width: 100%"></canvas>
+							</div>
+						</div>
+						<script>
+							
+							new Chart(document.getElementById("pie-chart"), {
+							    type: 'doughnut',
+							    data: {
+							      labels: ["남자","여자"],
+							      datasets: [{
+							        label: "라벨",
+							        backgroundColor: ["#3e95cd","#c45850"],
+							        data: [<%=viewdto.getMan()%>,<%=viewdto.getWoman()%>]
+							      }]
+							    },
+							    options: {
+							    	maintainAspectRatio: false,
+							      title: {
+							        display: true,
+							        text: '타이틀 2'
+							      }
+							    }
+							});
+							
+							new Chart(document.getElementById("bar-chart"), {
+							    type: 'bar',
+							    data: {
+							      labels: ["10대", "20대", "30대", "40대", "50대","60대+"],
+							      datasets: [
+							        {
+							        	maintainAspectRatio: false,
+							          label: "라벨",
+							          backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850","#c12350"],
+							          data: [<%=viewdto.getAge10()%>,<%=viewdto.getAge20()%>,<%=viewdto.getAge30()%>,<%=viewdto.getAge40()%>,<%=viewdto.getAge50()%>,<%=viewdto.getAge60()%>]
+							        }
+							      ]
+							    },
+							    options: {
+							    	maintainAspectRatio: false,
+							      legend: { display: false },
+							      title: {
+							        display: true,
+							        text: '타이틀 여따가 넣게요'
+							      }
+							    }
+							});
+							</script>
+						<!-- 차트 여기까지 -->
 
-									<tr>
-										<%
-										int i = 0;
-										for (i = 0; i < review_list.size(); i++) {
-										%>
-										<td><%=i + 1%></td>
-										<td><%=review_list.get(i).getId()%></td>
-										<td><%=review_list.get(i).getGrade()%></td>
-										<td ><%=review_list.get(i).getRev_content()%></td>
-									</tr>
+						<div>
+							<h4><%=dto.getStore_name()%>
+								후기
+							</h4>
+						</div>
+						<br>
+						<%
+						ArrayList<ReviewDTO> review_list = new ReviewDAO().showReview(dto.getStore_seq());
+						%>
+						<div id="review">
+							<table id="list" border=3>
+								<tr id=tr1>
+									<td>번호</td>
+									<td>id</td>
+									<td>별점</td>
+									<td>review</td>
+								</tr>
+
+								<tr>
 									<%
-									}
+									int i = 0;
+									for (i = 0; i < review_list.size(); i++) {
 									%>
-									<li>
-										<!--  로그인했을때만 후기 작성 가능 --> <%
-										 if (info != null) {
-										 %>
-										<form action="ReviewService.do" method="post" onsubmit="if(checkNumber()==false) return false;">
-											<tr id=tr2>
-												<td><%=i + 1%></td>
-												<td>
-												<input type="hidden" name="id" value=<%=info.getId() %>><%=info.getId() %>
-												<input type="hidden" name="store_seq" value=<%=dto.getStore_seq().toString()%>>
-												</td>
-												<td><input id="num" type="text" placeholder="별점을 입력해주세요(5점)" name="grade"></td>
-												<td><input type="text" placeholder="내용을 입력해주세요" name="rev_content"><input id=submit type="submit" value="작성하기"></td>
-											</tr>
-										</form> <%
+									<td><%=i + 1%></td>
+									<td><%=review_list.get(i).getId()%></td>
+									<td><%=review_list.get(i).getGrade()%></td>
+									<td><%=review_list.get(i).getRev_content()%></td>
+								</tr>
+								<%
+								}
+								%>
+								<li>
+									<!--  로그인했을때만 후기 작성 가능 --> <%
+ if (info != null) {
+ %>
+									<form action="ReviewService.do" method="post"
+										onsubmit="if(checkNumber()==false) return false;">
+										<tr id=tr2>
+											<td><%=i + 1%></td>
+											<td><input type="hidden" name="id"
+												value=<%=info.getId()%>><%=info.getId()%> <input
+												type="hidden" name="store_seq"
+												value=<%=dto.getStore_seq().toString()%>></td>
+											<td><input id="num" type="text"
+												placeholder="별점을 입력해주세요(5점)" name="grade"></td>
+											<td><input type="text" placeholder="내용을 입력해주세요"
+												name="rev_content"><input id=submit type="submit"
+												value="작성하기"></td>
+										</tr>
+									</form> <%
  }
  %>
-									
-								</table>
+								
+							</table>
 
-							</div>
-							<script>
+						</div>
+						<script>
 							
 							</script>
 
 
-							<br> <br> <br> <br> <br> <br>
+						<br> <br> <br> <br> <br> <br>
 
-							<script>
+						<script>
 							function checkNumber(){
 								if(document.getElementById('num').value<=5 && document.getElementById('num').value>=0){
 									return true;
@@ -332,16 +438,16 @@
 							</script>
 
 
-							<div>
-								<h4><%=dto.getStore_name()%>
-									위치
-								</h4>
-							</div>
-							<br>
-							<div id="map" style="width: 100%; height: 350px;"></div>
-							<script type="text/javascript"
-								src="//dapi.kakao.com/v2/maps/sdk.js?appkey=2f8c752aae632b4c611274927d3bbb6a"></script>
-							<script>
+						<div>
+							<h4><%=dto.getStore_name()%>
+								위치
+							</h4>
+						</div>
+						<br>
+						<div id="map" style="width: 100%; height: 350px;"></div>
+						<script type="text/javascript"
+							src="//dapi.kakao.com/v2/maps/sdk.js?appkey=2f8c752aae632b4c611274927d3bbb6a"></script>
+						<script>
 								    <!-- 지도 만들어주기 -->
 									var mapContainer = document.getElementById('map') // 지도를 표시할 div 
 									mapOption = {
@@ -382,39 +488,39 @@
 									marker.setMap(map);
 								</script>
 
-						</div>
+					</div>
+				</div>
+
+				<!-- Leave a comment -->
+				<form class="leave-comment p-t-10">
+					<h4 class="txt33 p-b-14">Reservation</h4>
+
+					<p>가게 예약을 원하신다면 정보를 입력해주세요 *</p>
+
+					<textarea
+						class="bo-rad-10 size29 bo2 txt10 p-l-20 p-t-15 m-b-10 m-t-40"
+						name="commentent" placeholder="Comment..."></textarea>
+
+					<div class="size30 bo2 bo-rad-10 m-t-3 m-b-20">
+						<input class="bo-rad-10 sizefull txt10 p-l-20" type="text"
+							name="name" placeholder="예약자 성함 *">
 					</div>
 
-					<!-- Leave a comment -->
-					<form class="leave-comment p-t-10">
-						<h4 class="txt33 p-b-14">Reservation</h4>
+					<div class="size30 bo2 bo-rad-10 m-t-3 m-b-20">
+						<input class="bo-rad-10 sizefull txt10 p-l-20" type="text"
+							name="email" placeholder="예약 일시 * ex) 2022-00-00">
+					</div>
 
-						<p>가게 예약을 원하신다면 정보를 입력해주세요 *</p>
+					<div class="size30 bo2 bo-rad-10 m-t-3 m-b-30">
+						<input class="bo-rad-10 sizefull txt10 p-l-20" type="text"
+							name="website" placeholder="예약자 전화번호">
+					</div>
 
-						<textarea
-							class="bo-rad-10 size29 bo2 txt10 p-l-20 p-t-15 m-b-10 m-t-40"
-							name="commentent" placeholder="Comment..."></textarea>
-
-						<div class="size30 bo2 bo-rad-10 m-t-3 m-b-20">
-							<input class="bo-rad-10 sizefull txt10 p-l-20" type="text"
-								name="name" placeholder="예약자 성함 *">
-						</div>
-
-						<div class="size30 bo2 bo-rad-10 m-t-3 m-b-20">
-							<input class="bo-rad-10 sizefull txt10 p-l-20" type="text"
-								name="email" placeholder="예약 일시 * ex) 2022-00-00">
-						</div>
-
-						<div class="size30 bo2 bo-rad-10 m-t-3 m-b-30">
-							<input class="bo-rad-10 sizefull txt10 p-l-20" type="text"
-								name="website" placeholder="예약자 전화번호">
-						</div>
-
-						<!-- Button3 -->
-						<button type="submit" class="btn3 flex-c-m size31 txt11 trans-0-4">예약</button>
-					</form>
-				</div>
+					<!-- Button3 -->
+					<button type="submit" class="btn3 flex-c-m size31 txt11 trans-0-4">예약</button>
+				</form>
 			</div>
+		</div>
 
 
 		</div>

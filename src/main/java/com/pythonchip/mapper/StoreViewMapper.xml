@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pythonchip.mapper.StoreViewMapper">
+
+
+	<select id = "getStoreView" resultType="StoreViewDTO" parameterType="BigDecimal">
+	select * from store_view where store_seq=${value}
+	</select>
+	
+	<insert id="insertStoreView"  parameterType="BigDecimal">
+	insert into store_view(store_seq) values(${value})
+	</insert>
+	
+	<update id="updateStoreView" parameterType="updateStoreViewDO">
+	update store_view set ${age}=${age}+1, ${gender}= ${gender}+1 where store_seq=${store_seq}
+	</update>
+</mapper>
