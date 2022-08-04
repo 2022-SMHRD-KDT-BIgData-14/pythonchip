@@ -211,7 +211,7 @@
 					<option value="name" selected>가게 이름</option>
 					<option value="location">위치</option>
 					<option value="menu">메뉴</option>
-				</select> <input type="text" size="66em" id=" "
+				</select> <input type="text" size="66em" id="searchinput"
 					style="height: 2.5em; border: solid !important; margin-left: 0.1em; margin-right: 0.1em; border-radius: 0.7em; padding-left: 1em;">
 				<button id="searchButton"
 					style="border: solid black; width: 4.3em; height: 2.5em; border-style: groove; border-radius: 0.7em;">검색</button>

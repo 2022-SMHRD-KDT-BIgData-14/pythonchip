@@ -5,20 +5,17 @@
 let infowindow = new kakao.maps.InfoWindow({zIndex:1});
 
 // 키워드로 장소를 검색합니다
-//searchPlaces();
-// 키워드 검색을 요청하는 함수입니다
-function searchPlaces() {
-	console.log('searchPlaces')
-    var searchkeyword = document.getElementById('keyword').value;
 
+// 검색을 요청하는 함수입니다
+function searchPlaces() {
+	//검색어를 가져옵니다.
+    var searchkeyword = document.getElementById('keyword').value;
     if (!searchkeyword.replace(/^\s+|\s+$/g, '')) {
         alert('키워드를 입력해주세요!');
-        return false;
-    }
-    
-    // 장소검색 객체를 통해 키워드로 장소검색을 요청합니다
+        return false;}
+	//ajax를 요청할 주소입니다.
     var url = "http://localhost:8081/pythonchip/SearchStoreAjax";
-
+	//ajax를 요청 합니다.
     $.ajax({
         type:"GET",
         url:url,
@@ -27,21 +24,17 @@ function searchPlaces() {
             keyword : searchkeyword,
         },
         success : function(d){
-            placesSearchCB(d)
-
+			//ajax 통신에 성공한 경우 해당 데이터를 지도에 표시해 줍니다.
+            placesSearchCB(d) 
         },
         error : function(request,status,error){
-
             console.log(error);
-
         }
     })
-    
 }
 
 // 장소검색이 완료됐을 때 호출되는 콜백함수 입니다
 function placesSearchCB(data) {
-
         // 정상적으로 검색이 완료됐으면
         // 검색 목록과 마커를 표출합니다
         console.log(data)
@@ -50,7 +43,6 @@ function placesSearchCB(data) {
         console.log(slice)
         displayPlaces(slice);
         // 페이지 번호를 표출합니다
-
         //pagination
         last = Math.ceil(data.length/15)
         pagination={
@@ -89,15 +81,11 @@ function displayPlaces(places) {
     fragment = document.createDocumentFragment(), 
     bounds = new kakao.maps.LatLngBounds(), 
     listStr = '';
-    
     // 검색 결과 목록에 추가된 항목들을 제거합니다
     removeAllChildNods(listEl);
-
     // 지도에 표시되고 있는 마커를 제거합니다
     removeMarker();
-    
     for ( var i=0; i<places.length; i++ ) {
-
         // 마커를 생성하고 지도에 표시합니다
         var placePosition = new kakao.maps.LatLng(places[i].store_x, places[i].store_y),
             marker = addMarker(placePosition, i, places.store_name), 
