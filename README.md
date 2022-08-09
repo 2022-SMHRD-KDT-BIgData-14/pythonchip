@@ -11,6 +11,7 @@
 + 커뮤니티 서비스
 + 가게등록 서비스
 + 가게 디테일 정보 조회 및 댓글 기능
+
 ![슬라이드20](https://user-images.githubusercontent.com/106040877/183541894-efe711f9-ac24-4922-8d3a-fb79c9d5b9fb.JPG)
 ![슬라이드21](https://user-images.githubusercontent.com/106040877/183541846-21aec191-9585-4c51-976a-82cf6239c950.JPG)
 ![슬라이드22](https://user-images.githubusercontent.com/106040877/183541857-18cefa3f-6a8f-4b80-93f1-1bf8c8d578b9.JPG)
@@ -23,10 +24,10 @@
 ![아키텍처](https://user-images.githubusercontent.com/106040877/183542114-462fd399-268a-46ad-8205-9cd3e2abfded.jpg)
 
 # 5. 기능 흐름도
-### 서비스 흐름도(웹 화면설계서)
++ ### 서비스 흐름도(웹 화면설계서)
 ![슬라이드19](https://user-images.githubusercontent.com/106040877/183542327-06710076-f125-479a-a10a-84d22b501bba.JPG)
 
-### ER다이어그램
++ ### ER다이어그램
 ![슬라이드17](https://user-images.githubusercontent.com/106040877/183542342-441c01f3-1c18-4c1f-9127-6463a4f06bf8.JPG)
 
 
