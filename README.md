@@ -59,7 +59,10 @@
 # 7. 팀원 단위 업무 분장
 ![슬라이드27](https://user-images.githubusercontent.com/106040877/183543508-22ac22b7-cb5d-460b-8ebc-31abe4fcbad7.JPG)
 
-# 8. 트러블 슈팅
+# 8. 기대효과 및 활용방안
+![슬라이드26](https://user-images.githubusercontent.com/106040877/183544071-916dbfda-8615-43e7-a601-b3575407a3f4.JPG)
+
+# 9. 트러블 슈팅
 
 
 
